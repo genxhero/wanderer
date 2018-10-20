@@ -26,14 +26,45 @@ A user can actually use the app to plan their next adventure, but their vehicle 
 ## Go the Distance
 Given a percentage of a full tank of gasoline, information about the user's vehicle, and data from the Google maps API, Wayfarer will find the farthest gasoline station (or group of stations) that can be reached without filling up in every direction and then visualize a spread starting at the user's current location.
 
+
 ## Lay Your Weary Head to Rest
-Given a number of desired driving hours and a final destination, Wayfarer will extrapolate an approximate distance from the user's location and find a cluster of lodging within a reasonable radius of the furthest possible highway offramp along their route.
+Given a number of desired driving hours and a final destination, Wayfarer will extrapolate an approximate distance from the user's location and find a cluster of lodging within a reasonable radius of the furthest possible highway offramp along their route.  The pathway between each checkpoint will be be displayed in a different randomly selected color.
+
+## Bonus Feature 1:  Vista Points
+
+Our database will hold a table of vista points with lat/long coordinates.
+
+The user will be able to see these vista points along their trip route.
+
+If the vista point is off the beaten path somewhere, a separate visualization of how far they can reasonably drive given their mpg will be displayed in a different color over the current spread.
 
 # Technologies and Technical Challenges
 
-## Google API
 
-The Google maps api can provide us with a matrix of global coordinates which we will use to draw a visualization of 
+
+## Backend: Google API, Mongo, Express, Node 
+
+The Google maps api will provide us with global coordinate data  that our frontend will use 
+
+
+
+## Frontend: React
+
+Our user interface will consist of  the following components:
+
+*  A main display window where we will output our visualization. It will be framed by the other components.
+
+*  Top: A multi-pane form component where a user can use one of features of the app.  When information is entered in the active pane, the visualization will update  
+
+*  Right: Detailed information about hotels, gas stations, points of interest in a selected checkpoint.
+
+*  Left:  A selectable list of end checkpoints (gas station, exit with lodging, et cetera).
+
+* Bottom: Approximate distance drivable, disclaimer
+
+## Challenges
+
+The first and most basic challenge lies in finding out how we can use our frontend code to map the data we receive from the API into a format that the user will find visually appealing and easy to understand.
 
 # Things Accomplished Over the Weekend
 
@@ -42,9 +73,14 @@ The Google maps api can provide us with a matrix of global coordinates which we 
 
 # Group Members and Work Breakdown
 
+Aaron Goddard
+La Luo
+Cassandra McClure
 
 
 ## Dependencies
+
+This project uses the following Node packages:
 *  express 
 *  mongoose
 *  passport
