@@ -1,8 +1,19 @@
-# wayfarer
 
-An application 
+## Wayfarer
+
+Wayfarer is an app designed to facilitate adventure across the open roads of America.
 
 # Background and Overview
+ 
+Some days you  just want to hit the road in a random direction and explore the world around you. But perhaps you still have some lingering conundrums gnawing at the back of your mind, questions that a simple Google maps search can't answer?
+
+* "I'll start falling asleep behind the wheel if I drive past 10, so I must find a hotel.  But I don't know what town I'll be in if I drive for eight hours!"
+*  "I've only got half a tank of gas and I want to go now. What's the last place I could safely fill up at?"
+
+
+Wayfarer seeks to answer these questions through eye-catching visual imagery and a well-organized presentation of data.
+
+
 
 # Functionality and MVP
 
@@ -62,21 +73,6 @@ Our user interface will consist of  the following components:
 
 * Bottom: Approximate distance drivable, disclaimer
 
-## Challenges
-
-The first and most basic challenge lies in finding out how we can use our frontend code to map the data we receive from the API into a format that the user will find visually appealing and easy to understand.
-
-# Things Accomplished Over the Weekend
-
-* Completed this proposal
-* 
-
-# Group Members and Work Breakdown
-
-Aaron Goddard
-La Luo
-Cassandra McClure
-
 
 ## Dependencies
 
@@ -90,3 +86,43 @@ This project uses the following Node packages:
 *  bcryptjs
 *  validator
 *  nodemon
+
+## Challenges
+
+The first and most basic challenge lies in finding out how we can use our frontend code to map the data we receive from the API into a format that the user will find visually appealing and easy to understand.
+
+# Things Accomplished Over the Weekend
+
+* Completed this proposal
+
+
+# Group Members and Work Breakdown
+
+### Aaron Russell Goddard
+
+* Monday:
+* Tuesday: 
+* Wednesday:
+* Thursday:
+* Friday: 
+* Saturday:
+* Sunday: 
+
+### La Luo
+
+* Monday:
+* Tuesday: 
+* Wednesday:
+* Thursday:
+* Friday: 
+* Saturday:
+* Sunday: 
+### Cassandra McClure
+
+* Monday:
+* Tuesday: 
+* Wednesday:
+* Thursday:
+* Friday: 
+* Saturday:
+* Sunday: 
