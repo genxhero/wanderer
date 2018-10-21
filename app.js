@@ -11,6 +11,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
+  // Please place app.use(bodyParsers) before any routes
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

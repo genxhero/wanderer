@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 
+
+// We'll validate by email, though I might also add a username validation later
+
 router.post('/register', (req, res) => {
   User.findOne({ email: req.body.email })
     .then(user => {
