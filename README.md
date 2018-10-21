@@ -13,6 +13,9 @@ Some days you  just want to hit the road in a random direction and explore the w
 
 Wayfarer seeks to answer these questions through eye-catching visual imagery and a well-organized presentation of data.
 
+## Wire Frames
+### Main Page
+![main page](https://s3-us-west-1.amazonaws.com/wayfarer-development/main_wireframe.png)
 
 
 # Functionality and MVP
