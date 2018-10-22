@@ -13,7 +13,7 @@ const sessionReducer = (state = _nullUser, action) => {
     if (Object.values(action.payload).length === 0) {
       return _nullUser
     } else {
-      return { 
+      return {
         id: action.payload.id,
         handle: action.payload.handle,
         username: action.payload.username };
