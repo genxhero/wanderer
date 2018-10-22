@@ -1,6 +1,5 @@
 import {
-  RECEIVE_CURRENT_USER,
-  LOGOUT_USER
+  RECEIVE_CURRENT_USER
 } from '../util/session_util';
 
 const _nullUser = Object.freeze({
