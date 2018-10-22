@@ -50,9 +50,9 @@ class SessionForm extends React.Component {
               <div className="signup-inputs">
                 <h3 className="auth-label">Email</h3>
                 <input type="email" value={this.state.email} onChange={this.update("email")} className="signup-input" />
-                <h3 className="auth-label">Username:</h3>
+                <h3 className="auth-label">Username</h3>
                 <input type="text" value={this.state.username} onChange={this.update("username")} className="signup-input"/>
-                <h3 className="auth-label">Password:</h3>
+                <h3 className="auth-label">Password</h3>
                 <input type="password" value={this.state.password} onChange={this.update("password")} className="signup-input"/>
                 <h3 className="auth-label">Confirm Password:</h3>
                 <input type="password" value={this.state.password2} onChange={this.update("password2")} className="signup-input" />
@@ -72,10 +72,9 @@ class SessionForm extends React.Component {
                 Please {this.props.formType} or {this.props.navLink}
               </span>
               {this.renderErrors()}
-            <h3 className="auth-label">Username:</h3>
+            <h3 className="auth-label">Username</h3>
                 <input type="text" value={this.state.username} onChange={this.update("username")} className="login-input" />
-            <h3 className="auth-label">Password:</h3>
-
+            <h3 className="auth-label">Password</h3>
                 <input type="password" value={this.state.password} onChange={this.update("password")} className="signup-input" />
             <div className="signup-bottom">
               <div id="excite">Another Journey?</div>
