@@ -6,7 +6,7 @@ import SignUpFormContainer from "./components/session_form/signup_form_container
 import LogInFormContainer from "./components/session_form/login_form_container";
 import Splash from "./components/splash";
 import { AuthRoute} from "./util/route_util";
-import {GasPaneHead} from "./components/gas_pane_head";
+import GasPaneHead from "./components/gas_pane_head";
 const App = () => (
   <div>
     <header>

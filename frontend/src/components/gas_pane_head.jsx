@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class gas_pane_head extends Component {
+class GasPaneHead extends React.Component {
     constructor(props){
         super(props)
 
@@ -9,9 +9,9 @@ export default class gas_pane_head extends Component {
     render() {
     return (
       <div className="gas-pane-head">
-    <div className="gas-pane-form-container">
-         <form className="gas-pane-form"> 
-            <div className="gas-pane-input">
+        <div className="gas-pane-form-container">
+           <form className="gas-pane-form"> 
+              <div className="gas-pane-input">
                   <input 
                     className="gas-pane-input-field"
                     type="text"
@@ -42,3 +42,5 @@ export default class gas_pane_head extends Component {
     )
   }
 }
+
+export default GasPaneHead;
