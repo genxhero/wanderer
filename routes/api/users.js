@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 require("../../config/passport")(passport);
+const validateRegistrationInput = require('../../validations/register');
+const validateLoginInput = require('../../validations/login');
 
 //Get current user
 
@@ -17,15 +19,15 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 })
 
-// We'll validate by email, though I might also add a username validation later
+// We'll check user email for duplication, though I might also add a username validation later
 // Register users
 
 router.post('/register', (req, res) => {
-  // const { errors, isValid } = validateRegisterInput(req.body);
+  const { errors, isValid } = validateRegistrationInput(req.body);
 
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
@@ -63,10 +65,10 @@ router.post('/register', (req, res) => {
 //Login Users
 
 router.post('/login', (req, res) => {
-  // const {errors, isValid} = validateLoginInput(req.body);
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
+  const {errors, isValid} = validateLoginInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
   const username = req.body.username;
   const password = req.body.password;
