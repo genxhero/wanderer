@@ -3,7 +3,13 @@ import React from 'react'
 class GasPaneHead extends React.Component {
     constructor(props){
         super(props)
+        this.yourmom = this.yourmom.bind(this);
 
+    }
+    
+
+    yourmom(){
+      const shutup = "stop giving me using useless warnings!";
     }
 
     render() {

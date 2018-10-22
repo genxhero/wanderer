@@ -91,27 +91,28 @@ Auth css file  */
 /* Gas Pane CSS section */
 
 .gas-pane-head {
-  width: 100%;
+  width: 95%;
   height: 200px;
   border-top: none;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom:1px solid black;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 10px;
   display: flex;
+  align-items: center;
 }
 
 .gas-pane-form-container {
-
+  
 }
 
 .gas-pane-form {
   
   display: flex;
   flex-direction: row;
-
+  margin-left: 20px;
 }
 
 .gas-pane-input {
@@ -120,7 +121,11 @@ Auth css file  */
 }
 
 .gas-pane-input-field {
-
+  background: transparent;
+  color: orangered;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 32px;
 }
 
 .gas-pane-checkboxes {
