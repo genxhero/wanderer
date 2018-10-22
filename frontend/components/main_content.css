@@ -1,0 +1,11 @@
+.gas-pane-page{
+    width: 100%;
+}
+
+.gas-pane-head {
+   width: 100%;
+   border-bottom: 2px solid black;
+   border-left: 2px solid black;
+   border-right: 2px solid black;
+}
+
