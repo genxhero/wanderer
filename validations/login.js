@@ -4,6 +4,8 @@ const isEmpty = require('./is-empty');
 module.exports = function validateLoginInput(data) {
   let errors = {};
 
+  //Note - unlike the example, our users use their usernames for login
+
   data.username = !isEmpty(data.username) ? data.username : "";
   data.password = !isEmpty(data.password) ? data.password : "";
 

@@ -1,3 +1,5 @@
+// Several fancy ways to check for nullness - trim gets rid of whitespace for us :)
+
 const isEmpty = value =>
   value === undefined ||
   value === null ||
