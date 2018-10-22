@@ -65,7 +65,7 @@ Auth css file  */
   margin-top: 25px;
 }
 
-.signup > h3 {
+.auth-label {
   color: black;
   margin-bottom: 5px;
   font-size: 14pt;
@@ -116,4 +116,24 @@ Auth css file  */
   justify-self: center;
   text-align: center;
   font-size: 18pt;
+}
+
+.login-form-box {
+  box-shadow: 3px 3px black;
+  width: 350px;
+  height: 350px;
+  background: antiquewhite;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.login-input {
+  padding: 5px;
+  background-color: #0099FF;
+  border: 1px dashed black;
+  margin-bottom: 5px;
+  width: 300px;
 }
