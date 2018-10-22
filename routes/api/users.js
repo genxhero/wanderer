@@ -4,8 +4,21 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
+const passport = require('passport');
+require("../../config/passport")(passport);
+
+//Get current user
+
+router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
+  res.json({
+    id: req.user.id,
+    username: req.user.username,
+    email: req.user.email
+  });
+})
 
 // We'll validate by email, though I might also add a username validation later
+// Register users
 
 router.post('/register', (req, res) => {
   // const { errors, isValid } = validateRegisterInput(req.body);
@@ -46,6 +59,8 @@ router.post('/register', (req, res) => {
     }
   });
 });
+
+//Login Users
 
 router.post('/login', (req, res) => {
   // const {errors, isValid} = validateLoginInput(req.body);

@@ -5,6 +5,9 @@ const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const events = require("./routes/api/events");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+require('./config/passport');
+
 
 mongoose
   .connect(db)
@@ -16,7 +19,8 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => res.send("Hell world"))
+app.use(passport.initialize());
+
 app.use("/api/users", users);
 app.use("/api/events", events);
 
