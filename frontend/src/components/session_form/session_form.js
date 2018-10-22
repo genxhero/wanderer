@@ -38,7 +38,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    if (this.formType === 'signup') {
+    if (this.props.formType === 'Signup') {
       return (
         <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
