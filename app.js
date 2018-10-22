@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
+app.get('/', (req, res) => res.send("Welcome to Wayfarer's temp page"));
 app.use("/api/users", users);
 app.use("/api/events", events);
 
