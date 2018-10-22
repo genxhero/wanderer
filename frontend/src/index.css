@@ -26,11 +26,11 @@ Auth css file  */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_1280.jpg");
+  background-image: url(/images/background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-} 
+}
 
 .signup-container {
   width: 100%;
@@ -43,8 +43,8 @@ Auth css file  */
 
 .signup-form {
   box-shadow: 3px 3px black;
-  width: 250px;
-  height: 300px;
+  width: 350px;
+  height: 500px;
   background: antiquewhite;
   font-size: 14px;
   display: flex;
@@ -57,8 +57,30 @@ Auth css file  */
   color: black;
 }
 
+.signup-choice {
+  color: black;
+  font-size: 12pt;
+  justify-self: center;
+  align-self: center;
+  margin-top: 25px;
+}
+
 .signup > h3 {
   color: black;
+  margin-bottom: 5px;
+  font-size: 14pt;
+}
+
+.signup-inputs {
+  margin-top: -20px;
+}
+
+.signup-input {
+  padding: 5px;
+  background-color: #0099FF;
+  border: 1px dashed black;
+  margin-bottom: 5px;
+  width: 300px;
 }
 
 .signup-submit {
@@ -80,10 +102,18 @@ Auth css file  */
 
 .signup-bottom {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  height: 50px;
+  margin-top: 25px;
 }
 
 #excite {
   flex-wrap: wrap;
   width: 50%;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  font-size: 18pt;
 }
