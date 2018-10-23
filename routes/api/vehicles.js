@@ -5,10 +5,10 @@ const validateVehicle = require('../../validations/vehicles');
 const Vehicle = require("../../models/Vehicle");
 
 
-router.post('/addvehicle', (req, res) => {
+router.post('/api/vehicles/add', (req, res) => {
 
     const {errors, isValid} = validateVehicle(req.body)
-
+    
     if (!isValid) {
         return res.status(400).json(errors);
     } else {

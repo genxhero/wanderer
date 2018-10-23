@@ -32,6 +32,9 @@ const VehicleSchema = new schema ({
     },
     maxRouteLength: {
         type: integer
+    },
+    owner: {
+        type:  User
     }
 })
 

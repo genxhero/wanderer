@@ -9,11 +9,31 @@ import GasPaneHead from "./components/gas_pane_head";
 
 const AddVehicle = () => (
   <div className="add-car-page">
-    <h1>New car info here</h1>
     <div className="add-car-form-container">
-     <form className="add-car-form">
+      <form className="add-car-form">
+        <input className="add-car-field" placeholder="Name your vehicle" />
+        <input
+          className="add-car-field"
+          placeholder="Vehicle make (e.g., Oldsmobile)"
+        />
+        <input
+          className="add-car-field"
+          placeholder="Vehicle model (e.g., Cutlass Supreme)"
+        />
+        <input
+          className="add-car-field"
+          placeholder="Size of vehicle fuel tank in gallons"
+        />
+       
 
-     </form>
+        <div className="car-mpg-container">
+          <input className="add-car-field" placeholder="MPG City" />
+          <input className="add-car-field" placeholder="MPG Highway"/>
+        </div>
+        <span>
+          Don't know your car's mpg? <a href="https://www.fueleconomy.gov/mpg/MPG.do">Click Here!</a>
+        </span>
+      </form>
     </div>
   </div>
 );
@@ -29,7 +49,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <ProtectedRoute exact path ="/addvehicle" component={AddVehicle}/>
+      <Route  path="/addvehicle" component={AddVehicle}/>
       <Route exact path="/" component={Splash} />
       <Route exact path="/distance" component={GasPaneHead}/>
       
