@@ -13,7 +13,7 @@ module.exports = function validateEventInput(data) {
     errors.text = "Event name must be between 10 and 300 characters"
   }
 
-  if (!Validator.isEmpty(data.text)) {
+  if (Validator.isEmpty(data.text)) {
     errors.text = "The text field is required"
   }
 

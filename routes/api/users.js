@@ -5,6 +5,7 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const isMake = require('../../validations/is-make');
 require("../../config/passport")(passport);
 const validateRegistrationInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
@@ -18,6 +19,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     email: req.user.email
   });
 })
+
 
 // We'll check user email for duplication, though I might also add a username validation later
 // Register users
@@ -108,5 +110,10 @@ router.post('/login', (req, res) => {
 
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+
+router.get("/searchtest", (req, res) => {
+    isMake("Ford");
+   res.json({}) 
+  });
 
 module.exports = router;
