@@ -5,6 +5,25 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
+      <style>
+        /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+        #map {
+          margin: auto;
+          height: 600px;
+          width: 600px;
+        }
+      
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcN0_2SPC71Rheg0wL_4zH_oGObeeNJTQ&libraries=geometry,drawing,places"></script>
+
     <script > </script>
     <!--
       manifest.json provides metadata used when your web app is added to the
@@ -26,6 +45,7 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+
     <div id="root">
 
        <h1>React is not working</h1>

@@ -1,20 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 class GasPaneHead extends React.Component {
     constructor(props){
-        super(props)
-        this.yourmom = this.yourmom.bind(this);
-
+        super(props);
     }
     
-
-    yourmom(){
-      const shutup = "stop giving me using useless warnings!";
-    }
-
     render() {
     return (
       <div className="gas-pane-head">
+       
         <div className="gas-pane-form-container">
            <form className="gas-pane-form"> 
               <div className="gas-pane-input">
@@ -42,8 +36,9 @@ class GasPaneHead extends React.Component {
                 
                 </input>
 
-             </form>
+            </form>
         </div>
+
       </div>
     )
   }
