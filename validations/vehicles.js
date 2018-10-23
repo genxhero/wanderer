@@ -1,7 +1,7 @@
 const Validator = require('validator');
+const isMake = require("./is-make");
 const isEmpty = require('./is-empty');
-const isMake = require('./is-make');
-const isModel = require('./ls-model');
+//const isModel = require('./ls-model');
 
 //These are the validations for the vehicle modelmodule.exports = function validateEventInput(data) {
 
@@ -28,7 +28,7 @@ module.exports = function validateVehicle(data) {
         errors.make = "Vehicle make can not be blank";
     }
 
-    if (!Validator.isMake(data.make)){
+    if (!isMake(data.make)){
         errors.make = "No such vehicle make exists."
     }
     
@@ -36,9 +36,9 @@ module.exports = function validateVehicle(data) {
         errors.model = "Vehicle model can not be blank";
     }
 
-    if (!Validator.isModel(data.model) && Validator.isMake(data.make)) {
-        errors.model = `${data.make} doesn't produce a model called ${data.model}`;
-    }
+    // if (!Validator.isModel(data.model) && Validator.isMake(data.make)) {
+    //     errors.model = `${data.make} doesn't produce a model called ${data.model}`;
+    // }
 
     if (Validator.isEmpty(data.year)) {
         errors.year = "Vehicle year can not be blank";

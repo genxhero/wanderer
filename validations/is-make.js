@@ -1,4 +1,3 @@
-const findMake = require('fueleconomygov');
 
 const VALID_MAKES = [
     "Acura",
@@ -64,8 +63,11 @@ const VALID_MAKES = [
 
 const isMake = value  => {
 
-    let normalized = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  let normalized = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   return VALID_MAKES.includes(normalized);
    
  };
 module.exports = isMake;
+
+
+// module.exports = isMake;

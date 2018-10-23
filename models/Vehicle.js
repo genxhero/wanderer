@@ -18,23 +18,27 @@ const VehicleSchema = new schema ({
     },
     
     year: {
-        type: integer,
+        type: Number,
         required: true
     },
     hwyMpg: {
-         type: integer
+         type: Number
     },
     cityMpg: {
-        type: integer
+        type: Number
     },
     tankSize: {
-        type: integer 
+        type: Number 
     },
     maxRouteLength: {
-        type: integer
+        type: Number
     },
-    owner: {
-        type:  User
+    owner:  { 
+        type: schema.Types.ObjectId,
+        ref: 'User' },
+    owenerName: {
+        type: String,
+        ref: "User"
     }
 })
 

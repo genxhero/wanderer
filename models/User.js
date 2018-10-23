@@ -19,7 +19,9 @@ const UserSchema = new schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  vehicles: [{ type: schema.Types.ObjectId, ref: 'Vehicle' }]
+  
 })
 
 module.exports = User = mongoose.model('user', UserSchema);
