@@ -137,3 +137,19 @@ Auth css file  */
 .gas-pane-submit {
   
 }
+
+.add-car-page {
+
+}
+
+.add-car-form-container{
+
+}
+
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 3px;
+  width: 200px;
+  height: 450px;
+}
