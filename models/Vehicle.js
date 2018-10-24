@@ -42,4 +42,4 @@ const VehicleSchema = new schema ({
     }
 })
 
-module.exports = User = mongoose.model('vehicle', VehicleSchema)
+module.exports = Vehicle = mongoose.model('vehicle', VehicleSchema)

@@ -37,7 +37,7 @@ router.post(
 router.post(
   "/addonline",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
+  async (req, res) => {
     const { errors, isValid } = validateVehicle(req.body);
 
     if (!isValid) {
@@ -56,18 +56,46 @@ router.post(
         ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) * newVehicle.tankSize;
 
       if (req.user) {
+
         newVehicle.owner = req.user.id;
-        console.log(newVehicle.owner);
-        req.user.vehicles.push(newVehicle);
-        User.findOneAndUpdate(req.user.id, req.user);
-
-        console.log(req.user.vehicles);
-
-      }
+        debugger;
+        // console.log(newVehicle.owner);
         
-       
+         let idx = req.user.vehicles.length;
+         req.user.vehicles[idx] = newVehicle;
+        // console.log(`req.user is: ${req.user}`);
+        //User.findOneAndUpdate({username: req.username}, req.user, {new: true});
 
-      newVehicle.save().then(vehicle => res.json(vehicle));
+        let owner = await User.findOne({_id: req.user._id});
+        console.log(owner);
+        owner.vehicles.push(newVehicle);
+          debugger;
+        owner = await owner.save();
+        console.log(owner.vehicles.length);
+        
+        
+
+             debugger;
+        //   console.log(req.user.vehicles);
+        //   console.log(`username: ${req.user.username}`)
+        //   User.findOne({ _id: req.user._id })
+        // //   .populate("vehicles")
+        //   .exec( (err, user) => {
+        //       debugger;
+        //       console.log(err);
+        //       user.vehicles.push(newVehicle)
+       
+        
+        //   });
+         
+     
+        // console.log(`new user: ${newUser}`);
+          newVehicle
+              .save()
+              .then(vehicle => res.json(vehicle));
+       
+      }
+      
     }
   }
 );

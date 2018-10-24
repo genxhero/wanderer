@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
+const vehicleSchema = require('./Vehicle');
 
 // creates the user model - this might be updated with car data, but I suspect that will need to be a different model
 

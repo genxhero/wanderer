@@ -73,6 +73,7 @@ router.post('/login', (req, res) => {
 
   const username = req.body.username;
   const password = req.body.password;
+  
 
   User.findOne({username})
     .then(user => {
@@ -106,6 +107,7 @@ router.post('/login', (req, res) => {
     });
   });
 });
+
 
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
