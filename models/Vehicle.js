@@ -35,11 +35,16 @@ const VehicleSchema = new schema ({
     },
     owner:  { 
         type: schema.Types.ObjectId,
-        ref: 'User' },
-    owenerName: {
-        type: String,
-        ref: "User"
-    }
-})
+        ref: 'User' }
+});
 
-module.exports = Vehicle = mongoose.model('vehicle', VehicleSchema)
+const Vehicle = mongoose.model("vehicle", VehicleSchema);
+
+module.exports = {
+    VehicleSchema: VehicleSchema,
+    Vehicle: Vehicle
+};
+
+
+
+

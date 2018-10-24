@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const vehicleSchema = require('./Vehicle');
+const VehicleSchema = require('./Vehicle').VehicleSchema;
 
 // creates the user model - this might be updated with car data, but I suspect that will need to be a different model
 
@@ -21,8 +21,7 @@ const UserSchema = new schema({
     type: Date,
     default: Date.now
   },
-  vehicles: [{ type: schema.Types.ObjectId, ref: 'Vehicle' }]
-  
-})
+  vehicles: [VehicleSchema]
+});
 
 module.exports = User = mongoose.model('user', UserSchema);

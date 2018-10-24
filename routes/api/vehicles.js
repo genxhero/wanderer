@@ -3,8 +3,8 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const validateVehicle = require('../../validations/vehicles');
-const Vehicle = require("../../models/Vehicle");
-
+const Vehicle = require("../../models/Vehicle").Vehicle;
+// const Vehicle = require("mongoose").model('vehicle');
 
 router.post(
   "/addoffline",
@@ -56,45 +56,48 @@ router.post(
         ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) * newVehicle.tankSize;
 
       if (req.user) {
+                      newVehicle.owner = req.user.id;
+                      debugger;
 
-        newVehicle.owner = req.user.id;
-        debugger;
-        // console.log(newVehicle.owner);
-        
-         let idx = req.user.vehicles.length;
-         req.user.vehicles[idx] = newVehicle;
-        // console.log(`req.user is: ${req.user}`);
-        //User.findOneAndUpdate({username: req.username}, req.user, {new: true});
+                      // console.log(newVehicle.owner);
 
-        let owner = await User.findOne({_id: req.user._id});
-        console.log(owner);
-        owner.vehicles.push(newVehicle);
-          debugger;
-        owner = await owner.save();
-        console.log(owner.vehicles.length);
-        
-        
+                      //  let idx = req.user.vehicles.length;
+                      //  req.user.vehicles[idx] = newVehicle;
+                      // console.log(`req.user is: ${req.user}`);
+                      //User.findOneAndUpdate({username: req.username}, req.user, {new: true});
 
-             debugger;
-        //   console.log(req.user.vehicles);
-        //   console.log(`username: ${req.user.username}`)
-        //   User.findOne({ _id: req.user._id })
-        // //   .populate("vehicles")
-        //   .exec( (err, user) => {
-        //       debugger;
-        //       console.log(err);
-        //       user.vehicles.push(newVehicle)
-       
-        
-        //   });
-         
-     
-        // console.log(`new user: ${newUser}`);
-          newVehicle
-              .save()
-              .then(vehicle => res.json(vehicle));
-       
-      }
+                      let owner = await User.findOne({
+                        _id: req.user._id
+                      });
+                      console.log(owner);
+                      owner.vehicles.push(newVehicle);
+                      console.log(owner.vehicles);
+
+                      owner = await owner.save();
+
+                      //  owner = await owner.save();
+                      // owner = await owner.populate('vehicles');
+
+                      debugger;
+
+                      console.log(owner.vehicles.length);
+
+                      //   console.log(req.user.vehicles);
+                      //   console.log(`username: ${req.user.username}`)
+                      //   User.findOne({ _id: req.user._id })
+                      // //   .populate("vehicles")
+                      //   .exec( (err, user) => {
+                      //       debugger;
+                      //       console.log(err);
+                      //       user.vehicles.push(newVehicle)
+
+                      //   });
+
+                      // console.log(`new user: ${newUser}`);
+                      newVehicle
+                        .save()
+                        .then(vehicle => res.json(vehicle));
+                    }
       
     }
   }
