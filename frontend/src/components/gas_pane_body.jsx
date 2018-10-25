@@ -1,5 +1,7 @@
 import React from "react";
+// import mapIcons from "map-icons";
 const google = window.google;
+const mapIcons = window.mapIcons;
 
 class GasPaneBody extends React.Component {
     constructor(props) {
@@ -71,12 +73,6 @@ class GasPaneBody extends React.Component {
         this.calculateAndDisplayRoute(
             directionsDisplay, directionsService, markerArray, stepDisplay, this.map);
 
-        var service = new google.maps.places.PlacesService(this.map);
-        service.nearbySearch({
-            location: this.state.curLocation,
-            radius: 1500,
-            type: ['gas_station']
-        }, this.callback);
     }
 
     calculateAndDisplayRoute(directionsDisplay, directionsService,
@@ -118,17 +114,22 @@ class GasPaneBody extends React.Component {
             
             if (passedDistance + 1000 >= this.state.maxDistance) {
                 myRoute.steps[i].instructions = "refuel!!!";
+                refuelIndex = i;
                 marker.setMap(map);
                 marker.setPosition(myRoute.steps[i].start_location);
                 this.attachInstructionText(
                     stepDisplay, marker, myRoute.steps[i].instructions, map);
-                continue;
+                break;
             }
-            marker.setMap(map);
-            marker.setPosition(myRoute.steps[i].start_location);
-            this.attachInstructionText(
-                stepDisplay, marker, myRoute.steps[i].instructions, map);
+
         }
+
+        var service = new google.maps.places.PlacesService(this.map);
+        service.nearbySearch({ 
+            location: myRoute.steps[refuelIndex].start_location, 
+            radius: 1500, 
+            type: ["gas_station"] }, 
+        this.callback);
     }
 
     attachInstructionText(stepDisplay, marker, text, map) {
@@ -155,13 +156,27 @@ class GasPaneBody extends React.Component {
 
 
     createMarker(place) {
-        var marker = new google.maps.Marker({
-            map: this.map,
-            position: place.geometry.location
+        var marker = new mapIcons.Marker({
+          position: place.geometry.location,
+          map: this.map,
+          icon: {
+            path: mapIcons.shapes.SQUARE_ROUNDED,
+            fillColor: "#00CCBB",
+            fillOpacity: 1,
+            strokeColor: "",
+            strokeWeight: 0,
+            scale: 9 / 10
+          },
+          map_icon_label:
+            '<span class="map-icon map-icon-gas-station"></span>'
         });
+        // var marker = new google.maps.Marker({
+        //     map: this.map,
+        //     position: place.geometry.location
+        // });
         let infowindow = new google.maps.InfoWindow();
         google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent(place.vicinity);
+            infowindow.setContent('gas station!');
             infowindow.open(this.map, this);
         });
     }
