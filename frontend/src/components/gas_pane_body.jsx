@@ -149,26 +149,43 @@ class GasPaneBody extends React.Component {
 
             for (var i = 0; i < results.length; i++) {
 
-                this.createMarker(results[i]);
+                this.createMarker(results[i],);
             }
         }
     }
 
 
     createMarker(place) {
+
+        let markerType = place.types[0];
+        const categoryMarkers = { 
+            food: { 
+                icon: '<span class="map-icon map-icon-restaurant"></span>', 
+                color: "#0E77E9" 
+            }, 
+            gas_station: { 
+                icon: '<span class="map-icon map-icon-gas-station"></span>',
+                color: "#00CCBB"
+            },
+            hotel: {
+                icon: '<span class="map-icon map-icon-lodging"></span>',
+                color: "#53917E"
+            }
+        };
+
+
         var marker = new mapIcons.Marker({
           position: place.geometry.location,
           map: this.map,
           icon: {
             path: mapIcons.shapes.SQUARE_ROUNDED,
-            fillColor: "#00CCBB",
+            fillColor: categoryMarkers[markerType].icon.color,
             fillOpacity: 1,
             strokeColor: "",
             strokeWeight: 0,
             scale: 9 / 10
           },
-          map_icon_label:
-            '<span class="map-icon map-icon-gas-station"></span>'
+            map_icon_label: categoryMarkers[markerType].icon
         });
         // var marker = new google.maps.Marker({
         //     map: this.map,
