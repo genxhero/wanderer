@@ -47,7 +47,7 @@ router.post('/register', (req, res) => {
           newUser.password = hash;
           newUser.save()
             .then(user => {
-              const payload = {id: user.id, name: user.username};
+              const payload = {id: user.id, username: user.username};
 
               jwt.sign(payload, keys.secretOrPrivateKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -85,7 +85,7 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
          if (isMatch) {
-          const payload = {id: user.id, name: user.username};
+          const payload = {id: user.id, username: user.username};
 
           // using jwt per the docs
           jwt.sign(
