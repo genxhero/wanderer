@@ -110,6 +110,7 @@ class GasPaneBody extends React.Component {
         // when calculating new routes.
         var myRoute = directionResult.routes[0].legs[0];
         var passedDistance = 0;
+        let refuelIndex = 0; 
         for (var i = 0; i < myRoute.steps.length; i++) {
             var marker = markerArray[i] = markerArray[i] || new google.maps.Marker();
             passedDistance += myRoute.steps[i].distance.value;
