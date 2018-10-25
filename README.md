@@ -102,33 +102,33 @@ The first and most basic challenge lies in finding out how we can use our fronte
 # Group Members and Work Breakdown
 
 ## Aaron Goddard
-Sunday: Work with CSS styling for User Auth (use dummy components)
-Monday: Work on React components for Google Maps API and Google Geometry for gas stations
-Tuesday: Continue Monday's work
-Wednesday: Vista points w/ Google API backend and frontend
-Thursday: Continue Wednesday's work
-Friday: Integration of all features
-Saturday: Continue integration
-Sunday: Continue integration
+* Sunday: Work with CSS styling for User Auth (use dummy components)
+* Monday: Car models frontend and backend
+* Tuesday: Continue Monday's work
+* Wednesday: Vista points w/ Google API backend and frontend
+* Thursday: Continue Wednesday's work
+* Friday: Integration of all features
+* Saturday: Continue integration
+* Sunday: Continue integration
 
 ## Cassandra McClure
-Sunday: Finish User Auth - connect React
-Monday: Google API backend for hotels and frontend
-Tuesday: Continue Monday's work
-Wednesday: Work on Saved Trips and protecting user data
-Thursday: Continue Wednesday's Work
-Friday: Integration of all features
-Saturday: Continue integration
-Sunday: Continue integration
+* Sunday: Finish User Auth - connect React
+* Monday: Google API backend for hotels and frontend
+* Tuesday: Continue Monday's work
+* Wednesday: Work on Saved Trips and protecting user data
+* Thursday: Continue Wednesday's Work
+* Friday: Integration of all features
+* Saturday: Continue integration
+* Sunday: Continue integration
 
 ## La Luo
-Sunday: Work with the Google API and incorporate it with Wayfarer backend
-Monday: Car models backend and frontend
-Tuesday: Continue Monday's work
-Wednesday: Work on Restaurants backend w/ Google Maps API and Google Geometry
-Thursday: Continue Wednesday's work
-Friday: Integration of all features
-Saturday: Continue integration
-Sunday: Continue integration
+* Sunday: Work with the Google API and incorporate it with Wayfarer backend
+* Monday: Work on React components for Google Maps API and Google Geometry for gas stations
+* Tuesday: Continue Monday's work
+* Wednesday: Work on Restaurants backend w/ Google Maps API and Google Geometry
+* Thursday: Continue Wednesday's work
+* Friday: Integration of all features
+* Saturday: Continue integration
+* Sunday: Continue integration
 
 
