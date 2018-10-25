@@ -3,6 +3,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const validateVehicle = require('../../validations/vehicles');
+const User = require('../../models/User');
 const Vehicle = require("../../models/Vehicle").Vehicle;
 // const Vehicle = require("mongoose").model('vehicle');
 
@@ -97,7 +98,16 @@ router.post(
                       newVehicle
                         .save()
                         .then(vehicle => res.json(vehicle));
-                    }
+                    } 
+                    
+                    // else {
+                    //   const dummyUser = new User({
+                    //     username: "dummyuser",
+                    //     email: "daremoinan@nowhere.com",
+                    //     password: "thereisnospoon"
+                    //   });
+                    //   newVehicle.owner=dummyUser;
+                    // }
       
     }
   }
