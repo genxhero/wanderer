@@ -14,7 +14,7 @@ class GasPaneHead extends React.Component {
     render() {
     return <div className="gas-pane-head">
         <div className="gas-pane-form-container">
-          <form className="gas-pane-form">
+          <form className="gas-pane-form" onSubmit="">
             <div className="gas-pane-input">
               <input id="start-loc"className="gas-pane-input-field" type="text" placeholder="Where to??" />
               <input id="tank-percent" className="gas-pane-input-field" type="text" placeholder="Percent Full" />

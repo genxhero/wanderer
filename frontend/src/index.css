@@ -154,8 +154,7 @@ input:focus {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  background: darkorange;
-  box-shadow: 3px 3px darkgray;
+  background: #E86535;
 }
 
 .gas-pane-form-container {
@@ -181,7 +180,7 @@ input:focus {
   display:flex;
   flex-direction: column;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  width: 420px;
+  width: 500px;
   margin-right: 5px;
 }
 
@@ -190,16 +189,20 @@ input:focus {
   color: black;
   padding: 10px;
   margin-top: 10px;
-  font-size: 32px;
   box-shadow: none;
   border: none;
   transition: all .3s;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 400;
+  
 }
 
 .gas-pane-input-field:focus {
   outline: none;
   background: white;
   transition: all .3s;
+  color: black;
   box-shadow: 2px 3px black;
 }
 .gas-pane-checkboxes {
@@ -208,7 +211,7 @@ input:focus {
   flex-direction: column;
   background: orange;
   box-shadow: 2px 2px black;
-  width: 500px;
+  width: 400px;
   height: 100%;
   margin-right: 20px;
 }
@@ -298,7 +301,7 @@ input:focus {
 .gas-pane-page {
   width: 100%;
   height: 100%;
- 
+  background: darkblue;
 }
 
 .checkbox-checked {
@@ -347,9 +350,65 @@ input:focus {
 
 #start-loc {
  text-align: center;
+   font-size: 24px;
+   
+
 }
 
 #tank-percent{
   text-align: center;
   font-size: 48px;
+}
+
+.add-car-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.add-car-form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: orange;
+}
+
+.add-car-form {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    height: 450px;
+    background: floralwhite;
+    margin: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.car-mpg-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-car-field {
+  background: inherit;
+  padding: 10px;
+    border-bottom: 1px solid gray;
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+}
+
+.add-car-field:focus {
+  outline: none;
+}
+
+.add-car-submit {
+  background: orange;
+  padding: 10px;
 }
