@@ -1,30 +1,30 @@
-import axios from "axios";
-// import jwt_decode from 'jwt-decode';
+// import axios from "axios";
+// // import jwt_decode from 'jwt-decode';
 
-const $ = window.$;
+// const $ = window.$;
 
-export const RECEIVE_VEHICLE = 'RECEIVE_VEHICLE';
-export const GET_ERRORS = "GET_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
+// export const RECEIVE_VEHICLE = 'RECEIVE_VEHICLE';
+// export const GET_ERRORS = "GET_ERRORS";
+// export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-const receiveVehicle = payload => ({
-    type: RECEIVE_VEHICLE,
-    payload
-});
+// const receiveVehicle = payload => ({
+//     type: RECEIVE_VEHICLE,
+//     payload
+// });
 
 
-//this is add vehicle online
-export const addVehicleOnline = formData => dispatch => {
+// //this is add vehicle online
+// export const addVehicleOnline = formData => dispatch => {
 
-    axios.post("/api/vehicles/addonline", formData)
-           .then(payload => {
-             let dummy = "Peanut"
-             debugger;
-             let scarecrow = "Jack"
-             console.log(payload)
-             dispatch(receiveVehicle(payload))
-           })
-           .catch(() => console.log("Error 420"))
-}
+//     axios.post("/api/vehicles/addonline", formData)
+//            .then(payload => {
+//              let dummy = "Peanut"
+//              debugger;
+//              let scarecrow = "Jack"
+//              console.log(payload)
+//              dispatch(receiveVehicle(payload))
+//            })
+//            .catch(() => console.log("Error 420"))
+// }
 
-window.addVehicleOnline = addVehicleOnline;
+// window.addVehicleOnline = addVehicleOnline;

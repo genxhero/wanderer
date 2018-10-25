@@ -17,11 +17,18 @@ class GasPaneHead extends React.Component {
           <form className="gas-pane-form">
             <div className="gas-pane-input">
               <input id="start-loc"className="gas-pane-input-field" type="text" placeholder="Where to??" />
-              <input id="tank-percent" className="gas-pane-input-field" type="text" placeholder="Percent Full" />
-             
+              <div className="percent-container">
+                <span className="percent-label">How full is you tank?</span><span className="percent-sign">%</span>
+                <input id="tank-percent" className="gas-pane-input-field" type="text" placeholder="100" />
+
+              </div>
+              
             </div>
 
             <div className="gas-pane-checkboxes">
+            <span className="gas-pane-choices-label">After how many hours of driving will you...</span>
+            <input className="gas-pane-choice" placeHolder="Be hungry like the wolf"></input>
+            <input className="gas-pane-choice" placeHolder="Have to stop for the night"></input>
 
             </div>
             <div className="button-div">

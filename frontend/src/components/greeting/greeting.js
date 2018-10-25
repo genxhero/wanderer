@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <div className="header-container">
+      <Link to="/" className="header-link">
+        <div>Wayfarer</div>
+      </Link>
       <nav className="login-signup">
         <Link className="header-session-link" to="/login">Login</Link>
         &nbsp;or&nbsp;
@@ -13,6 +16,9 @@ const Greeting = ({ currentUser, logout }) => {
   );
   const personalGreeting = () => (
     <div className="header-container">
+    <Link to="/" className="header-link">
+        <div>Wayfarer</div>
+      </Link>
       <hgroup className="header-group">
         <div className="header-name">Hi, {currentUser.username}!</div>
         <button className="header-button" onClick={logout}>
