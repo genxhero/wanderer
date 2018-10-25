@@ -3,7 +3,7 @@ import GasPaneHead from "./gas_pane_head";
 import GasPaneBody from "./gas_pane_body";
 
 const GasPane = () => (
-    <div>
+    <div className="gas-pane-page">
         <GasPaneHead />
         <GasPaneBody />
     </div>

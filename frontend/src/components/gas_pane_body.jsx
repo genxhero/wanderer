@@ -170,7 +170,9 @@ class GasPaneBody extends React.Component {
         
        return (
            <div className="gas-pane-body">
+                <div className="output-left"></div>
                 <div id="map"></div>
+                <div className="output-right"></div>
            </div>
        )
     }

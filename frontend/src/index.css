@@ -26,11 +26,11 @@ Auth css file  */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_1280.jpg");
+  background-image: url(/images/background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-} 
+}
 
 .signup-container {
   width: 100%;
@@ -43,8 +43,8 @@ Auth css file  */
 
 .signup-form {
   box-shadow: 3px 3px black;
-  width: 250px;
-  height: 300px;
+  width: 350px;
+  height: 500px;
   background: antiquewhite;
   font-size: 14px;
   display: flex;
@@ -53,12 +53,44 @@ Auth css file  */
   align-items: center;
 }
 
+.signup-inputs > input {
+ padding: 8px;
+    font-size: 16px;
+    background: white;
+}
+
 .signup-heading {
   color: black;
 }
 
-.signup > h3 {
+.signup-choice {
   color: black;
+  font-size: 12pt;
+  justify-self: center;
+  align-self: center;
+  margin-top: 25px;
+}
+
+.auth-label {
+  color: black;
+  margin-bottom: 5px;
+  font-size: 14pt;
+}
+
+.signup-inputs {
+  margin-top: -20px;
+}
+
+.signup-input {
+  padding: 8px;
+  background-color: white;
+  border: 1px dashed black;
+  margin-bottom: 5px;
+  width: 300px;
+}
+
+input:focus {
+  outline:none;
 }
 
 .signup-submit {
@@ -80,12 +112,32 @@ Auth css file  */
 
 .signup-bottom {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  height: 50px;
+  margin-top: 25px;
 }
 
 #excite {
   flex-wrap: wrap;
   width: 50%;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  font-size: 18pt;
+}
+
+.login-form-box {
+  box-shadow: 3px 3px black;
+  width: 350px;
+  height: 350px;
+  background: antiquewhite;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
 }
 
 /* Gas Pane CSS section */
@@ -102,38 +154,261 @@ Auth css file  */
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  background: #E86535;
 }
 
 .gas-pane-form-container {
-  
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  font-family: a
 }
 
 .gas-pane-form {
-  
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
 }
 
 .gas-pane-input {
   display:flex;
   flex-direction: column;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 500px;
+  margin-right: 5px;
 }
 
 .gas-pane-input-field {
   background: transparent;
-  color: orangered;
+  color: black;
   padding: 10px;
   margin-top: 10px;
-  font-size: 32px;
+  box-shadow: none;
+  border: none;
+  transition: all .3s;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 400;
+  
 }
 
+.gas-pane-input-field:focus {
+  outline: none;
+  background: white;
+  transition: all .3s;
+  color: black;
+  box-shadow: 2px 3px black;
+}
 .gas-pane-checkboxes {
 
     display:flex;
   flex-direction: column;
+  background: orange;
+  box-shadow: 2px 2px black;
+  width: 400px;
+  height: 100%;
+  margin-right: 20px;
 }
 
 .gas-pane-submit {
+  /* border: 1px solid black; */
+  border-radius: 2px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
+  position: relative;
+  height: 60px;
+  width: 120px;
+  font-weight: bold;
+  font-size: 32px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  top: 0;
+  z-index: 300;
+  margin-top: 0;
   
+  /* box-shadow: 0 10px 0 0 gray; */
+  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+
+  
+}
+
+.gas-pane-submit:active{
+  box-shadow: none;
+  top: 15px;
+  margin-bottom: 0;
+
+}
+
+.gas-pane-submit:focus{
+  outline: none;
+}
+
+.gas-pane-submit:hover {
+  color: crimson; 
+  cursor: pointer;
+}
+
+.gas-pane-text-bg {
+  position: fixed;
+  width: 100%;
+  height: 24px;
+  background-image: url("https://pixabay.com/photo-726268/");
+  background-position: center;
+  z-index: 250;
+
+}
+
+.gas-pane-submit-shadow {
+  -webkit-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
+
+
+  width: 100%;
+  position: relative;
+      height: 25px;
+  
+  padding-top: 10px;
+  z-index: 200;
+  bottom: 20px;
+  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background-position: bottom;
+}
+
+.gas-pane-submit:active + div + div {
+  box-shadow: none;
+}
+
+.button-div {
+  position: relative;
+  justify-content: center;
+      top: 25px;
+  /* display: flex; */
+}
+
+.gas-pane-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+  
+.gas-pane-page {
+  width: 100%;
+  height: 100%;
+  background: darkblue;
+}
+
+.checkbox-checked {
+  border: 1px solid black;
+  background: transparent;
+}
+
+.checkbox-unchecked {
+  border: 1px solid black;
+  background: blue;
+}
+
+
+.output-left {
+    margin-left: 17px;
+    border: 1px solid black;
+    width: 23%;
+    background: whitesmoke;
+}
+
+.output-right {
+    margin-right: 37px;
+    border: 1px solid black;
+    width: 23%;
+    background: whitesmoke;
+}
+
+#map {
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  height: 500px;
+  width: 50%;
+}
+
+.login-input {
+  padding: 8px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px dashed black;
+  margin-bottom: 5px;
+  width: 300px;
+}
+
+
+
+#start-loc {
+ text-align: center;
+   font-size: 24px;
+   
+
+}
+
+#tank-percent{
+  text-align: center;
+  font-size: 48px;
+}
+
+.add-car-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.add-car-form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: orange;
+}
+
+.add-car-form {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    height: 450px;
+    background: floralwhite;
+    margin: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.car-mpg-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-car-field {
+  background: inherit;
+  padding: 10px;
+    border-bottom: 1px solid gray;
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+}
+
+.add-car-field:focus {
+  outline: none;
+}
+
+.add-car-submit {
+  background: orange;
+  padding: 10px;
 }
