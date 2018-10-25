@@ -29,11 +29,24 @@ class AddVehicleForm extends React.Component  {
     });
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render(){
     return(
       <div className="add-car-page">
         <div className="add-car-form-container">
           <form className="add-car-form" onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
             <input
             type="text"
             className="add-car-field"

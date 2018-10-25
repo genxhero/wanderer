@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import AddVehicleForm from "./add_vehicle_form";
 
 const mapStateToProps = state => ({
+  errors: Object.values(state.errors.vehicles),
   vehicles: state.vehicles,
   currentUser: state.session
 });
