@@ -15,13 +15,10 @@ const receiveVehicle = payload => ({
 
 //this is add vehicle online
 export const addVehicleOnline = (formData) => dispatch => (
-  axios.post('/api/vehicles/addonline', formData)
-
-  .then(payload => {
- dispatch(receiveVehicle(payload))
- .catch(console.log("Error 420"))
-
-  })
-);
+  axios
+    .post('/api/vehicles/addonline', formData)
+    .then(res => {
+    dispatch(receiveVehicle(res.data))
+    }).catch(console.log("Error 420")));
 
 window.addVehicleOnline = addVehicleOnline;
