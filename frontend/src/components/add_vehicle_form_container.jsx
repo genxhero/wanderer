@@ -1,4 +1,4 @@
-import { addVehicleOnline } from "../util/vehicles_util.js";
+import { addVehicleOnline, addVehicleOffline } from "../util/vehicles_util.js";
 import {connect} from "react-redux";
 import AddVehicleForm from "./add_vehicle_form";
 
@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addVehicleOnline: (formData) => dispatch(addVehicleOnline(formData))
+  addVehicleOnline: (formData) => dispatch(addVehicleOnline(formData)),
+  addVehicleOffline: (formData) => dispatch(addVehicleOffline(formData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddVehicleForm);

@@ -20,7 +20,11 @@ class AddVehicleForm extends React.Component  {
    handleSubmit(event)  {
      event.preventDefault();
      console.log(this.state);
-     this.props.addVehicleOnline(this.state);
+     if (this.props.currentUser.id) {
+      this.props.addVehicleOnline(this.state);
+     } else {
+      this.props.addVehicleOffline(this.state);
+    }
    }
 
   update(field) {
