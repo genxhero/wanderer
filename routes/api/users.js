@@ -19,6 +19,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 })
 
+
 // We'll check user email for duplication, though I might also add a username validation later
 // Register users
 
@@ -72,6 +73,7 @@ router.post('/login', (req, res) => {
 
   const username = req.body.username;
   const password = req.body.password;
+  
 
   User.findOne({username})
     .then(user => {
@@ -107,6 +109,9 @@ router.post('/login', (req, res) => {
 });
 
 
+
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+
+
 
 module.exports = router;
