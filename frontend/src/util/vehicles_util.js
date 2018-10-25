@@ -13,7 +13,7 @@ const receiveVehicle = payload => ({
 });
 
 
-
+//this is add vehicle online
 export const addVehicleOnline = (formData) => dispatch => (
   axios.post('/api/vehicles/addonline', formData)
   
