@@ -26,7 +26,7 @@ router.post(
       });
       newVehicle.maxRouteLength =
         ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) * newVehicle.tankSize;
-    
+
       if(req.user){
            newVehicle.owner = req.user.id
       }
@@ -58,7 +58,6 @@ router.post(
 
       if (req.user) {
                       newVehicle.owner = req.user.id;
-                      debugger;
 
                       // console.log(newVehicle.owner);
 
@@ -79,8 +78,6 @@ router.post(
                       //  owner = await owner.save();
                       // owner = await owner.populate('vehicles');
 
-                      debugger;
-
                       console.log(owner.vehicles.length);
 
                       //   console.log(req.user.vehicles);
@@ -98,8 +95,8 @@ router.post(
                       newVehicle
                         .save()
                         .then(vehicle => res.json(vehicle));
-                    } 
-                    
+                    }
+
                     // else {
                     //   const dummyUser = new User({
                     //     username: "dummyuser",
@@ -108,7 +105,7 @@ router.post(
                     //   });
                     //   newVehicle.owner=dummyUser;
                     // }
-      
+
     }
   }
 );

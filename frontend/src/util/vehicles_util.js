@@ -16,11 +16,8 @@ const receiveVehicle = payload => ({
 //this is add vehicle online
 export const addVehicleOnline = (formData) => dispatch => (
   axios.post('/api/vehicles/addonline', formData)
-  
+
   .then(payload => {
-         let dummy = "Peanut";
-            debugger;
-            let scarecrow = "Jack";
  dispatch(receiveVehicle(payload))
  .catch(console.log("Error 420"))
 

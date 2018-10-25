@@ -16,7 +16,6 @@ const VehicleSchema = new schema ({
         type: String,
         required: true
     },
-    
     year: {
         type: Number,
         required: true
@@ -28,12 +27,12 @@ const VehicleSchema = new schema ({
         type: Number
     },
     tankSize: {
-        type: Number 
+        type: Number
     },
     maxRouteLength: {
         type: Number
     },
-    owner:  { 
+    owner:  {
         type: schema.Types.ObjectId,
         ref: 'User' }
 });
