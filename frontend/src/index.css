@@ -1,3 +1,8 @@
+.header-name {
+  color: white;
+  padding: 5px;
+}
+
 .header-container {
   background: #233238;
   height: 80px;
@@ -13,7 +18,24 @@
   display: flex;
   align-items: center;
   font-family: 'Luckiest Guy', cursive;
-    
+}
+
+.header-button {
+    background: #D44A2E;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+   transition: all .2s;
+   border: none;
+}
+
+.header-button:hover{
+  color: #f76c4f;
+  transition: all .2s;
 }
 
 .header-link:visited {
@@ -222,13 +244,12 @@ input:focus {
 /* Gas Pane CSS section */
 
 .gas-pane-head {
-  width: 95%;
+  width: 100%;
   height: 200px;
   border-top: none;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom:1px solid black;
-  margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
   display: flex;
@@ -253,6 +274,7 @@ input:focus {
   margin-top: 10px;
   margin-bottom: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .gas-pane-input {
@@ -288,11 +310,29 @@ input:focus {
 
     display:flex;
   flex-direction: column;
+  justify-content: space-around;
   background: orange;
   box-shadow: 2px 2px black;
-  width: 400px;
+  width: 500px;
   height: 100%;
   margin-right: 20px;
+}
+
+.gas-pane-choice{
+   width: 60%;
+   margin-left: 20px;
+   padding: 10px;
+   font-size: 16px;
+}
+
+.gas-pane-choices-label {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  text-shadow: 1px 1px black;
 }
 
 .gas-pane-submit {
@@ -347,7 +387,7 @@ input:focus {
 .gas-pane-submit-shadow {
   -webkit-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
 -moz-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
-
+box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 
   width: 100%;
   position: relative;
@@ -364,17 +404,21 @@ input:focus {
   box-shadow: none;
 }
 
+
+
 .button-div {
   position: relative;
   justify-content: center;
-      top: 25px;
+      top: 40px;
+      right: 40px;
+      height: 100%;
   /* display: flex; */
 }
 
 .gas-pane-body {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content:flex-start;
 }
   
 .gas-pane-page {
@@ -396,24 +440,30 @@ input:focus {
 
 .output-left {
     margin-left: 17px;
+      margin-bottom: 20px;
+
     border: 1px solid black;
-    width: 23%;
+    width: 25%;
     background: whitesmoke;
 }
 
 .output-right {
     margin-right: 37px;
     border: 1px solid black;
-    width: 23%;
+    width: 0%;
+    display: none;
     background: whitesmoke;
+      margin-bottom: 20px;
+
 }
 
 #map {
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 3%;
+  margin-bottom: 20px;
   border: 1px solid black;
-  height: 500px;
-  width: 50%;
+  height: 450px;
+  width: 80%;
 }
 
 .login-input {
@@ -429,6 +479,8 @@ input:focus {
 #start-loc {
  text-align: center;
    font-size: 24px;
+   color: black;
+   background: whitesmoke;
    
 
 }
@@ -436,6 +488,25 @@ input:focus {
 #tank-percent{
   text-align: center;
   font-size: 48px;
+  color: black;
+  background: whitesmoke;
+  width: 90px;
+}
+
+.percent-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.percent-container > span {
+  font-size: 40px;
+  color: orange;
+  text-shadow: 1px 2px black;
+}
+
+.percent-sign {
+  font-size: 120px;
 }
 
 .add-car-page {
