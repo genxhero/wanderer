@@ -1,3 +1,60 @@
+.header-container {
+  background: #233238;
+  height: 80px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-link {
+  font-size: 72px;
+  color: #D44A2E;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+    
+}
+
+.header-link:visited {
+  color: #D44A2E;
+   transition: all .2s;
+}
+
+.header-link:hover {
+  color: #f76c4f;
+  transition: all .2s;
+}
+
+.login-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-session-link{
+  background: #D44A2E;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 500;
+  text-align: center;
+   transition: all .2s;
+
+}
+
+.header-session-link:visited {
+  background: #D44A2E;
+  color: white;
+}
+
+.header-session-link:hover {
+  background: #f76c4f;
+   transition: all .2s;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -39,18 +96,23 @@ Auth css file  */
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
+    bottom: 50px;
 }
 
 .signup-form {
   box-shadow: 3px 3px black;
   width: 350px;
-  height: 500px;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
   background: antiquewhite;
   font-size: 14px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
+  
 }
 
 .signup-inputs > input {
@@ -79,14 +141,20 @@ Auth css file  */
 
 .signup-inputs {
   margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .signup-input {
   padding: 8px;
   background-color: white;
-  border: 1px dashed black;
   margin-bottom: 5px;
-  width: 300px;
+  width: 250px;
+  border-radius: 3px;
+  border: none;
+;
 }
 
 input:focus {
@@ -96,14 +164,20 @@ input:focus {
 .signup-submit {
   background: #E2581C;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 200;
   padding: 15px;
   border: none;
   box-shadow: 2px 2px black;
+    font-family: 'Luckiest Guy', cursive;
+ font-size: 24px;
+ text-align: center;
+ transition: all .2s;
+ color: whitesmoke;
 }
 
 .signup-submit:hover {
   cursor: pointer;
+  background: #d44202;
 }
 
 .signup-submit:focus {
@@ -129,6 +203,8 @@ input:focus {
 }
 
 .login-form-box {
+      position: relative;
+    bottom: 50px;
   box-shadow: 3px 3px black;
   width: 350px;
   height: 350px;
@@ -138,6 +214,9 @@ input:focus {
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
+    height: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Gas Pane CSS section */
@@ -341,9 +420,8 @@ input:focus {
   padding: 8px;
   font-size: 16px;
   background-color: white;
-  border: 1px dashed black;
   margin-bottom: 5px;
-  width: 300px;
+  width: 250px;
 }
 
 
@@ -411,4 +489,6 @@ input:focus {
 .add-car-submit {
   background: orange;
   padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
+
 }

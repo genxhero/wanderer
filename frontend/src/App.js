@@ -81,7 +81,6 @@ const App = () => (
   <div>
     <header>
       <Link to="/" className="header-link">
-        <h1>Wayfarer</h1>
       </Link>
       <GreetingContainer />
     </header>
