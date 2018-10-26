@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 import GreetingContainer from "./components/greeting/greeting_container";
 import SignUpFormContainer from "./components/session_form/signup_form_container";
 import LogInFormContainer from "./components/session_form/login_form_container";
@@ -17,12 +17,12 @@ const App = () => (
     </header>
     <Switch>
       <Route exact path="/" component={Splash} />
-      <Route exact path="/distance" component={GasPane}/ >
+      <Route exact path="/distance" component={GasPane} />
       <Route exact path="/addvehicle" component={AddVehicleFormContainer} />
-      <ProtectedRoute exact path="/vehicles" component={VehicleIndexContainer} />
-      <AuthRoute exact path="/login" component={LogInFormContainer} />
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     </Switch>
+    <ProtectedRoute exact path="/vehicles" component={VehicleIndexContainer} />
+    <AuthRoute exact path="/login" component={LogInFormContainer} />
+    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
   </div>
 );
 
