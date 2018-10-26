@@ -15,7 +15,7 @@ class VehicleIndexItem extends React.Component {
     return(
     <div className="vehicle-item-container">
         <ul className="vehicle-item-stats">
-          <li className="vehicle-stat">Name: {this.props.vehicle.name}</li>
+          <li className="vehicle-stat-name">{this.props.vehicle.name}</li>
           <li className="vehicle-stat">Make: {this.props.vehicle.make}</li>
           <li className="vehicle-stat">Model: {this.props.vehicle.model}</li>
           <li className="vehicle-stat">Year: {this.props.vehicle.year}</li>
@@ -23,7 +23,7 @@ class VehicleIndexItem extends React.Component {
           <li className="vehicle-stat">City MPG: {this.props.vehicle.ctyMpg}</li>
           <li className="vehicle-stat">Tank Size: {this.props.vehicle.tankSize}</li>
         </ul>
-        <Link to="/distance" className="select-your-vehicle" onClick={this.handleClick}>Select {this.props.vehicle.name}</Link>
+        <Link to="/distance" className="select-your-vehicle" onClick={this.handleClick}>Select This Vehicle</Link>
       </div>
     );
   }
