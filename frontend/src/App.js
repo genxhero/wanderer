@@ -16,12 +16,12 @@ const App = () => (
       <GreetingContainer />
     </header>
     <Switch>
-      <AuthRoute exact path="/login" component={LogInFormContainer} />
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <Route exact path="/" component={Splash} />
-      <ProtectedRoute exact path="/vehicles" component={VehicleIndexContainer}/>
       <Route exact path="/distance" component={GasPane}/ >
       <Route exact path="/addvehicle" component={AddVehicleFormContainer} />
+      <ProtectedRoute exact path="/vehicles" component={VehicleIndexContainer} />
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     </Switch>
   </div>
 );
