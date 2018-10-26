@@ -55,6 +55,7 @@ class GasPaneHead extends React.Component {
       }
     }
 
+    // all conversions are done in handleSubmit because the helper functions weren't working
     handleSubmit(e) {
       e.preventDefault();
       let newForm = Object.assign({}, this.state.formData);
