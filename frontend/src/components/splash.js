@@ -5,15 +5,16 @@ import {connect} from 'react-redux';
 const mapStateToProps = state => ({
   currentUser: state.session
 });
+
 class Splash extends React.Component {
   render() {
-    if (this.props.currentUser) {
+    if (this.props.currentUser.id) {
       return (
         <Redirect to='/vehicles' />
       );
     } else {
       return (
-        <Redirect to='/distance' />
+        <Redirect to="/distance" />
       );
     }
   }
