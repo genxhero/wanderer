@@ -29,23 +29,23 @@ class GasPaneHead extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    calculateMaxDistance() {
-      let newForm = Object.assign({}, this.state.formData);
-      let actualPercent = parseInt(this.state.formData.percentFull, 10);
-      let actualMax = (this.props.maxDistance * actualPercent) * 16.09344;
-      newForm.percentFull = actualPercent;
-      newForm.maxDistance = actualMax;
-      this.setState({formData: newForm});
-    }
+    // calculateMaxDistance() {
+    //   let newForm = Object.assign({}, this.state.formData);
+    //   let actualPercent = parseInt(this.state.formData.percentFull, 10);
+    //   let actualMax = (this.props.maxDistance * actualPercent) * 16.09344;
+    //   newForm.percentFull = actualPercent;
+    //   newForm.maxDistance = actualMax;
+    //   this.setState({formData: newForm});
+    // }
 
-    calculateHours() {
-      let newForm = Object.assign({}, this.state.formData);
-      let actualHotel = parseInt(this.state.formData.timeToHotel, 10) * 3600
-      let actualFood = parseInt(this.state.formData.timeToFood, 10) * 3600
-      newForm.timeToHotel = actualHotel;
-      newForm.timeToFood = actualFood;
-      this.setState({ formData: newForm });
-    }
+    // calculateHours() {
+    //   let newForm = Object.assign({}, this.state.formData);
+    //   let actualHotel = parseInt(this.state.formData.timeToHotel, 10) * 3600
+    //   let actualFood = parseInt(this.state.formData.timeToFood, 10) * 3600
+    //   newForm.timeToHotel = actualHotel;
+    //   newForm.timeToFood = actualFood;
+    //   this.setState({ formData: newForm });
+    // }
 
     update(field) {
       return e => {
@@ -56,11 +56,18 @@ class GasPaneHead extends React.Component {
     }
 
     handleSubmit(e) {
-      e.preventDefault(); 
+      e.preventDefault();
       let newForm = Object.assign({}, this.state.formData);
-      this.calculateMaxDistance();
-      this.calculateHours();
-      this.props.receiveMapData(this.state.formData);
+      let actualHotel = parseInt(this.state.formData.timeToHotel, 10) * 3600;
+      let actualFood = parseInt(this.state.formData.timeToFood, 10) * 3600;
+      let actualPercent = parseInt(this.state.formData.percentFull, 10);
+      let actualMax = (this.props.maxDistance * actualPercent) * 16.09344;
+      newForm.percentFull = actualPercent;
+      newForm.maxDistance = Math.trunc(actualMax);
+      newForm.timeToHotel = actualHotel;
+      newForm.timeToFood = actualFood;
+      console.log(newForm);
+      this.props.receiveMapData(newForm);
     }
 
   render() {
