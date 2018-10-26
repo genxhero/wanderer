@@ -92,7 +92,7 @@ router.post(
                       //   });
 
                       // console.log(`new user: ${newUser}`);
-                      newVehicle
+                    return newVehicle
                         .save()
                         .then(vehicle => res.json(vehicle));
                     }

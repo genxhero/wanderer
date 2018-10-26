@@ -22,7 +22,10 @@ const receiveVehicle = payload => ({
 export const addVehicleOnline = (formData) => dispatch => (
   axios
     .post('/api/vehicles/addonline', formData)
-    .then(res => dispatch(receiveVehicle(res.data)))
+    .then(res =>{
+       debugger;
+      return dispatch(receiveVehicle(res.data));
+    })
     .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
     );
 
