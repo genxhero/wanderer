@@ -7,10 +7,12 @@ const isEmpty = require('./is-empty');
 
 module.exports = function validateVehicle(data) {
   let errors = {};
-
+  console.log(`Data, inside validator: ${data}`);
+  debugger;
   data.name = !isEmpty(data.name) ? data.name : "";
   data.make = !isEmpty(data.make) ? data.make : "";
   data.model = !isEmpty(data.model) ? data.model : "";
+
   data.year = !isEmpty(data.year) ? data.year : "";
     data.tankSize = !isEmpty(data.tankSize) ? data.tankSize : "";
     data.hwyMpg = !isEmpty(data.hwyMpg) ? data.hwyMpg : "";

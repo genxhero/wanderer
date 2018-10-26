@@ -23,7 +23,9 @@ export const addVehicleOnline = (formData) => dispatch => (
   axios
     .post('/api/vehicles/addonline', formData)
     .then(res =>{
+      let dummy ="you";
        debugger;
+       let gummy = "bear";
       return dispatch(receiveVehicle(res.data));
     })
     .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
