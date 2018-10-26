@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 class AddVehicleForm extends React.Component  {
 
@@ -21,9 +22,9 @@ class AddVehicleForm extends React.Component  {
      event.preventDefault();
      console.log(this.state);
      if (this.props.currentUser.id) {
-      this.props.addVehicleOnline(this.state);
+      this.props.addVehicleOnline(this.state).then(this.props.history.push('/distance'))
      } else {
-      this.props.addVehicleOffline(this.state);
+       this.props.addVehicleOffline(this.state).then(this.props.history.push('/distance'));
     }
    }
 
@@ -98,4 +99,4 @@ class AddVehicleForm extends React.Component  {
   }
 };
 
-export default AddVehicleForm;
+export default withRouter(AddVehicleForm);
