@@ -8,11 +8,7 @@ class VehicleIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    this.props.receiveVehicle(this.props.vehicle);
-  }
-
-  componentDidMount() {
-    this.props.fetchVehicle(this.props.vehicle.id);
+    this.props.fetchVehicle(this.props.vehicle._id);
   }
 
   render() {
