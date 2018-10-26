@@ -1,6 +1,9 @@
 .header-name {
   color: white;
   padding: 5px;
+  position: relative;
+  right: 10px;
+  text-align: center;
 }
 
 .header-container {
@@ -48,6 +51,8 @@
 .header-link:hover {
   color: #f76c4f;
   transition: all .2s;
+  text-shadow: 2px 2px 4px white, 
+  -2px -2px 4px white;
 }
 
 .login-signup {
@@ -355,25 +360,46 @@ input:focus {
 .gas-pane-submit {
   /* border: 1px solid black; */
   border-radius: 2px;
+  
   /* padding-top: 10px; */
   /* padding-bottom: 10px; */
   position: relative;
   height: 60px;
   width: 120px;
-  font-weight: bold;
-  font-size: 32px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
   text-align: center;
   top: 0;
   z-index: 300;
   margin-top: 0;
-
-  
   /* box-shadow: 0 10px 0 0 gray; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
-  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+}
 
-  
+.gas-pane-submit > span {
+  width: 100%;
+  position: relative;
+  z-index: 500;
+  height: 100%;
+  padding-top: 14px;
+  background-image: url("https://s3-us-west-1.amazonaws.com/wayfarer-development/burning-emergency-fire-1749.jpg");
+  -webkit-background-clip: text;
+  background-position: center;
+    transition: all .3s;
+     font-size: 38px;
+  font-family: 'Anton', sans-serif;
+  /* text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px; */
+
+}
+
+.gas-pane-submit > span:hover {
+  background-size: cover;
+	-webkit-text-fill-color: transparent;
+   text-shadow: none;
+   transition: all .3s;
+   
 }
 
 
@@ -404,6 +430,10 @@ input:focus {
     align-items: center;
     padding: 30px;
 }
+
+
+
+
 
 .car-mpg-container {
   display: flex;
@@ -448,19 +478,11 @@ input:focus {
 }
 
 .gas-pane-submit:hover {
-  color: crimson; 
+  color: transparent;
   cursor: pointer;
 }
 
-.gas-pane-text-bg {
-  position: fixed;
-  width: 100%;
-  height: 24px;
-  background-image: url("https://pixabay.com/photo-726268/");
-  background-position: center;
-  z-index: 250;
 
-}
 
 .gas-pane-submit-shadow {
   -webkit-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
@@ -643,4 +665,32 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   background: orange;
   padding: 10px;
   font-family: 'Luckiest Guy', cursive;
+}
+
+.new-car-submit {
+  background: #E2581C;
+  border-radius: 4px;
+  font-weight: 200;
+  padding: 15px;
+  border: none;
+  box-shadow: 2px 2px black;
+    font-family: 'Luckiest Guy', cursive;
+ font-size: 24px;
+ text-align: center;
+ transition: all .2s;
+ color: whitesmoke;
+ margin-top: 10px;
+
+}
+
+.shadow-submit{
+  display: none;
+}
+
+.new-car-submit:hover{
+  background:  #f76c4f;
+}
+
+.form-heading {
+
 }

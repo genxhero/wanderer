@@ -90,7 +90,9 @@ class AddVehicleForm extends React.Component  {
             <span>
               Don't know your car's mpg? <a href="https://www.fueleconomy.gov/mpg/MPG.do">Click Here!</a>
             </span>
-            <button type="submit">Add Car</button>
+            <button type="submit"
+            className="new-car-submit" 
+            >Add Car</button>
           </form>
         </div>
       </div>

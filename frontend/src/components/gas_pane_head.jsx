@@ -9,7 +9,20 @@ class GasPaneHead extends React.Component {
           hotelSelected: false,
           barSelected: false
         }
+        this.shadowSubmit = this.shadowSubmit.bind(this);
     }
+
+    
+
+    
+  shadowSubmit(){
+    const vroom = new Audio();
+    console.log("the script is running");
+    vroom.src = "https://s3-us-west-1.amazonaws.com/wayfarer-sounds/BMW%2BDRIVEBY.mp3";
+    vroom.play();
+    const shadow = document.getElementsByClassName('shadow-submit')[0];
+    shadow.click();
+}
     
     render() {
     return <div className="gas-pane-head">
@@ -32,10 +45,16 @@ class GasPaneHead extends React.Component {
 
             </div>
             <div className="button-div">
-              <input className="gas-pane-submit" type="submit" value="Do It!!" />
+              <div className="gas-pane-submit"
+              onClick={this.shadowSubmit}> 
+               
+               <span>DO IT!</span>
+
+               </div>
               <div className="gas-pane-text-bg" />
               <div className="gas-pane-submit-shadow" />
             </div>
+            <input type="submit" className="shadow-submit"></input>
           </form>
         </div>
       </div>;
