@@ -1,6 +1,7 @@
 
 import React from 'react';
 import VehicleIndexItem from './vehicle_index_item';
+import {Link} from 'react-router-dom';
 
 class VehicleIndex extends React.Component {
 
@@ -18,12 +19,13 @@ class VehicleIndex extends React.Component {
       receiveVehicle={this.props.receiveVehicle}/>
       );
   } else {
-    vehicles = "No Vehicles Found"
+    vehicles = "No vehicles found"
   }
    return(
    <div className="vehicle-index-container">
       <h2 className="vehicle-index-greeting">{this.props.currentUser.username} 's cars</h2>
       <ul className="vehicle-list">{vehicles}</ul>
+      <Link to='/addvehicle'>Add another car?</Link>
    </div>
    );
   }

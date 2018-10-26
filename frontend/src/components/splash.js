@@ -14,7 +14,7 @@ class Splash extends React.Component {
       );
     } else {
       return (
-        <Redirect to="/distance" />
+        <Redirect to="/addvehicle" />
       );
     }
   }
