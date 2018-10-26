@@ -20,7 +20,11 @@ class AddVehicleForm extends React.Component  {
    handleSubmit(event)  {
      event.preventDefault();
      console.log(this.state);
-     this.props.addVehicleOnline(this.state);
+     if (this.props.currentUser.id) {
+      this.props.addVehicleOnline(this.state);
+     } else {
+      this.props.addVehicleOffline(this.state);
+    }
    }
 
   update(field) {
@@ -29,11 +33,24 @@ class AddVehicleForm extends React.Component  {
     });
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render(){
     return(
       <div className="add-car-page">
         <div className="add-car-form-container">
           <form className="add-car-form" onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
             <input
             type="text"
             className="add-car-field"
