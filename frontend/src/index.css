@@ -199,7 +199,7 @@ input:focus {
 }
 
 .signup-submit {
-  background: #E2581C;
+  background: #d44202;
   border-radius: 4px;
   font-weight: 200;
   padding: 15px;
@@ -214,7 +214,8 @@ input:focus {
 
 .signup-submit:hover {
   cursor: pointer;
-  background: #d44202;
+  background: #ff824b;
+  
 }
 
 .signup-submit:focus {
@@ -232,6 +233,20 @@ input:focus {
 
 #excite {
   flex-wrap: wrap;
+  width: 50%;
+  align-self: center;
+  justify-self: center;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 22pt;
+  color: #D44A2E;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.signup-choice {
+   flex-wrap: wrap;
   width: 50%;
   align-self: center;
   justify-self: center;
@@ -404,7 +419,7 @@ input:focus {
   background-size: cover;
 	-webkit-text-fill-color: transparent;
    text-shadow: none;
-   transition: all .3s;
+   transition: all .2s;
    
 }
 
