@@ -35,6 +35,8 @@ router.post(
   }
 );
 
+// Cleaned up some of the debugging here since the route works - appreciate the good practice of not deleting code though!
+
 router.post(
   "/addonline",
   passport.authenticate("jwt", { session: false }),
@@ -57,55 +59,16 @@ router.post(
         ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) * newVehicle.tankSize;
 
       if (req.user) {
-                      newVehicle.owner = req.user.id;
-
-                      // console.log(newVehicle.owner);
-
-                      //  let idx = req.user.vehicles.length;
-                      //  req.user.vehicles[idx] = newVehicle;
-                      // console.log(`req.user is: ${req.user}`);
-                      //User.findOneAndUpdate({username: req.username}, req.user, {new: true});
-
-                      let owner = await User.findOne({
-                        _id: req.user._id
-                      });
-                      console.log(owner);
-                      owner.vehicles.push(newVehicle);
-                      console.log(owner.vehicles);
-
-                      owner = await owner.save();
-
-                      //  owner = await owner.save();
-                      // owner = await owner.populate('vehicles');
-
-                      console.log(owner.vehicles.length);
-
-                      //   console.log(req.user.vehicles);
-                      //   console.log(`username: ${req.user.username}`)
-                      //   User.findOne({ _id: req.user._id })
-                      // //   .populate("vehicles")
-                      //   .exec( (err, user) => {
-                      //       debugger;
-                      //       console.log(err);
-                      //       user.vehicles.push(newVehicle)
-
-                      //   });
-
-                      // console.log(`new user: ${newUser}`);
-                      newVehicle
-                        .save()
-                        .then(vehicle => res.json(vehicle));
-                    }
-
-                    // else {
-                    //   const dummyUser = new User({
-                    //     username: "dummyuser",
-                    //     email: "daremoinan@nowhere.com",
-                    //     password: "thereisnospoon"
-                    //   });
-                    //   newVehicle.owner=dummyUser;
-                    // }
-
+        newVehicle.owner = req.user.id;
+        let owner = await User.findOne({
+          _id: req.user._id
+        });
+        owner.vehicles.push(newVehicle);
+        owner = await owner.save();
+        newVehicle
+          .save()
+          .then(vehicle => res.json(vehicle));
+      }
     }
   }
 );
@@ -114,8 +77,8 @@ router.post(
 //Team assemble!
 router.get('/:id', (req, res) => {
     Vehicle.findById(req.params.id)
-    .then(event => res.json(event))
-    .catch(err => res.status(404).json({carnotfound: "No such vehicle"}));
+    .then(vehicle => res.json(vehicle))
+    .catch(err => res.status(404).json(err));
     //err is just res like in the old thunktions
 });
 
