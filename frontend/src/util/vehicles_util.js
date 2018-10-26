@@ -24,7 +24,7 @@ export const addVehicleOnline = (formData) => dispatch => (
     .post('/api/vehicles/addonline', formData)
     .then(res => dispatch(receiveVehicle(res.data)))
     .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
-    );
+);
 
 export const addVehicleOffline = (formData) => dispatch => (
   axios
