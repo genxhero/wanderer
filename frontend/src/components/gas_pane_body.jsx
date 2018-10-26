@@ -179,13 +179,14 @@ class GasPaneBody extends React.Component {
           map: this.map,
           icon: {
             path: mapIcons.shapes.SQUARE_ROUNDED,
-            fillColor: categoryMarkers[markerType].icon.color,
+            fillColor: "#0E77E9",
             fillOpacity: 1,
             strokeColor: "",
             strokeWeight: 0,
             scale: 9 / 10
           },
-            map_icon_label: categoryMarkers[markerType].icon
+          map_icon_label:
+            '<span class="map-icon map-icon-lodging"></span>'
         });
         // var marker = new google.maps.Marker({
         //     map: this.map,
