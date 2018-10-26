@@ -723,6 +723,9 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   align-items: center;
   justify-content: space-between;
   width: 500px;
+  background: floralwhite;
+  box-shadow: 2px 2px black;
+  margin: 10px;
 
 }
 
