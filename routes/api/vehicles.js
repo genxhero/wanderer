@@ -35,13 +35,15 @@ router.post(
   }
 );
 
+// Cleaned up some of the debugging here since the route works - appreciate the good practice of not deleting code though!
+
 router.post(
   "/addonline", 
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
    const { errors, isValid } =  validateVehicle(req.body);
   // const isValid = true;
-debugger;
+
     if (!isValid) {
       return res.status(400).json(errors);
     } else {
@@ -59,17 +61,17 @@ debugger;
         * newVehicle.tankSize;
 
       if (req.user) {
-          newVehicle.owner = req.user.id;
-          let owner = await User.findOne({
-            _id: req.user._id
-          });
-        
+          
+        newVehicle.owner = req.user.id;
+        let owner = await User.findOne({
+          _id: req.user._id
+        });
         owner.vehicles.push(newVehicle);
-        owner = await owner.save();         
+        owner = await owner.save();
         newVehicle
-        .save()
-        .then(vehicle => res.json(vehicle));                        
-     }
+          .save()
+          .then(vehicle => res.json(vehicle));
+      }
     }
   }
 );
@@ -78,8 +80,8 @@ debugger;
 //Team assemble!
 router.get('/:id', (req, res) => {
     Vehicle.findById(req.params.id)
-    .then(event => res.json(event))
-    .catch(err => res.status(404).json({carnotfound: "No such vehicle"}));
+    .then(vehicle => res.json(vehicle))
+    .catch(err => res.status(404).json(err));
     //err is just res like in the old thunktions
 });
 

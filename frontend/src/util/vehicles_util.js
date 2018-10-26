@@ -4,13 +4,19 @@ import axios from "axios";
 // const $ = window.$;
 
 export const RECEIVE_VEHICLE = 'RECEIVE_VEHICLE';
+export const RECEIVE_VEHICLES = 'RECEIVE_VEHICLES';
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-const receiveVehicle = payload => ({
+export const receiveVehicle = payload => ({
     type: RECEIVE_VEHICLE,
     payload
 });
+
+export const receiveVehicles = payload => ({
+  type: RECEIVE_VEHICLES,
+  payload
+})
 
 
 //this is add vehicle online
@@ -37,3 +43,17 @@ export const addVehicleOffline = (formData) => dispatch => (
     .then(res => dispatch(receiveVehicle(res.data)))
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
 );
+
+export const fetchUserVehicles = () => dispatch => (
+  axios
+    .get('/api/users/vehicles')
+    .then(res => dispatch(receiveVehicles(res.data)))
+    .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
+);
+
+export const fetchVehicle = (vehicleId) => dispatch => (
+  axios
+  .get(`/api/vehicles/${vehicleId}`)
+  .then(res => dispatch(receiveVehicle(res.data)))
+  .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
+)
