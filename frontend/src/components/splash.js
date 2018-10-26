@@ -1,11 +1,23 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-export default class Splash extends React.Component {
+const mapStateToProps = state => ({
+  currentUser: state.session
+});
+
+class Splash extends React.Component {
   render() {
-    return (
-      <div>
-        <h1>It's a Splash Page For Wayfarer!</h1>
-      </div>
-    )
+    if (this.props.currentUser.id) {
+      return (
+        <Redirect to='/vehicles' />
+      );
+    } else {
+      return (
+        <Redirect to="/addvehicle" />
+      );
+    }
   }
 }
+
+export default connect(mapStateToProps, null)(Splash);

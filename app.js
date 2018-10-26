@@ -5,6 +5,7 @@ const app = express();
 const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const events = require("./routes/api/events");
+const vehicles = require("./routes/api/vehicles");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 require('./config/passport');
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => res.send("Welcome to Wayfarer's temp page"));
 app.use("/api/users", users);
 app.use("/api/events", events);
+app.use("/api/vehicles", vehicles)
 
 const port = process.env.PORT || 5000;
 

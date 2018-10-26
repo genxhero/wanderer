@@ -1,3 +1,82 @@
+.header-name {
+  color: white;
+  padding: 5px;
+}
+
+.header-container {
+  background: #233238;
+  height: 80px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-link {
+  font-size: 72px;
+  color: #D44A2E;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.header-button {
+    background: #D44A2E;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+   transition: all .2s;
+   border: none;
+}
+
+.header-button:hover{
+  color: #f76c4f;
+  transition: all .2s;
+}
+
+.header-link:visited {
+  color: #D44A2E;
+   transition: all .2s;
+}
+
+.header-link:hover {
+  color: #f76c4f;
+  transition: all .2s;
+}
+
+.login-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-session-link{
+  background: #D44A2E;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 500;
+  text-align: center;
+   transition: all .2s;
+
+}
+
+.header-session-link:visited {
+  background: #D44A2E;
+  color: white;
+}
+
+.header-session-link:hover {
+  background: #f76c4f;
+   transition: all .2s;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -39,18 +118,29 @@ Auth css file  */
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
+    bottom: 50px;
 }
 
 .signup-form {
   box-shadow: 3px 3px black;
   width: 350px;
-  height: 500px;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
   background: antiquewhite;
   font-size: 14px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
+  
+}
+
+.signup-inputs > input {
+ padding: 8px;
+    font-size: 16px;
+    background: white;
 }
 
 .signup-heading {
@@ -73,27 +163,43 @@ Auth css file  */
 
 .signup-inputs {
   margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .signup-input {
-  padding: 5px;
-  background-color: #0099FF;
-  border: 1px dashed black;
+  padding: 8px;
+  background-color: white;
   margin-bottom: 5px;
-  width: 300px;
+  width: 250px;
+  border-radius: 3px;
+  border: none;
+;
+}
+
+input:focus {
+  outline:none;
 }
 
 .signup-submit {
   background: #E2581C;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 200;
   padding: 15px;
   border: none;
   box-shadow: 2px 2px black;
+    font-family: 'Luckiest Guy', cursive;
+ font-size: 24px;
+ text-align: center;
+ transition: all .2s;
+ color: whitesmoke;
 }
 
 .signup-submit:hover {
   cursor: pointer;
+  background: #d44202;
 }
 
 .signup-submit:focus {
@@ -119,6 +225,8 @@ Auth css file  */
 }
 
 .login-form-box {
+      position: relative;
+    bottom: 50px;
   box-shadow: 3px 3px black;
   width: 350px;
   height: 350px;
@@ -128,12 +236,398 @@ Auth css file  */
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
+    height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Gas Pane CSS section */
+
+.gas-pane-head {
+  width: 100%;
+  height: 200px;
+  border-top: none;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom:1px solid black;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  background: #E86535;
+}
+
+.gas-pane-form-container {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  font-family: a
+}
+
+.gas-pane-form {
+  width: 100%;
+  display: flex;
+  /* flex-direction: row; */
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gas-pane-input {
+  display:flex;
+  flex-direction: column;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 500px;
+  margin-right: 5px;
+}
+
+.gas-pane-input-field {
+  background: transparent;
+  color: black;
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: none;
+  border: none;
+  transition: all .3s;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 400;
+  
+}
+
+.gas-pane-input-field:focus {
+  outline: none;
+  background: white;
+  transition: all .3s;
+  color: black;
+  box-shadow: 2px 3px black;
+}
+.gas-pane-checkboxes {
+
+    display:flex;
+
+    flex-direction: column;
+
+  flex-direction: column;
+  justify-content: space-around;
+  background: orange;
+  box-shadow: 2px 2px black;
+  width: 500px;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.gas-pane-choice{
+   width: 60%;
+   margin-left: 20px;
+   padding: 10px;
+   font-size: 16px;
+}
+
+.gas-pane-choices-label {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  text-shadow: 1px 1px black;
+
+}
+
+.gas-pane-submit {
+  /* border: 1px solid black; */
+  border-radius: 2px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
+  position: relative;
+  height: 60px;
+  width: 120px;
+  font-weight: bold;
+  font-size: 32px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  top: 0;
+  z-index: 300;
+  margin-top: 0;
+
+  
+  /* box-shadow: 0 10px 0 0 gray; */
+  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+
+  
+}
+
+
+.add-car-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.add-car-form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: orange;
+}
+
+.add-car-form {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    height: 450px;
+    background: floralwhite;
+    margin: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.car-mpg-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-car-field {
+  background: inherit;
+  padding: 10px;
+    border-bottom: 1px solid gray;
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+}
+
+.add-car-field:focus {
+  outline: none;
+}
+
+.add-car-submit {
+  background: orange;
+  padding: 10px;
+
+  /* box-shadow: 0 10px 0 0 gray; */
+  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+
+  
+}
+
+.gas-pane-submit:active{
+  box-shadow: none;
+  top: 15px;
+  margin-bottom: 0;
+
+}
+
+.gas-pane-submit:focus{
+  outline: none;
+}
+
+.gas-pane-submit:hover {
+  color: crimson; 
+  cursor: pointer;
+}
+
+.gas-pane-text-bg {
+  position: fixed;
+  width: 100%;
+  height: 24px;
+  background-image: url("https://pixabay.com/photo-726268/");
+  background-position: center;
+  z-index: 250;
+
+}
+
+.gas-pane-submit-shadow {
+  -webkit-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 0px 2px -1px rgba(0,0,0,0.75);
+box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
+
+  width: 100%;
+  position: relative;
+      height: 25px;
+  
+  padding-top: 10px;
+  z-index: 200;
+  bottom: 20px;
+  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background-position: bottom;
+}
+
+.gas-pane-submit:active + div + div {
+  box-shadow: none;
+}
+
+
+
+.button-div {
+  position: relative;
+  justify-content: center;
+      top: 40px;
+      right: 40px;
+      height: 100%;
+  /* display: flex; */
+}
+
+.gas-pane-body {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
+  
+.gas-pane-page {
+  width: 100%;
+  height: 100%;
+  background: darkblue;
+}
+
+.checkbox-checked {
+  border: 1px solid black;
+  background: transparent;
+}
+
+.checkbox-unchecked {
+  border: 1px solid black;
+  background: blue;
+}
+
+
+.output-left {
+    margin-left: 17px;
+      margin-bottom: 20px;
+
+    border: 1px solid black;
+    width: 25%;
+    background: whitesmoke;
+}
+
+.output-right {
+    margin-right: 37px;
+    border: 1px solid black;
+    width: 0%;
+    display: none;
+    background: whitesmoke;
+      margin-bottom: 20px;
+
+}
+
+#map {
+  margin-left: 5px;
+  margin-right: 3%;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  height: 450px;
+  width: 80%;
+
 }
 
 .login-input {
-  padding: 5px;
-  background-color: #0099FF;
-  border: 1px dashed black;
+  padding: 8px;
+  font-size: 16px;
+  background-color: white;
   margin-bottom: 5px;
+
   width: 300px;
+
+  width: 250px;
+}
+
+
+
+#start-loc {
+ text-align: center;
+   font-size: 24px;
+   color: black;
+   background: whitesmoke;
+   
+
+}
+
+#tank-percent{
+  text-align: center;
+  font-size: 48px;
+  color: black;
+  background: whitesmoke;
+  width: 90px;
+}
+
+.percent-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.percent-container > span {
+  font-size: 40px;
+  color: orange;
+  text-shadow: 1px 2px black;
+}
+
+.percent-sign {
+  font-size: 120px;
+}
+
+.add-car-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.add-car-form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: orange;
+}
+
+.add-car-form {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    height: 450px;
+    background: floralwhite;
+    margin: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.car-mpg-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-car-field {
+  background: inherit;
+  padding: 10px;
+    border-bottom: 1px solid gray;
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+}
+
+.add-car-field:focus {
+  outline: none;
+}
+
+.add-car-submit {
+  background: orange;
+  padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
 }
