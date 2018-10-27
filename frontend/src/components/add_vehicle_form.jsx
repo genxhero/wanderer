@@ -23,13 +23,23 @@ class AddVehicleForm extends React.Component  {
 
      if (this.props.currentUser.id) {
       this.props.addVehicleOnline(this.state)
+      .then(res => {
+        if (this.props.errors.length === 0) {
+         this.props.history.push('/distance');
+       }
+      })
      } else {
       this.props.addVehicleOffline(this.state)
+      .then(res => {
+        if (this.props.errors.length === 0) {
+         this.props.history.push('/distance');
+       }
+      })
     }
 
-    if (this.props.errors.length === 0) {
-      this.props.history.push('/distance');
-    }
+    // if (this.props.errors.length === 0) {
+    //   this.props.history.push('/distance');
+    // }
    }
 
   update(field) {
