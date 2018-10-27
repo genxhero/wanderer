@@ -377,7 +377,7 @@ class GasPaneBody extends React.Component {
             strokeWeight: 0,
             scale: 9 / 10
           },
-            map_icon_label: categoryMarkers[markerType].icon
+          map_icon_label:categoryMarkers[markerType].icon
         });
         // var marker = new google.maps.Marker({
         //     map: this.map,
