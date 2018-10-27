@@ -8,7 +8,7 @@ const passport = require('passport');
 require("../../config/passport")(passport);
 const validateRegistrationInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
-
+const Vehicle = require('../../models/Vehicle').Vehicle;
 //Get current user
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -73,13 +73,13 @@ router.post('/login', (req, res) => {
 
   const username = req.body.username;
   const password = req.body.password;
-  
+
 
   User.findOne({username})
     .then(user => {
       if (!user) {
         errors.username = "This user does not exist"
-        return res.status(400).json(errors);
+        return res.status(404).json(errors);
       }
 
       bcrypt.compare(password, user.password)
@@ -102,16 +102,19 @@ router.post('/login', (req, res) => {
           });
       } else {
         errors.password = "Incorrect password"
-        return res.status(400).json(errors)
+        return res.status(403).json(errors)
       }
     });
   });
 });
 
+// Vehicles index by user - pretty straightforward
 
-
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
-
-
+router.get('/vehicles', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Vehicle.find({owner: req.user._id })
+      .then(vehicle => res.json(vehicle))
+      .catch(errors => res.status(400).json(errors))
+  }
+);
 
 module.exports = router;

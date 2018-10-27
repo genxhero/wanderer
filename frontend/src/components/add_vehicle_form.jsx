@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 class AddVehicleForm extends React.Component  {
 
@@ -17,9 +18,17 @@ class AddVehicleForm extends React.Component  {
      this.handleSubmit = this.handleSubmit.bind(this);
    }
 
-   handleSubmit(event)  {
+   handleSubmit(event) {
      event.preventDefault();
-     this.props.addVehicleOnline(this.state);
+     console.log(this.state);
+     if (this.props.currentUser.id) {
+      this.props.addVehicleOnline(this.state)
+     } else {
+      this.props.addVehicleOffline(this.state)
+    }
+    if (this.props.errors.length == 0) {
+      this.props.history.push('distance');
+    }
    }
 
   update(field) {
@@ -28,11 +37,24 @@ class AddVehicleForm extends React.Component  {
     });
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render(){
     return(
       <div className="add-car-page">
         <div className="add-car-form-container">
           <form className="add-car-form" onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
             <input
             type="text"
             className="add-car-field"
@@ -80,4 +102,4 @@ class AddVehicleForm extends React.Component  {
   }
 };
 
-export default AddVehicleForm;
+export default withRouter(AddVehicleForm);

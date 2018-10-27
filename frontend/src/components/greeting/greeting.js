@@ -26,7 +26,6 @@ const Greeting = ({ currentUser, logout }) => {
       </button>
       </hgroup>
     </div>
-  
   );
 
   return currentUser.id ? personalGreeting() : sessionLinks();
