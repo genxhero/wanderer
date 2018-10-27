@@ -7,11 +7,20 @@ class GasPaneHead extends React.Component {
         this.state = {
           foodSelected: false,
           hotelSelected: false,
-          barSelected: false
+          barSelected: false,
+          funmode: false
         }
         this.shadowSubmit = this.shadowSubmit.bind(this);
+        this.toggleFunmode = this.toggleFunmode.bind(this);
     }
-
+ 
+    toggleFunmode() {
+      if (this.state.funmode === false) {
+         this.setState({funmode: true});
+       } else {
+        this.setState({ funmode: false });
+       } 
+    }
     
 
     
@@ -25,36 +34,43 @@ class GasPaneHead extends React.Component {
 }
     
     render() {
+
     return <div className="gas-pane-head">
+        <button className="cool-mode" onClick={this.toggleFunmode} />
         <div className="gas-pane-form-container">
           <form className="gas-pane-form" onSubmit="">
             <div className="gas-pane-input">
-              <input id="start-loc"className="gas-pane-input-field" type="text" placeholder="Where to??" />
+              <input id="start-loc" className="gas-pane-input-field" type="text" placeholder="Where to??" />
               <div className="percent-container">
-                <span className="percent-label">How full is you tank?</span><span className="percent-sign">%</span>
+                <span
+                  className={
+                    this.state.funmode === true
+                      ? "percent-label-fun"
+                      : "percent-label"
+                  }
+                >
+                  How full is you tank?
+                </span>
+                <span className="percent-sign">%</span>
                 <input id="tank-percent" className="gas-pane-input-field" type="text" placeholder="100" />
-
               </div>
-              
             </div>
 
-            <div className="gas-pane-checkboxes">
-            <span className="gas-pane-choices-label">After how many hours of driving will you...</span>
-            <input className="gas-pane-choice" placeHolder="Be hungry like the wolf"></input>
-            <input className="gas-pane-choice" placeHolder="Have to stop for the night"></input>
-
+          <div className={this.state.funmode === true ? "gas-pane-checkboxes-fun": "gas-pane-checkboxes"}>
+              <span className={this.state.funmode === true ? "gas-pane-choices-label-fun": "gas-pane-choices-label"}>
+                After how many hours of driving will you...
+              </span>
+              <input className="gas-pane-choice" placeHolder="Be hungry like the wolf" />
+              <input className="gas-pane-choice" placeHolder="Have to stop for the night" />
             </div>
             <div className="button-div">
-              <div className="gas-pane-submit"
-              onClick={this.shadowSubmit}> 
-               
-               <span>DO IT!</span>
-
-               </div>
+              <div className="gas-pane-submit" onClick={this.shadowSubmit}>
+                <span>DO IT!</span>
+              </div>
               <div className="gas-pane-text-bg" />
               <div className="gas-pane-submit-shadow" />
             </div>
-            <input type="submit" className="shadow-submit"></input>
+            <input type="submit" className="shadow-submit" />
           </form>
         </div>
       </div>;

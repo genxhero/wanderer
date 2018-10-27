@@ -22,10 +22,13 @@ class VehicleIndex extends React.Component {
     vehicles = "No vehicles found"
   }
    return(
-   <div className="vehicle-index-container">
-      <h2 className="vehicle-index-greeting">{this.props.currentUser.username} 's cars</h2>
+   <div className="vehicle-index-container">  
+       <div className="vehicle-index-topper"> 
+         <div className="vehicle-index-greeting">{this.props.currentUser.username} 's cars</div>
+         <Link className="new-car-link" to='/addvehicle'>Add another car?</Link>
+       </div>    
+    
       <ul className="vehicle-list">{vehicles}</ul>
-      <Link to='/addvehicle'>Add another car?</Link>
    </div>
    );
   }

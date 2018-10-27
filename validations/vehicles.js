@@ -46,9 +46,11 @@ module.exports = function validateVehicle(data) {
         errors.year = "Vehicle year can not be blank";
     }
 
-    if (data.model === "Rocket 69"){
-        errors.model = "Hey, this ain't Fallout."
+    if (data.model === "Rocket 69" || data.make === "Corvega"){
+        errors.model = "Hey, this ain't Fallout. Try again.";
     }
+
+
 
   return { errors, isValid: isEmpty(errors) };
 };

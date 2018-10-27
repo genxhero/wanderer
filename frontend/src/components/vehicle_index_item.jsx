@@ -20,7 +20,7 @@ class VehicleIndexItem extends React.Component {
           <li className="vehicle-stat">Model: {this.props.vehicle.model}</li>
           <li className="vehicle-stat">Year: {this.props.vehicle.year}</li>
           <li className="vehicle-stat">Highway MPG: {this.props.vehicle.hwyMpg}</li>
-          <li className="vehicle-stat">City MPG: {this.props.vehicle.ctyMpg}</li>
+          <li className="vehicle-stat">City MPG: {this.props.vehicle.cityMpg}</li>
           <li className="vehicle-stat">Tank Size: {this.props.vehicle.tankSize}</li>
         </ul>
         <Link to="/distance" className="select-your-vehicle" onClick={this.handleClick}>Select This Vehicle</Link>
