@@ -1,7 +1,51 @@
 import React from "react";
-// import mapIcons from "map-icons";
 const google = window.google;
 const mapIcons = window.mapIcons;
+
+// === A method which returns an array of GLatLngs of points a given interval along the path ===
+google.maps.LatLng.prototype.distanceFrom = function(newLatLng) {
+  var EarthRadiusMeters = 6378137.0; // meters
+  var lat1 = this.lat();
+  var lon1 = this.lng();
+  var lat2 = newLatLng.lat();
+  var lon2 = newLatLng.lng();
+  var dLat = ((lat2 - lat1) * Math.PI) / 180;
+  var dLon = ((lon2 - lon1) * Math.PI) / 180;
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = EarthRadiusMeters * c;
+  return d;
+};
+
+google.maps.Polyline.prototype.GetPointsAtDistance = function (metres) {
+    var next = metres;
+    var points = [];
+    // some awkward special cases
+    if (metres <= 0) return points;
+    var dist = 0;
+    var olddist = 0;
+    for (var i = 1; (i < this.getPath().getLength()); i++) {
+        olddist = dist;
+        dist += this.getPath().getAt(i).distanceFrom(this.getPath().getAt(i - 1));
+
+        while (dist > next) {
+            var p1 = this.getPath().getAt(i - 1);
+            var p2 = this.getPath().getAt(i);
+            var m = (next - olddist) / (dist - olddist);
+            points.push(new google.maps.LatLng(p1.lat() + (p2.lat() - p1.lat()) * m, p1.lng() + (p2.lng() - p1.lng()) * m));
+            next += metres;
+        }
+    }
+    return points;
+}
+
+// google.maps.Polyline.prototype.GetPointsAtDistance = google.maps.Polygon.prototype.GetPointsAtDistance;
+
 
 class GasPaneBody extends React.Component {
     constructor(props) {
@@ -9,8 +53,10 @@ class GasPaneBody extends React.Component {
 
         this.state = {
             curLocation: {},
-            destination: {lat: 37.335072, lng: -122.029399},
-            maxDistance: 71800
+            destination: {lat: 41.8781, lng: -87.6298},
+            maxDistance: 2605846,
+            distanceToHotel: 304672,
+            distanceToFood: 402336
         }
 
         this.initMap = this.initMap.bind(this);
@@ -50,12 +96,93 @@ class GasPaneBody extends React.Component {
         console.log(this.state);
     }
 
+
+
     initMap() {
-        console.log(this.state.curLocation);
 
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: this.state.curLocation,
-            zoom: 13
+            zoom: 13,
+            styles: [
+                { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#263c3f' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#6b9a76' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#38414e' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#212a37' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#9ca5b3' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#746855' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{ color: '#1f2835' }]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#f3d19c' }]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#2f3948' }]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#d59563' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#17263c' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#515c6d' }]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{ color: '#17263c' }]
+                }
+            ]
         });
 
         this.map.setCenter(this.state.curLocation);
@@ -68,15 +195,14 @@ class GasPaneBody extends React.Component {
         var markerArray = [];
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer({map: this.map});
-        var stepDisplay = new google.maps.InfoWindow();
 
         this.calculateAndDisplayRoute(
-            directionsDisplay, directionsService, markerArray, stepDisplay, this.map);
+            directionsDisplay, directionsService, markerArray, this.map);
 
     }
 
     calculateAndDisplayRoute(directionsDisplay, directionsService,
-        markerArray, stepDisplay, map) {
+        markerArray, map) {
         // First, remove any existing markers from the map.
         for (var i = 0; i < markerArray.length; i++) {
             markerArray[i].setMap(null);
@@ -93,51 +219,109 @@ class GasPaneBody extends React.Component {
             // markers for each step.
             if (status === 'OK') {
                 directionsDisplay.setDirections(response);
-                this.showSteps(response, markerArray, stepDisplay, map);
+                this.showSteps(response, markerArray, map);
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
         });
     }
 
-    showSteps(directionResult, markerArray, stepDisplay, map) {
+    showSteps(directionResult, markerArray, map) {
         // For each step, place a marker, and add the text to the marker's infowindow.
         // Also attach the marker to an array so we can keep track of it and remove it
         // when calculating new routes.
         var myRoute = directionResult.routes[0].legs[0];
         var passedDistance = 0;
-        let refuelIndex = 0; 
+        let stop_for_gas = {};
+        let hotelIndex = 0; 
+        let foodIndex = 0; 
+        var find_gas = false;
+        var find_hotel = false;
+        var find_food = false;
         for (var i = 0; i < myRoute.steps.length; i++) {
-            var marker = markerArray[i] = markerArray[i] || new google.maps.Marker();
-            passedDistance += myRoute.steps[i].distance.value;
-            console.log(passedDistance);
-            
-            if (passedDistance + 1000 >= this.state.maxDistance) {
-                myRoute.steps[i].instructions = "refuel!!!";
-                refuelIndex = i;
-                marker.setMap(map);
-                marker.setPosition(myRoute.steps[i].start_location);
-                this.attachInstructionText(
-                    stepDisplay, marker, myRoute.steps[i].instructions, map);
-                break;
+            // var marker = markerArray[i] || new google.maps.Marker();
+            if (find_gas == false && passedDistance >= this.state.maxDistance) {
+                if (myRoute.steps[i-1].distance.value > 10000) {
+                    var poly = new google.maps.Polyline({
+                         map: this.map,
+                         path: [myRoute.steps[i-1].start_location, myRoute.steps[i].start_location]
+                    });
+
+                    var points = poly.GetPointsAtDistance(5000);
+
+                    console.log("points", points);
+                    
+                    for (var k = 0; k < points.length; k++) {
+                        if (passedDistance + 5000*k > this.state.maxDistance){                        
+                            var pmarker = new google.maps.Marker();
+                            pmarker.setMap(this.map);
+                            pmarker.setPosition(points[k]);
+                            this.attachInstructionText(pmarker, "refuel!!!", this.map);
+                            stop_for_gas = points[k];
+                            find_gas = true;
+                            break;
+                        }
+                    }
+                } else {
+                    var marker = new google.maps.Marker();
+                    // refuelIndex = i;
+                    stop_for_gas = myRoute.steps[i].start_location;
+                    marker.setMap(map);
+                    marker.setPosition(myRoute.steps[i].start_location);
+                    this.attachInstructionText(marker, "refuel!!!", map);
+                    find_gas = true;
+                }
+
             }
+            passedDistance += myRoute.steps[i].distance.value;
+
+            // if (find_hotel == false && passedDistance >= this.state.distanceToHotel) {
+            //   var marker = new google.maps.Marker();
+            //   hotelIndex = i;
+            //   marker.setMap(map);
+            //   marker.setPosition(myRoute.steps[i].start_location);
+            //   this.attachInstructionText(marker, "Have a rest!!!", map);
+            //   find_hotel = true;
+            // }
+
+            // if (find_food == false && passedDistance >= this.state.distanceToFood) {
+            //   var marker = new google.maps.Marker();
+            //   foodIndex = i;
+            //   marker.setMap(map);
+            //   marker.setPosition(myRoute.steps[i].start_location);
+            //   this.attachInstructionText(marker, "Have a meal!!!", map);
+            //   find_food = true;
+            // }
 
         }
 
         var service = new google.maps.places.PlacesService(this.map);
         service.nearbySearch({ 
-            location: myRoute.steps[refuelIndex].start_location, 
-            radius: 1500, 
-            type: ["gas_station"] }, 
-        this.callback);
+            location: stop_for_gas, 
+            radius: 8000, 
+            type: ["gas_station"] 
+        },this.callback);
+
+        // service.nearbySearch({ 
+        //     location: myRoute.steps[hotelIndex].start_location, 
+        //     radius: 8000, 
+        //     type: ["lodging"] 
+        // },this.callback);
+
+        // service.nearbySearch({
+        //     location: myRoute.steps[foodIndex].start_location,
+        //     radius: 8000,
+        //     type: ["restaurant"]
+        // },this.callback);
     }
 
-    attachInstructionText(stepDisplay, marker, text, map) {
+    attachInstructionText(marker, text, map) {
+        let infowindow = new google.maps.InfoWindow();
         google.maps.event.addListener(marker, 'click', () => {
             // Open an info window when the marker is clicked on, containing the text
             // of the step.
-            stepDisplay.setContent(text);
-            stepDisplay.open(map, marker);
+            infowindow.setContent(text);
+            infowindow.open(map, marker);
         });
     }
 
@@ -156,20 +340,28 @@ class GasPaneBody extends React.Component {
 
 
     createMarker(place) {
-
-        let markerType = place.types[0];
+        let markerType = ''
+        if (place.types.includes('gas_station')) {
+            markerType = 'gas_station';
+        } else if (place.types.includes("restaurant")) {
+            markerType = 'food';
+        } else if (place.types.includes("lodging")) {
+            markerType = 'hotel';
+        } else {
+            return;
+        }
         const categoryMarkers = { 
             food: { 
                 icon: '<span class="map-icon map-icon-restaurant"></span>', 
-                color: "#0E77E9" 
+                color: "#00CCBB" 
             }, 
             gas_station: { 
                 icon: '<span class="map-icon map-icon-gas-station"></span>',
-                color: "#00CCBB"
+                color: "black"
             },
             hotel: {
                 icon: '<span class="map-icon map-icon-lodging"></span>',
-                color: "#53917E"
+                color: "#0E77E9"
             }
         };
 
@@ -179,7 +371,7 @@ class GasPaneBody extends React.Component {
           map: this.map,
           icon: {
             path: mapIcons.shapes.SQUARE_ROUNDED,
-            fillColor: categoryMarkers[markerType].icon.color,
+            fillColor: categoryMarkers[markerType].color,
             fillOpacity: 1,
             strokeColor: "",
             strokeWeight: 0,
@@ -193,7 +385,7 @@ class GasPaneBody extends React.Component {
         // });
         let infowindow = new google.maps.InfoWindow();
         google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent('gas station!');
+            infowindow.setContent(markerType);
             infowindow.open(this.map, this);
         });
     }

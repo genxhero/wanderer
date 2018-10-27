@@ -10,6 +10,7 @@ class GasPaneHead extends React.Component {
           barSelected: false
         }
     }
+
     
     render() {
     return <div className="gas-pane-head">
@@ -27,8 +28,8 @@ class GasPaneHead extends React.Component {
 
             <div className="gas-pane-checkboxes">
             <span className="gas-pane-choices-label">After how many hours of driving will you...</span>
-            <input className="gas-pane-choice" placeHolder="Be hungry like the wolf"></input>
-            <input className="gas-pane-choice" placeHolder="Have to stop for the night"></input>
+            <input className="gas-pane-choice" placeholder="Be hungry like the wolf"></input>
+            <input className="gas-pane-choice" placeholder="Have to stop for the night"></input>
 
             </div>
             <div className="button-div">
