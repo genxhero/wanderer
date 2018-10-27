@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const RECEIVE_VEHICLE = 'RECEIVE_VEHICLE';
 export const RECEIVE_VEHICLES = 'RECEIVE_VEHICLES';
-export const GET_ERRORS = "GET_ERRORS";
+export const GET_VEHICLE_ERRORS = "GET_VEHICLE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const receiveVehicle = payload => ({
@@ -28,32 +28,27 @@ export const receiveVehicles = payload => ({
 export const addVehicleOnline = (formData) => dispatch => (
   axios
     .post('/api/vehicles/addonline', formData)
-    .then(res =>{
-      let dummy ="you";
-       debugger;
-       let gummy = "bear";
-      return dispatch(receiveVehicle(res.data));
-    })
-    .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
+    .then(res => dispatch(receiveVehicle(res.data)))
+    .catch(err => dispatch({type: GET_VEHICLE_ERRORS, payload: err.response.data}))
 );
 
 export const addVehicleOffline = (formData) => dispatch => (
   axios
     .post('/api/vehicles/addoffline', formData)
     .then(res => dispatch(receiveVehicle(res.data)))
-    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }))
+    .catch(err => dispatch({ type: GET_VEHICLE_ERRORS, payload: err.response.data }))
 );
 
 export const fetchUserVehicles = () => dispatch => (
   axios
     .get('/api/users/vehicles')
     .then(res => dispatch(receiveVehicles(res.data)))
-    .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
+    .catch(err => dispatch({type: GET_VEHICLE_ERRORS, payload: err.response.data}))
 );
 
 export const fetchVehicle = (vehicleId) => dispatch => (
   axios
   .get(`/api/vehicles/${vehicleId}`)
   .then(res => dispatch(receiveVehicle(res.data)))
-  .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
+  .catch(err => dispatch({type: GET_VEHICLE_ERRORS, payload: err.response.data}))
 )
