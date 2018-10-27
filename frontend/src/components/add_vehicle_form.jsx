@@ -19,7 +19,6 @@ class AddVehicleForm extends React.Component  {
 
    handleSubmit(event)  {
      event.preventDefault();
-     console.log(this.state);
      this.props.addVehicleOnline(this.state);
    }
 
