@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
           <div className="signup-container">
             <form onSubmit={this.handleSubmit} className="signup-form">
               <span className="signup-choice">
-                Please {this.props.formType} or {this.props.navLink}
+                SIGN UP!
               </span>
               {this.renderErrors()}
               <div className="signup-inputs">
@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
           <div className="signup-container">
             <form onSubmit={this.handleSubmit} className="login-form-box">
               <span className="signup-choice">
-                Please {this.props.formType} or {this.props.navLink}
+                LOG IN!
               </span>
               {this.renderErrors()}
             <h3 className="auth-label">Username</h3>

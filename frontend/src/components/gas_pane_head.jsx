@@ -19,6 +19,7 @@ class GasPaneHead extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+          funmode: false,
           foodSelected: false,
           hotelSelected: false,
           barSelected: false,
@@ -29,8 +30,11 @@ class GasPaneHead extends React.Component {
             maxDistance: this.props.maxDistance
           }
         }
+      
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleAddress = this.handleAddress.bind(this);
+      this.shadowSubmit = this.shadowSubmit.bind(this);
+      this.toggleFunmode = this.toggleFunmode.bind(this);
     }
 
     // calculateMaxDistance() {
@@ -81,16 +85,44 @@ class GasPaneHead extends React.Component {
       this.props.receiveMapData(newForm);
     }
 
-  render() {
+ 
+    toggleFunmode() {
+      if (this.state.funmode === false) {
+         this.setState({funmode: true});
+       } else {
+        this.setState({ funmode: false });
+       } 
+    }
+    
+
+    
+  shadowSubmit(){
+    const vroom = new Audio();
+    console.log("the script is running");
+    vroom.src = "https://s3-us-west-1.amazonaws.com/wayfarer-sounds/BMW%2BDRIVEBY.mp3";
+    vroom.play();
+    const shadow = document.getElementsByClassName('shadow-submit')[0];
+    shadow.click();
+  }
+    
+    render() {
+
     return <div className="gas-pane-head">
+        <button className="cool-mode" onClick={this.toggleFunmode} />
         <div className="gas-pane-form-container">
           <form className="gas-pane-form" onSubmit={this.handleSubmit}>
             <div className="gas-pane-input">
               <LocationSearchInput handleAddress={this.handleAddress} />
               <div className="percent-container">
-                <span className="percent-label">How full is your tank?</span>
+                <span className={
+                    this.state.funmode === true
+                      ? "percent-label-fun"
+                      : "percent-label"
+                  }>How full is you tank?
+                </span>
+
                 <span className="percent-sign">%</span>
-              <input id="tank-percent" className="gas-pane-input-field" placeholder="100" value={this.state.formData.percentFull} onChange={this.update("percentFull")} />
+                <input id="tank-percent" className="gas-pane-input-field" placeholder="100" value={this.state.formData.percentFull} onChange={this.update("percentFull")} />
               </div>
             </div>
 
@@ -102,10 +134,13 @@ class GasPaneHead extends React.Component {
               <input className="gas-pane-choice" placeHolder="Have to stop for the night" value={this.state.formData.timeToHotel} onChange={this.update("timeToHotel")} />
             </div>
             <div className="button-div">
-              <input className="gas-pane-submit" type="submit" value="Do It!!" />
+              <div className="gas-pane-submit" onClick={this.shadowSubmit}>
+                <span>DO IT!</span>
+              </div>
               <div className="gas-pane-text-bg" />
               <div className="gas-pane-submit-shadow" />
             </div>
+            <input type="submit" className="shadow-submit" />
           </form>
         </div>
       </div>;

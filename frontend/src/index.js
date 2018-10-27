@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import jwt_decode from 'jwt-decode';
 import * as APIUtil from './util/session_util';
+import * as VehicleAPIUtil from "./util/vehicles_util";
 
 //Components
 import configureStore from './store/store';
@@ -11,6 +12,8 @@ import * as serviceWorker from './serviceWorker';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store = configureStore();
+  window.vehicles = VehicleAPIUtil.addVehicleOnline;
+  window.store = store;
   //check for token
   if (localStorage.jwtToken) {
     //Set auth token header auth
