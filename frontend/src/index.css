@@ -840,26 +840,28 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 
 .select-your-vehicle { 
   padding: 20px;
-    background: green;
+    background: #223238;
     border-radius: 4px;
     margin: 5px;
     text-decoration: none;
-    color: white;
+    color: #EF6B4E;
     font-size: 24px;
     font-weight: bold;
      transition: all .2s;
+     /* box-shadow: 2px 2px gray; */
 }
 
 .select-your-vehicle:visited {
   text-decoration: none;
-  color: white;
+  color: #EF6B4E;
 }
 
 .select-your-vehicle:hover {
-  box-shadow: 0px 0px 10px 6px green;
-  box-shadow: 0px 0px 10px 4px chartreuse;
-  background:chartreuse;
+  /* box-shadow: 0px 0px 10px 6px green; */
+  /* box-shadow: 0px 0px 10px 4px gray; */
+  background:#112127;
   transition: all .2s;
+  color: #fF8c5f;
 }
 
 .cool-mode {
