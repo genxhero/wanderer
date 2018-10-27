@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {receiveMapData} from '../util/map_util';
 
 const mapStateToProps = state => ({
-  // maxDistance: state.vehicles.maxRouteLength
-  maxDistance: 100
+  maxDistance: state.vehicles.maxRouteLength
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +22,7 @@ class GasPaneHead extends React.Component {
             percentFull: 0,
             timeToHotel: 0,
             timeToFood: 0,
-            maxDistance: 0
+            maxDistance: this.props.maxDistance
           }
         }
       this.handleSubmit = this.handleSubmit.bind(this);
