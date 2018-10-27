@@ -18,13 +18,16 @@ class AddVehicleForm extends React.Component  {
      this.handleSubmit = this.handleSubmit.bind(this);
    }
 
-   handleSubmit(event)  {
+   handleSubmit(event) {
      event.preventDefault();
      console.log(this.state);
      if (this.props.currentUser.id) {
-      this.props.addVehicleOnline(this.state).then(this.props.history.push('/distance'))
+      this.props.addVehicleOnline(this.state)
      } else {
-       this.props.addVehicleOffline(this.state).then(this.props.history.push('/distance'));
+      this.props.addVehicleOffline(this.state)
+    }
+    if (this.props.errors.length == 0) {
+      this.props.history.push('distance');
     }
    }
 

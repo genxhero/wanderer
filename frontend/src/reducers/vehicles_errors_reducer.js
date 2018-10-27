@@ -1,5 +1,5 @@
 import {
-  GET_ERRORS,
+  GET_VEHICLE_ERRORS,
   RECEIVE_VEHICLE,
   RECEIVE_VEHICLES
 } from '../util/vehicles_util';
@@ -7,7 +7,7 @@ import {
 export default (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
-    case GET_ERRORS:
+    case GET_VEHICLE_ERRORS:
       return action.payload;
     case RECEIVE_VEHICLE:
       return [];
