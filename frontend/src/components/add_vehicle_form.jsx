@@ -26,7 +26,7 @@ class AddVehicleForm extends React.Component  {
      } else {
       this.props.addVehicleOffline(this.state)
     }
-    if (this.props.errors.length == 0) {
+    if (this.props.errors.length === 0) {
       this.props.history.push('distance');
     }
    }
