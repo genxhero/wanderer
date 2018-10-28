@@ -38,10 +38,11 @@ router.post(
 // Cleaned up some of the debugging here since the route works - appreciate the good practice of not deleting code though!
 
 router.post(
-  "/addonline",
+  "/addonline", 
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    const { errors, isValid } = validateVehicle(req.body);
+   const { errors, isValid } =  validateVehicle(req.body);
+  // const isValid = true;
 
     if (!isValid) {
       return res.status(400).json(errors);
@@ -56,9 +57,11 @@ router.post(
         tankSize: req.body.tankSize
       });
       newVehicle.maxRouteLength =
-        ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) * newVehicle.tankSize;
+        ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) 
+        * newVehicle.tankSize;
 
       if (req.user) {
+          
         newVehicle.owner = req.user.id;
         let owner = await User.findOne({
           _id: req.user._id

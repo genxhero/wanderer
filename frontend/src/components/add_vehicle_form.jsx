@@ -20,27 +20,22 @@ class AddVehicleForm extends React.Component  {
 
    handleSubmit(event) {
      event.preventDefault();
-
      if (this.props.currentUser.id) {
       this.props.addVehicleOnline(this.state)
-      .then(res => {
-        if (this.props.errors.length === 0) {
-         this.props.history.push('/distance');
-       }
-      })
-     } else {
+        .then(res => {
+          if (this.props.errors.length === 0) {
+            this.props.history.push('/distance');
+          }
+        })
+    } else {
       this.props.addVehicleOffline(this.state)
-      .then(res => {
-        if (this.props.errors.length === 0) {
-         this.props.history.push('/distance');
-       }
-      })
+        .then(res => {
+          if (this.props.errors.length === 0) {
+            this.props.history.push('/distance');
+          }
+        })
     }
-
-    // if (this.props.errors.length === 0) {
-    //   this.props.history.push('/distance');
-    // }
-   }
+  }
 
   update(field) {
     return event => this.setState({
@@ -105,7 +100,9 @@ class AddVehicleForm extends React.Component  {
             <span>
               Don't know your car's mpg? <a href="https://www.fueleconomy.gov/mpg/MPG.do">Click Here!</a>
             </span>
-            <button type="submit">Add Car</button>
+            <button type="submit"
+            className="new-car-submit" 
+            >Add Car</button>
           </form>
         </div>
       </div>
