@@ -8,10 +8,41 @@ class SessionForm extends React.Component {
       email: '',
       username: '',
       password: '',
-      password2: ''
+      password2: '',
+      letsgo: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+    this.letsGo = this.letsGo.bind(this);
+  }
+
+  componentDidMount(){
+    this.letsGo();
+  }
+
+  letsGo(){
+    const LETS_GO_WORDS = ["Vamanos!",
+      "Allons-y!",
+      "Goazen!",
+      "Idemo!",
+      "Mennään!",
+      "Andiamo!",
+      "Iku zo!!",
+      "Pùstiti!",
+      "Birak!",
+      "Yalla!",
+      "Dimittas!",
+      "Ambe!",
+      "Pakawalan!",
+      "Ha Tago!",
+      "Songshou!",
+      "Cia Mus!"
+    ];
+    this.setState
+    ({
+        letsgo: LETS_GO_WORDS[Math.floor(Math.random() * LETS_GO_WORDS.length)]
+     });
   }
 
   update(field) {
@@ -43,25 +74,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const LETS_GO_WORDS = ["Vamanos!", 
-    "Allons-y!",
-     "Goazen!",
-      "Idemo!", 
-      "Mennään!", 
-      "Andiamo!", 
-      "Iku zo!!",
-      "Pùstiti!",
-      "Birak!",
-      "Basi Kwenda!",
-      "Yalla!",
-      "Dimittas!",
-      "Ambe!",
-      "Pakawalan!",
-      "Ha Tago!",
-      "Songshou!",
-      "Cia Mus!"
-    ];
-    let letsgo = LETS_GO_WORDS[Math.floor(Math.random() * LETS_GO_WORDS.length)];
+    
     if (this.props.formType === 'Signup') {
       return (
       <div className="signup-page">
@@ -82,7 +95,7 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password2} onChange={this.update("password2")} className="signup-input" />
                 <div className="signup-bottom">
                   <div id="excite">Adventure Awaits!</div>
-                  <input className="signup-submit" type="submit" value={letsgo} />
+                  <input className="signup-submit" type="submit" value={this.state.letsgo} />
                 </div>
               </div>
             </form>
@@ -102,7 +115,7 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password} onChange={this.update("password")} className="signup-input" />
             <div className="signup-bottom">
               <div id="excite">Another Journey?</div>
-              <input className="signup-submit" type="submit" value={letsgo} />
+              <input className="signup-submit" type="submit" value={this.state.letsgo} />
             </div>
             <input className="signup-submit" type="submit" onClick={this.handleDemo} value="Demo Login" />
             </form>
