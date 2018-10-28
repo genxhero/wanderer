@@ -43,6 +43,25 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    const LETS_GO_WORDS = ["Vamanos!", 
+    "Allons-y!",
+     "Goazen!",
+      "Idemo!", 
+      "Mennään!", 
+      "Andiamo!", 
+      "Iku zo!!",
+      "Pùstiti!",
+      "Birak!",
+      "Basi Kwenda!",
+      "Yalla!",
+      "Dimittas!",
+      "Ambe!",
+      "Pakawalan!",
+      "Ha Tago!",
+      "Songshou!",
+      "Cia Mus!"
+    ];
+    let letsgo = LETS_GO_WORDS[Math.floor(Math.random() * LETS_GO_WORDS.length)];
     if (this.props.formType === 'Signup') {
       return (
       <div className="signup-page">
@@ -63,7 +82,7 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password2} onChange={this.update("password2")} className="signup-input" />
                 <div className="signup-bottom">
                   <div id="excite">Adventure Awaits!</div>
-                  <input className="signup-submit" type="submit" value="Allons-y!" />
+                  <input className="signup-submit" type="submit" value={letsgo} />
                 </div>
               </div>
             </form>
@@ -83,9 +102,9 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password} onChange={this.update("password")} className="signup-input" />
             <div className="signup-bottom">
               <div id="excite">Another Journey?</div>
-              <input className="signup-submit" type="submit" value="Vamonos!" />
-              <input className="demo-submit" type="submit" onClick={this.handleDemo} value="Demo" />
+              <input className="signup-submit" type="submit" value={letsgo} />
             </div>
+            <input className="signup-submit" type="submit" onClick={this.handleDemo} value="Demo Login" />
             </form>
           </div>
         </div>;

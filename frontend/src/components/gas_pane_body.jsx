@@ -396,13 +396,13 @@ class GasPaneBody extends React.Component {
 
     carMeMaybe(){
         return (
-            <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
+            <Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link>
         );
     }
 
     render() {
         console.log(this.props.vehicles.cityMpg);
-        let avgmpg = parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg) / 2;
+        let avgmpg = (parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg)) / 2;
         console.log(avgmpg);
        return (
            <div className="gas-pane-body">
@@ -412,7 +412,7 @@ class GasPaneBody extends React.Component {
                        <div className="output-car-name">{this.props.vehicles.name}</div>
                        <div className="output-data"> Year: {this.props.vehicles.year} </div>
                        <div className="output-data">Make: {this.props.vehicles.make} </div>
-                       <div className="output-data">Model: {this.props.vehicles.make} </div>
+                       <div className="output-data">Model: {this.props.vehicles.model} </div>
                        <div className="output-data">Average MPG: {avgmpg} </div>
                        <div className="output-data"> </div>
                     </div>
