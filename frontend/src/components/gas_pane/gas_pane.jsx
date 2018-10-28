@@ -7,7 +7,8 @@ import { receiveMapData } from '../../util/map_util';
 const mapStateToProps = state => ({
   vehicles: state.vehicles,
   mapData: state.maps,
-  maxDistance: state.vehicles.maxRouteLength
+  maxDistance: state.vehicles.maxRouteLength,
+  currentUser: state.session
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,12 +17,10 @@ const mapDispatchToProps = dispatch => ({
 
 class GasPane extends React.Component {
   render () {
-  return (
-    <div className="gas-pane-page">
+  return <div className="gas-pane-page">
       <GasPaneHead vehicles={this.props.vehicles} mapData={this.props.mapData} receiveMapData={this.props.receiveMapData} maxDistance={this.props.maxDistance} />
-      <GasPaneBody vehicles={this.props.vehicles} mapData={this.props.mapData} />
-    </div>
-    );
+      <GasPaneBody vehicles={this.props.vehicles} mapData={this.props.mapData} currentUser={this.props.currentUser} />
+    </div>;
   }
 }
 
