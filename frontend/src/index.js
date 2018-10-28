@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let store = configureStore();
   window.vehicles = VehicleAPIUtil.addVehicleOnline;
   window.store = store;
+  window.getState = store.getState; 
+  window.dispatch = store.dispatch;
   //check for token
   if (localStorage.jwtToken) {
     //Set auth token header auth
