@@ -3,17 +3,6 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import {connect} from 'react-redux';
-import {receiveMapData} from '../util/map_util';
-
-const mapStateToProps = state => ({
-  maxDistance: state.vehicles.maxRouteLength
-});
-
-const mapDispatchToProps = dispatch => ({
-  receiveMapData: (mapData) => dispatch(receiveMapData(mapData))
-});
-
 class GasPaneHead extends React.Component {
 
     constructor(props){
@@ -112,10 +101,7 @@ class GasPaneHead extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GasPaneHead);
+export default GasPaneHead;
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
