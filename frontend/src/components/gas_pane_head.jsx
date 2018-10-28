@@ -19,7 +19,7 @@ class GasPaneHead extends React.Component {
             maxDistance: this.props.maxDistance
           }
         }
-      
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleAddress = this.handleAddress.bind(this);
       this.shadowSubmit = this.shadowSubmit.bind(this);
@@ -74,17 +74,15 @@ class GasPaneHead extends React.Component {
       this.props.receiveMapData(newForm);
     }
 
- 
+
     toggleFunmode() {
       if (this.state.funmode === false) {
          this.setState({funmode: true});
        } else {
         this.setState({ funmode: false });
-       } 
+       }
     }
-    
 
-    
   shadowSubmit(){
     const vroom = new Audio();
     console.log("the script is running");
@@ -93,7 +91,7 @@ class GasPaneHead extends React.Component {
     const shadow = document.getElementsByClassName('shadow-submit')[0];
     shadow.click();
   }
-    
+
     render() {
 
     return <div className="gas-pane-head">
