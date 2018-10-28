@@ -65,7 +65,8 @@ class SessionForm extends React.Component {
           </div>
         </div>);
     } else {
-      return <div className="signup-page">
+      return (
+      <div className="signup-page">
           <div className="signup-container">
             <form onSubmit={this.handleSubmit} className="login-form-box">
               <span className="signup-choice">
@@ -82,7 +83,8 @@ class SessionForm extends React.Component {
             </div>
             </form>
           </div>
-        </div>;
+        </div>
+      );
     }
   }
 }

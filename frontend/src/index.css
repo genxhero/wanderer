@@ -158,9 +158,6 @@ Auth css file  */
     background: white;
 }
 
-.signup-heading {
-  color: black;
-}
 
 .signup-choice {
   color: black;
@@ -504,15 +501,6 @@ input:focus {
   outline: none;
 }
 
-.add-car-submit {
-  background: orange;
-  padding: 10px;
-
-  /* box-shadow: 0 10px 0 0 gray; */
-  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
-  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
-}
-
 .new-car-submit:hover {
   cursor: pointer;
 }
@@ -578,7 +566,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   background: orange;
 }
 
-.checkbox-checked {
+/* .checkbox-checked {
   border: 1px solid black;
   background: transparent;
 }
@@ -586,7 +574,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 .checkbox-unchecked {
   border: 1px solid black;
   background: blue;
-}
+} */
 
 
 .output-left {
@@ -630,17 +618,6 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   width: 300px;
 
   width: 250px;
-}
-
-
-
-#start-loc {
- text-align: center;
-   font-size: 24px;
-   color: black;
-   background: whitesmoke;
-   
-
 }
 
 #tank-percent{
@@ -718,12 +695,6 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 
 .add-car-field:focus {
   outline: none;
-}
-
-.add-car-submit {
-  background: orange;
-  padding: 10px;
-  font-family: 'Luckiest Guy', cursive;
 }
 
 .new-car-submit {
@@ -837,9 +808,6 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   width: 100%;
   /* text-shadow: 1px 1px black; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.vehicle-stat{
 }
 
 .select-your-vehicle { 
