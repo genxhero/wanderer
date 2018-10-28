@@ -653,7 +653,15 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   background: #F5A540;
 }
 
+.gaspane-return-link{
+  color: inherit;
+  padding: 20px;
+  width: 100%;
+}
 
+.gaspane-return-link:visited{
+  color: inherit;
+}
 .output-head-fun {
   font-size:24px;
   text-align: center;
