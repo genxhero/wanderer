@@ -1,4 +1,4 @@
-import { fetchUserVehicles, fetchVehicle, receiveVehicle } from "../util/vehicles_util.js";
+import { fetchUserVehicles, fetchVehicle, receiveVehicle } from "../../util/vehicles_util.js";
 import { connect } from "react-redux";
 import VehicleIndex from "./vehicle_index";
 

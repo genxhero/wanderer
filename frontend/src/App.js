@@ -5,9 +5,9 @@ import SignUpFormContainer from "./components/session_form/signup_form_container
 import LogInFormContainer from "./components/session_form/login_form_container";
 import Splash from "./components/splash";
 import { AuthRoute, ProtectedRoute, ProtectedDistanceRoute} from "./util/route_util";
-import GasPane from "./components/gas_pane";
-import AddVehicleFormContainer from "./components/add_vehicle_form_container";
-import VehicleIndexContainer from "./components/vehicle_index_container";
+import GasPane from "./components/gas_pane/gas_pane";
+import AddVehicleFormContainer from "./components/vehicle/add_vehicle_form_container";
+import VehicleIndexContainer from "./components/vehicle/vehicle_index_container";
 
 
 const App = () => (

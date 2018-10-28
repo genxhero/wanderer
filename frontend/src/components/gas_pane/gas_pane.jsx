@@ -2,7 +2,7 @@ import React from "react";
 import GasPaneHead from "./gas_pane_head";
 import GasPaneBody from "./gas_pane_body";
 import { connect } from 'react-redux';
-import { receiveMapData } from '../util/map_util';
+import { receiveMapData } from '../../util/map_util';
 
 const mapStateToProps = state => ({
   vehicles: state.vehicles,
