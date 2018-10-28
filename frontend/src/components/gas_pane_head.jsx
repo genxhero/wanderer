@@ -3,17 +3,6 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import {connect} from 'react-redux';
-import {receiveMapData} from '../util/map_util';
-
-const mapStateToProps = state => ({
-  maxDistance: state.vehicles.maxRouteLength
-});
-
-const mapDispatchToProps = dispatch => ({
-  receiveMapData: (mapData) => dispatch(receiveMapData(mapData))
-});
-
 class GasPaneHead extends React.Component {
 
     constructor(props){
@@ -30,7 +19,7 @@ class GasPaneHead extends React.Component {
             maxDistance: this.props.maxDistance
           }
         }
-      
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleAddress = this.handleAddress.bind(this);
       this.shadowSubmit = this.shadowSubmit.bind(this);
@@ -85,17 +74,15 @@ class GasPaneHead extends React.Component {
       this.props.receiveMapData(newForm);
     }
 
- 
+
     toggleFunmode() {
       if (this.state.funmode === false) {
          this.setState({funmode: true});
        } else {
         this.setState({ funmode: false });
-       } 
+       }
     }
-    
 
-    
   shadowSubmit(){
     const vroom = new Audio();
     console.log("the script is running");
@@ -104,7 +91,7 @@ class GasPaneHead extends React.Component {
     const shadow = document.getElementsByClassName('shadow-submit')[0];
     shadow.click();
   }
-    
+
     render() {
 
     return <div className="gas-pane-head">
@@ -112,7 +99,7 @@ class GasPaneHead extends React.Component {
         <div className="gas-pane-form-container">
           <form className="gas-pane-form" onSubmit={this.handleSubmit}>
             <div className="gas-pane-input">
-              <LocationSearchInput handleAddress={this.handleAddress} />
+            <LocationSearchInput className="gas-pane-input-field" handleAddress={this.handleAddress} />
               <div className="percent-container">
                 <span className={
                     this.state.funmode === true
@@ -147,10 +134,7 @@ class GasPaneHead extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GasPaneHead);
+export default GasPaneHead;
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
@@ -180,8 +164,8 @@ class LocationSearchInput extends React.Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: "Search Places ...",
-                className: "location-search-input"
+                placeholder: "Where to?",
+                className: "gas-pane-input-field"
               })}
             />
             <div className="autocomplete-dropdown-container">

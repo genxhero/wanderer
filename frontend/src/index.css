@@ -19,10 +19,11 @@
 .header-link {
   font-size: 72px;
   color: #D44A2E;
+  font-family: 'Luckiest Guy', cursive;
   text-decoration: none;
   display: flex;
   align-items: center;
-  font-family: 'Luckiest Guy', cursive;
+  
 }
 
 .header-button {
@@ -325,16 +326,18 @@ input:focus {
 
 .gas-pane-input-field {
     border-radius: 4px;
-  background: transparent;
+  background: white;
   color: black;
   padding: 10px;
   margin-top: 10px;
+  font-size: 24px;
   box-shadow: none;
   border: none;
   transition: all .3s;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: white;
   font-weight: 400;
+  width: 100%;
+  padding: 10px;
   
 }
 
@@ -381,6 +384,11 @@ input:focus {
    font-size: 16px;
    text-align: center;
    margin-top: 10px;
+}
+
+.gas-pane-choice:focus {
+   transition: all .3s;
+  box-shadow: 2px 3px black;
 }
 
 .gas-pane-choices-label {
@@ -592,10 +600,9 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 .output-left {
     /* margin-left: 17px; */
       margin-bottom: 20px;
-
     /* border: 1px solid black; */
     width: 25%;
-    background: whitesmoke;
+    background: #E86535;
 }
 
 .output-right {
@@ -606,6 +613,94 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
     background: whitesmoke;
       margin-bottom: 20px;
 
+}
+
+.output-head {
+  font-size:24px;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 4px;
+  background: #D44A2E;
+  color: #F5A540;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.output-car-name{
+  font-size: 24pt;
+  color: #D44A2E;
+  font-weight: bold;
+  /* text-shadow: 1px 1px black; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.output-data {
+  font-size: 22pt;
+  color: #D44A2E;
+  font-weight: bold;
+  /* text-shadow: 1px 1px black; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.output-data-container {
+  width: 80%;
+  margin-left: 15px;
+  display: flex;
+  justify-content: space-around;
+  height: 400px;
+  padding: 15px;
+  flex-direction: column;
+  background: #F5A540;
+}
+
+.gaspane-return-link{
+  color: inherit;
+  padding: 20px;
+  width: 100%;
+}
+
+.gaspane-return-link:visited{
+  color: inherit;
+}
+.output-head-fun {
+  font-size:24px;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 4px;
+  background: #D44A2E;
+  color: #F5A540;
+  box-shadow: 2px 3px black;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.output-car-name-fun{
+  font-size: 24pt;
+  color: #D44A2E;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.output-data-fun {
+  font-size: 22pt;
+  color: #D44A2E;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.output-data-container-fun {
+  width: 80%;
+  margin-left: 15px;
+  display: flex;
+  justify-content: space-around;
+  height: 400px;
+  border: 1px solid black;
+  box-shadow: 2px 3px black;
+  padding: 15px;
+  flex-direction: column;
+  background: #F5A540;
 }
 
 #map {
