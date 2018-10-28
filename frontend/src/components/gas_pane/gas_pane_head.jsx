@@ -117,8 +117,8 @@ class GasPaneHead extends React.Component {
               <span className="gas-pane-choices-label">
                 After how many hours of driving will you...
               </span>
-              <input className="gas-pane-choice" placeHolder="Be hungry like the wolf" value={this.state.formData.timeToFood} onChange={this.update("timeToFood")} />
-              <input className="gas-pane-choice" placeHolder="Have to stop for the night" value={this.state.formData.timeToHotel} onChange={this.update("timeToHotel")} />
+              <input className="gas-pane-choice" placeholder="Be hungry like the wolf" value={this.state.formData.timeToFood} onChange={this.update("timeToFood")} />
+              <input className="gas-pane-choice" placeholder="Have to stop for the night" value={this.state.formData.timeToHotel} onChange={this.update("timeToHotel")} />
             </div>
             <div className="button-div">
               <div className="gas-pane-submit" onClick={this.shadowSubmit}>
