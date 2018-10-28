@@ -1,9 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 import { connect } from 'react-redux';
-=======
 import {Link} from "react-router-dom";
->>>>>>> cee7a8c9fdcd32d9d70384d619164adf09d098d7
 const google = window.google;
 const mapIcons = window.mapIcons;
 const MarkerClusterer = window.MarkerClusterer;
@@ -95,9 +92,9 @@ class GasPaneBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    //   if (this.props.maxDistance !== nextProps.maxDistance) {
-    //     this.initMap();
-    //   };
+      if (this.props.maxDistance !== nextProps.maxDistance) {
+        this.initMap();
+      };
   }
 
   getLocation() {
@@ -460,7 +457,7 @@ class GasPaneBody extends React.Component {
 
     render() {
         console.log(this.props.vehicles.cityMpg);
-        let avgmpg = parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg) / 2;
+        let avgmpg = (parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg)) / 2;
         console.log(avgmpg);
         return (
             <div className="gas-pane-body">
@@ -470,7 +467,7 @@ class GasPaneBody extends React.Component {
                         <div className="output-car-name">{this.props.vehicles.name}</div>
                         <div className="output-data"> Year: {this.props.vehicles.year} </div>
                         <div className="output-data">Make: {this.props.vehicles.make} </div>
-                        <div className="output-data">Model: {this.props.vehicles.make} </div>
+                        <div className="output-data">Model: {this.props.vehicles.model} </div>
                         <div className="output-data">Average MPG: {avgmpg} </div>
                         <div className="output-data"> </div>
                     </div>
@@ -496,8 +493,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(GasPaneBody);
-
-
-
-}
 
