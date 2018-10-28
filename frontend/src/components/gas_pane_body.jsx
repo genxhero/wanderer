@@ -2,6 +2,8 @@ import React from "react";
 const google = window.google;
 const mapIcons = window.mapIcons;
 
+
+
 // === A method which returns an array of GLatLngs of points a given interval along the path ===
 google.maps.LatLng.prototype.distanceFrom = function(newLatLng) {
   var EarthRadiusMeters = 6378137.0; // meters
@@ -394,7 +396,17 @@ class GasPaneBody extends React.Component {
         
        return (
            <div className="gas-pane-body">
-                <div className="output-left"></div>
+                <div className="output-left">
+                    <div className="output-head"> On the Road With</div>
+                    <div className="output-data-container">
+                       <div className="output-car-name">Chimichanga</div>
+                       <div className="output-data"> Year: 2018 </div>
+                       <div className="output-data">Make: CHevrolet </div>
+                       <div className="output-data">Model: Tahoe </div>
+                       <div className="output-data">Average MPG: 24 </div>
+                       <div className="output-data"> </div>
+                    </div>
+                </div>
                 <div id="map"></div>
                 <div className="output-right"></div>
            </div>

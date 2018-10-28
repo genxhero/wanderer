@@ -7,7 +7,8 @@ import {connect} from 'react-redux';
 import {receiveMapData} from '../util/map_util';
 
 const mapStateToProps = state => ({
-  maxDistance: state.vehicles.maxRouteLength
+  maxDistance: state.vehicles.maxRouteLength,
+  vehicle: state.vehicles
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -112,7 +113,7 @@ class GasPaneHead extends React.Component {
         <div className="gas-pane-form-container">
           <form className="gas-pane-form" onSubmit={this.handleSubmit}>
             <div className="gas-pane-input">
-              <LocationSearchInput handleAddress={this.handleAddress} />
+            <LocationSearchInput className="gas-pane-input-field" handleAddress={this.handleAddress} />
               <div className="percent-container">
                 <span className={
                     this.state.funmode === true
@@ -180,8 +181,8 @@ class LocationSearchInput extends React.Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: "Search Places ...",
-                className: "location-search-input"
+                placeholder: "Where to?",
+                className: "gas-pane-input-field"
               })}
             />
             <div className="autocomplete-dropdown-container">
