@@ -22,6 +22,10 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )} />
 );
 
+
+// This route first checks if there are vehicles in state, and if there are not, it checks to see if 
+// there is a logged in user or not to determine where to redirect from distance
+
 const ProtectedDistance = ({ component: Component, path, isVehicle, loggedIn, exact }) => (
   <Route path={path} exact={exact} render={(props) => (
       isVehicle ? (
