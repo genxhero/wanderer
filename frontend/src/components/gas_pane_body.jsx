@@ -6,7 +6,6 @@ const mapIcons = window.mapIcons;
 const MarkerClusterer = window.MarkerClusterer;
 
 
-
 // === A method which returns an array of GLatLngs of points a given interval along the path ===
 google.maps.LatLng.prototype.distanceFrom = function (newLatLng) {
     var EarthRadiusMeters = 6378137.0; // meters
@@ -61,15 +60,33 @@ google.maps.Polyline.prototype.GetPointsAtDistance = function(metres) {
 class GasPaneBody extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      curLocation: {},
-      destination: { lat: 41.8781, lng: -87.6298 },
-      //maxDistance: props.maxDistance,
-      maxDistance: 3004672,
-      distanceToHotel: 804672,
-      distanceToFood: 78900
-    };
+    if(Object.values(this.props.maps).length===0) {
+        this.state = {
+            curLocation: {},
+            destination: { lat: 41.8781, lng: -87.6298 },
+            //   maxDistance: props.maxDistance,
+            maxDistance: 3004672,
+            distanceToHotel: 804672,
+            distanceToFood: 78900
+        };
+    } else {
+        this.state = {
+            curLocation: {},
+            destination: { lat: 41.8781, lng: -87.6298 },
+            maxDistance: this.props.maxDistance,
+            // maxDistance: 3004672,
+            distanceToHotel: 804672,
+            distanceToFood: 78900
+        };
+    }
+    // this.state = {
+    //   curLocation: {},
+    //   destination: { lat: 41.8781, lng: -87.6298 },
+    //   maxDistance: props.maxDistance,
+    //   maxDistance: 3004672,
+    //   distanceToHotel: 804672,
+    //   distanceToFood: 78900
+    // };
 
     this.initMap = this.initMap.bind(this);
     this.callback = this.callback.bind(this);
@@ -93,6 +110,7 @@ class GasPaneBody extends React.Component {
 
   componentWillReceiveProps(nextProps) {
       if (this.props.maxDistance !== nextProps.maxDistance) {
+        this.setState({ maxDistance: nextProps.maxDistance});
         this.initMap();
       };
   }
@@ -456,9 +474,7 @@ class GasPaneBody extends React.Component {
     }
 
     render() {
-        console.log(this.props.vehicles.cityMpg);
         let avgmpg = (parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg)) / 2;
-        console.log(avgmpg);
         return (
             <div className="gas-pane-body">
                 <div className="output-left">
@@ -482,7 +498,8 @@ class GasPaneBody extends React.Component {
 
 
 const mapStateToProps = state => ({
-  maxDistance: state.vehicles.maxRouteLength
+  maps: state.maps,
+  maxDistance: state.maps.maxDistance
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -493,4 +510,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(GasPaneBody);
-
