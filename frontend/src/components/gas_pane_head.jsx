@@ -3,18 +3,6 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import {connect} from 'react-redux';
-import {receiveMapData} from '../util/map_util';
-
-const mapStateToProps = state => ({
-  maxDistance: state.vehicles.maxRouteLength,
-  vehicle: state.vehicles
-});
-
-const mapDispatchToProps = dispatch => ({
-  receiveMapData: (mapData) => dispatch(receiveMapData(mapData))
-});
-
 class GasPaneHead extends React.Component {
 
     constructor(props){
@@ -31,7 +19,7 @@ class GasPaneHead extends React.Component {
             maxDistance: this.props.maxDistance
           }
         }
-      
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleAddress = this.handleAddress.bind(this);
       this.shadowSubmit = this.shadowSubmit.bind(this);
@@ -86,17 +74,15 @@ class GasPaneHead extends React.Component {
       this.props.receiveMapData(newForm);
     }
 
- 
+
     toggleFunmode() {
       if (this.state.funmode === false) {
          this.setState({funmode: true});
        } else {
         this.setState({ funmode: false });
-       } 
+       }
     }
-    
 
-    
   shadowSubmit(){
     const vroom = new Audio();
     console.log("the script is running");
@@ -105,7 +91,7 @@ class GasPaneHead extends React.Component {
     const shadow = document.getElementsByClassName('shadow-submit')[0];
     shadow.click();
   }
-    
+
     render() {
 
     return <div className="gas-pane-head">
@@ -148,10 +134,7 @@ class GasPaneHead extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GasPaneHead);
+export default GasPaneHead;
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
