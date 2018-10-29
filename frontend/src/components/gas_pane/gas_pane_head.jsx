@@ -13,10 +13,11 @@ class GasPaneHead extends React.Component {
           hotelSelected: false,
           barSelected: false,
           formData: {
-            percentFull: 0,
-            timeToHotel: 0,
-            timeToFood: 0,
-            maxDistance: this.props.maxDistance
+            percentFull: "",
+            timeToHotel: "",
+            timeToFood: "",
+            maxDistance: this.props.maxDistance,
+            address: { lat: 34.0522, lng: -118.2437 }
           }
         }
 
