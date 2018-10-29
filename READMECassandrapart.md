@@ -114,3 +114,94 @@ Core Features:
 2. Creating custom markers
 
 ![alt-text](https://github.com/genxhero/wayfarer/readme-assets/MapDemo.PNG "Wayfarer map with icons")
+
+## Vehicle Information
+
+
+### Technology
+
+In order to store vehicle data from user input, Wayfarer employs MongoDB and express routing.
+
+## Challenges and Solutions
+
+So that a user could choose to use our app without registering  I found that the best solution was to create two separate backend routes: one that checked jwt for a current user, and one that did not.  Then we would employ logic on the frontend to determine which route would get called on from our new vehicle frontend component.
+
+The route``api/vehicles/addoffline`` was relatively simple, as it only needed to create a new vehicle and pass a json object to the frontend.  
+
+In order for a logged in user to be associated with their cars properly, we needed to get past our first hurdle: that associations within a mongo database aren't nearly as intuitive as they are in relational databases.  
+
+Many hours of intensive research and experimenting gave birth to the following solution:
+
+*  Export both a model and a schema from the Vehicle model file.
+
+```javascript
+const Vehicle = mongoose.model("vehicle", VehicleSchema);
+module.exports = {
+    VehicleSchema: VehicleSchema,
+    Vehicle: Vehicle
+};
+```
+
+*  Import and the model into the routes file, where we used it to create our vehicle database entries
+```javascript
+const Vehicle = require("../../models/Vehicle").Vehicle;
+...
+ const newVehicle = new Vehicle({
+        name: req.body.name,
+        make: req.body.make,
+        model: req.body.model,
+        year: req.body.year,
+        hwyMpg: req.body.hwyMpg,
+        cityMpg: req.body.cityMpg,
+        tankSize: req.body.tankSize
+      });
+      newVehicle.maxRouteLength =
+        ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) 
+        * newVehicle.tankSize;
+```
+*  Import the schema into the User model file
+```javascript
+const VehicleSchema = require('./Vehicle').VehicleSchema;
+```
+*  Nest the schema inside the User schema by wrapping it in square brackets.
+```javascript
+ },
+  vehicles: [VehicleSchema]
+});
+```
+*  Find the current user in the database, and push the newly minted vehicle onto the user's vehicles array, then save the user.
+```javascript
+        owner.vehicles.push(newVehicle);
+        owner.save();
+```
+
+*  Finally, we save our vehicle and send a json object to our frontend.
+
+```javascript
+  newVehicle
+   .save()
+   .then(vehicle => res.json(vehicle));
+```
+
+
+The very next challenge that we faced was that the user's vehicles array was never saving and the code was going straight to the `newVehicle.save()` at the end of the ``/addonline`` route function. To fix this, we used the async/await in order to allow ``the User.save()`` function to complete prior to the execution of the remaining code:
+
+```javascript
+router.post(
+  "/addonline", 
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    . . .
+```
+After cleaning everything up, this is what we came up with:
+```javascript
+    owner.vehicles.push(newVehicle);
+    owner = await owner.save();
+      newVehicle
+      .save()
+      .then(vehicle => res.json(vehicle));
+```
+
+In overcoming this challenge we learned:
+   *  That Mongo Database models gain an id immediately upon instantiation.  During debugging we were able to determine that, indeed, each instance of Vehicle had a unique id that we could see in the console.
+   *  That Javascript's ``async/await`` pattern can be very useful when one wants to save two database models in the same function.
