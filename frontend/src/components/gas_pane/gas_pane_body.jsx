@@ -72,11 +72,10 @@ class GasPaneBody extends React.Component {
     } else {
         this.state = {
             curLocation: {},
-            destination: { lat: 41.8781, lng: -87.6298 },
+            destination: this.props.maps.address,
             maxDistance: this.props.maxDistance,
-            // maxDistance: 3004672,
-            distanceToHotel: 804672,
-            distanceToFood: 78900
+            distanceToHotel: this.props.maps.timeToHotel,
+            distanceToFood: this.props.maps.timeToFood
         };
     }
     // this.state = {
@@ -110,7 +109,12 @@ class GasPaneBody extends React.Component {
 
   componentWillReceiveProps(nextProps) {
       if (this.props.maxDistance !== nextProps.maxDistance) {
-        this.setState({ maxDistance: nextProps.maxDistance});
+        this.setState({
+          maxDistance: nextProps.maxDistance,
+          distanceToHotel: nextProps.maps.timeToHotel,
+          distanceToFood: nextProps.maps.timeToFood,
+          destination: nextProps.maps.address
+        });
         this.initMap();
       };
   }

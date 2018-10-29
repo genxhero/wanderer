@@ -105,7 +105,7 @@ class GasPaneHead extends React.Component {
                     this.state.funmode === true
                       ? "percent-label-fun"
                       : "percent-label"
-                  }>How full is you tank?
+                  }>How full is your tank?
                 </span>
 
                 <span className="percent-sign">%</span>
