@@ -1,4 +1,4 @@
-# Wayfarer [(Live)](http://boiling-sierra-91034.herokuapp.com/)
+# Wayfarer [(Live)](https://boiling-sierra-91034.herokuapp.com/)
 
 Wayfarer is an app designed to facilitate adventure across the open roads of America.
 
