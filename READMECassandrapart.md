@@ -94,3 +94,23 @@ The vehicle item call and API call to change the vehicles slice of state
 
 Overall, Wayfarer relies a lot on pieces of state being the right things at the right time, sometimes even within the same component.
 
+Lola Part:
+
+Map:
+
+Intro:
+After the user inputs the gas percentage of his/her tank,  our map would give the prediction of about what location his/her car would run out of gas, which alerts users to refuel before that location. It would also find out the nearby gas stations around that place, so if there is no gas station the user could be informed to refuel ahead of time. It can let users input planned driving time before his/her meal and sleep as well, thus our users can book restaurant or a hotel to avoid waiting or rooms sold out.
+
+Technologies:
+Google Maps API
+HTML5 Geolocation API
+eploy.js: Google Maps API Extension
+map-icons.js: Custom Marker
+
+Core Features:
+1. Calculate locaton
+    First use google maps route -steps
+    Second use polyline for single long step
+2. Creating custom markers
+
+![alt-text](https://github.com/genxhero/wayfarer/readme-assets/MapDemo.PNG "Wayfarer map with icons")
