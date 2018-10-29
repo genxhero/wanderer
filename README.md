@@ -2,7 +2,7 @@
 
 Wayfarer is an app designed to facilitate adventure across the open roads of America.
 
-![alt-text](https://github.com/genxhero/wayfarer/readme-assets/WayfarerPage.PNG "Add vehicle form - first page guest sees")
+![alt-text](https://github.com/genxhero/wayfarer/blob/master/readme-assets/WayfarerPage.PNG "Add vehicle form - first page guest sees")
 
 
 # Background and Overview
@@ -71,14 +71,14 @@ Core Features:
     Second use polyline for single long step
 2. Creating custom markers
 
-![alt-text](https://github.com/genxhero/wayfarer/readme-assets/MapDemo.PNG "Wayfarer map with icons")
+![alt-text](https://github.com/genxhero/wayfarer/blob/master/readme-assets/MapDemo.png "Wayfarer map with icons")
 
 -----
 
 ## Using Wayfarer as a guest vs. logging in
 While Wayfarer encourages you to jump right in by adding a vehicle and planning your trip, we also allow you to register in order to save the data for the cars you use most! The vehicle index saves your car data to our database so you can select the vehicle you intend to use for your road trip.
 
-![alt-text](https://github.com/genxhero/wayfarer/readme-assets/DemoVehicleIndex.PNG "Logged In User Vehicle Index")
+![alt-text](https://github.com/genxhero/wayfarer/blob/master/readme-assets/DemoVehicleIndex.PNG "Logged In User Vehicle Index")
 
 In order to provide a seamless experience, the login page redirects to the vehicles page after login.  After selecting a vehicle, you are linked to the core Wayfarer widget which calculates the distance to the furthest gas station you can reach, as well as the hotels and restaurants along the way based on how long you want to drive.  To prevent issues where the Wayfarer widget lacks the information needed to make these calculations, the route is protected - if there is no vehicle in state, then you will be redirected either to the add vehicle form or the vehicles index, depending on whether you are a guest or an authorized user.
 
