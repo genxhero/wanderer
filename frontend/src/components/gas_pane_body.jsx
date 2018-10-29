@@ -63,30 +63,20 @@ class GasPaneBody extends React.Component {
     if(Object.values(this.props.maps).length===0) {
         this.state = {
             curLocation: {},
-            destination: { lat: 41.8781, lng: -87.6298 },
-            //   maxDistance: props.maxDistance,
-            maxDistance: 3004672,
-            distanceToHotel: 804672,
-            distanceToFood: 78900
+            destination: { lat: 34.0522, lng: -118.2437 },
+            maxDistance: 264672,
+            distanceToHotel: 104672,
+            distanceToFood: 18900
         };
     } else {
         this.state = {
             curLocation: {},
-            destination: { lat: 41.8781, lng: -87.6298 },
+            destination: { lat: 34.0522, lng: -118.2437 },
             maxDistance: this.props.maxDistance,
-            // maxDistance: 3004672,
-            distanceToHotel: 804672,
-            distanceToFood: 78900
+            distanceToHotel: 54672,
+            distanceToFood: 18900
         };
     }
-    // this.state = {
-    //   curLocation: {},
-    //   destination: { lat: 41.8781, lng: -87.6298 },
-    //   maxDistance: props.maxDistance,
-    //   maxDistance: 3004672,
-    //   distanceToHotel: 804672,
-    //   distanceToFood: 78900
-    // };
 
     this.initMap = this.initMap.bind(this);
     this.callback = this.callback.bind(this);
@@ -111,7 +101,12 @@ class GasPaneBody extends React.Component {
   componentWillReceiveProps(nextProps) {
       if (this.props.maxDistance !== nextProps.maxDistance) {
         // console.log('new props');
-        this.setState({ maxDistance: nextProps.maxDistance});
+        this.setState({ 
+            maxDistance: nextProps.maxDistance,
+            destination: { lat: 34.0522, lng: -118.2437 },
+            distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*65*1609,
+            distanceToFood: (parseInt(nextProps.timeToFood)/3600)*65*1609
+        });
         this.initMap();
       };
   }
@@ -135,7 +130,6 @@ class GasPaneBody extends React.Component {
     this.setState({ curLocation: curLocation });
     this.initMap();
 
-    console.log(this.state);
   }
 
   initMap() {
@@ -379,9 +373,10 @@ class GasPaneBody extends React.Component {
         type: ["restaurant"]
     },this.callback);
     
-    var markerCluster = new MarkerClusterer(this.map, this.markers,
-        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-    console.log(markerCluster);
+    // var markerCluster = new MarkerClusterer(this.map, this.markers,
+    //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    // console.log(markerCluster);
+    // this.markers = [];
     }
 
   
@@ -409,11 +404,11 @@ class GasPaneBody extends React.Component {
 
   createMarker(place) {
     let markerType = "";
-    if (place.types.includes("gas_station")) {
+      if (place.types.includes("gas_station")) {
       markerType = "gas_station";
     } else if (place.types.includes("restaurant")) {
       markerType = "food";
-    } else if (place.types.includes("lodging")) {
+      } else if (place.types.includes("lodging")) {
       markerType = "hotel";
     } else {
       return;
@@ -500,7 +495,10 @@ class GasPaneBody extends React.Component {
 
 const mapStateToProps = state => ({
   maps: state.maps,
-  maxDistance: state.maps.maxDistance
+  address: state.maps.address,
+  maxDistance: state.maps.maxDistance,
+  timeToFood: state.maps.timeToFood,
+  timeToHotel: state.maps.timeToHotel
 });
 
 const mapDispatchToProps = dispatch => ({
