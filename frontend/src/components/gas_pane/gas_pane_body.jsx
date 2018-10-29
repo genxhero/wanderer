@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 const google = window.google;
 const mapIcons = window.mapIcons;
 const MarkerClusterer = window.MarkerClusterer;
@@ -8,25 +8,25 @@ const MarkerClusterer = window.MarkerClusterer;
 
 // === A method which returns an array of GLatLngs of points a given interval along the path ===
 google.maps.LatLng.prototype.distanceFrom = function (newLatLng) {
-    var EarthRadiusMeters = 6378137.0; // meters
-    var lat1 = this.lat();
-    var lon1 = this.lng();
-    var lat2 = newLatLng.lat();
-    var lon2 = newLatLng.lng();
-    var dLat = ((lat2 - lat1) * Math.PI) / 180;
-    var dLon = ((lon2 - lon1) * Math.PI) / 180;
-    var a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos((lat1 * Math.PI) / 180) *
-        Math.cos((lat2 * Math.PI) / 180) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = EarthRadiusMeters * c;
-    return d;
+  var EarthRadiusMeters = 6378137.0; // meters
+  var lat1 = this.lat();
+  var lon1 = this.lng();
+  var lat2 = newLatLng.lat();
+  var lon2 = newLatLng.lng();
+  var dLat = ((lat2 - lat1) * Math.PI) / 180;
+  var dLon = ((lon2 - lon1) * Math.PI) / 180;
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = EarthRadiusMeters * c;
+  return d;
 };
 
-google.maps.Polyline.prototype.GetPointsAtDistance = function(metres) {
+google.maps.Polyline.prototype.GetPointsAtDistance = function (metres) {
   var next = metres;
   var points = [];
   // some awkward special cases
@@ -60,32 +60,23 @@ google.maps.Polyline.prototype.GetPointsAtDistance = function(metres) {
 class GasPaneBody extends React.Component {
   constructor(props) {
     super(props);
-    if(Object.values(this.props.maps).length===0) {
-        this.state = {
-            curLocation: {},
-            destination: { lat: 41.8781, lng: -87.6298 },
-            //   maxDistance: props.maxDistance,
-            maxDistance: 3004672,
-            distanceToHotel: 804672,
-            distanceToFood: 78900
-        };
+    if (Object.values(this.props.maps).length === 0) {
+      this.state = {
+        curLocation: {},
+        destination: { lat: 34.0522, lng: -118.2437 },
+        maxDistance: 264672,
+        distanceToHotel: 104672,
+        distanceToFood: 18900
+      };
     } else {
-        this.state = {
-            curLocation: {},
-            destination: this.props.maps.address,
-            maxDistance: this.props.maxDistance,
-            distanceToHotel: this.props.maps.timeToHotel,
-            distanceToFood: this.props.maps.timeToFood
-        };
+      this.state = {
+        curLocation: {},
+        destination: this.props.maps.address,
+        maxDistance: this.props.maxDistance,
+        distanceToHotel: 54672,
+        distanceToFood: 18900
+      };
     }
-    // this.state = {
-    //   curLocation: {},
-    //   destination: { lat: 41.8781, lng: -87.6298 },
-    //   maxDistance: props.maxDistance,
-    //   maxDistance: 3004672,
-    //   distanceToHotel: 804672,
-    //   distanceToFood: 78900
-    // };
 
     this.initMap = this.initMap.bind(this);
     this.callback = this.callback.bind(this);
@@ -108,15 +99,16 @@ class GasPaneBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      if (this.props.maxDistance !== nextProps.maxDistance) {
-        this.setState({
-          maxDistance: nextProps.maxDistance,
-          distanceToHotel: nextProps.maps.timeToHotel,
-          distanceToFood: nextProps.maps.timeToFood,
-          destination: nextProps.maps.address
-        });
-        this.initMap();
-      };
+    if (this.props.maxDistance !== nextProps.maxDistance) {
+      // console.log('new props');
+      this.setState({
+        maxDistance: nextProps.maxDistance,
+        destination: nextProps.maps.address,
+        distanceToHotel: (parseInt(nextProps.timeToHotel) / 3600) * 65 * 1609,
+        distanceToFood: (parseInt(nextProps.timeToFood) / 3600) * 65 * 1609
+      });
+      this.initMap();
+    };
   }
 
   getLocation() {
@@ -138,7 +130,6 @@ class GasPaneBody extends React.Component {
     this.setState({ curLocation: curLocation });
     this.initMap();
 
-    console.log(this.state);
   }
 
   initMap() {
@@ -238,7 +229,7 @@ class GasPaneBody extends React.Component {
     var directionsDisplay = new google.maps.DirectionsRenderer({
       map: this.map
     });
-    var  markerArray = [];
+    var markerArray = [];
 
     this.calculateAndDisplayRoute(
       directionsDisplay,
@@ -280,8 +271,8 @@ class GasPaneBody extends React.Component {
     );
   }
 
- findLocation(typeLocation, findType, passedDistance, maxDistance, steps, i, info) {
-    if (findType == false && passedDistance+steps[i].distance.value >= maxDistance) {
+  findLocation(typeLocation, findType, passedDistance, maxDistance, steps, i, info) {
+    if (findType == false && passedDistance + steps[i].distance.value >= maxDistance) {
       if (steps[i].distance.value > 10000) {
         var poly = new google.maps.Polyline({
           map: this.map,
@@ -328,35 +319,35 @@ class GasPaneBody extends React.Component {
     var findGas = false;
     var findHotel = false;
     var findFood = false;
-    for (var i = 0; i < myRoute.steps.length-1; i++) {
+    for (var i = 0; i < myRoute.steps.length - 1; i++) {
       var marker = markerArray[i] || new google.maps.Marker();
       [findGas, gasLocation] = this.findLocation(
-          gasLocation,
-          findGas, 
-          passedDistance, 
-          this.state.maxDistance, 
-          myRoute.steps, 
-          i, 
-          'Refuel!');
+        gasLocation,
+        findGas,
+        passedDistance,
+        this.state.maxDistance,
+        myRoute.steps,
+        i,
+        'Refuel!');
 
       [findHotel, hotelLocation] = this.findLocation(
-          hotelLocation,
-          findHotel, 
-          passedDistance, 
-          this.state.distanceToHotel, 
-          myRoute.steps, 
-          i, 
-          'Have a Rest!');
+        hotelLocation,
+        findHotel,
+        passedDistance,
+        this.state.distanceToHotel,
+        myRoute.steps,
+        i,
+        'Have a Rest!');
 
       [findFood, foodLocation] = this.findLocation(
-          foodLocation,
-          findFood, 
-          passedDistance, 
-          this.state.distanceToFood, 
-          myRoute.steps, 
-          i, 
-          'Have a Meal!');
-      
+        foodLocation,
+        findFood,
+        passedDistance,
+        this.state.distanceToFood,
+        myRoute.steps,
+        i,
+        'Have a Meal!');
+
       passedDistance += myRoute.steps[i].distance.value;
     }
 
@@ -371,23 +362,24 @@ class GasPaneBody extends React.Component {
       this.callback);
 
     service.nearbySearch({
-        location: hotelLocation,
-        radius: 8000,
-        type: ["lodging"]
-    },this.callback);
+      location: hotelLocation,
+      radius: 8000,
+      type: ["lodging"]
+    }, this.callback);
 
     service.nearbySearch({
-        location: foodLocation,
-        radius: 8000,
-        type: ["restaurant"]
-    },this.callback);
-    
-    var markerCluster = new MarkerClusterer(this.map, this.markers,
-        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-    console.log(markerCluster);
-    }
+      location: foodLocation,
+      radius: 8000,
+      type: ["restaurant"]
+    }, this.callback);
 
-  
+    // var markerCluster = new MarkerClusterer(this.map, this.markers,
+    //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    // console.log(markerCluster);
+    // this.markers = [];
+  }
+
+
 
   attachInstructionText(marker, text, map) {
     let infowindow = new google.maps.InfoWindow();
@@ -455,55 +447,58 @@ class GasPaneBody extends React.Component {
     //     position: place.geometry.location
     // });
     let infowindow = new google.maps.InfoWindow();
-    google.maps.event.addListener(marker, "click", function() {
+    google.maps.event.addListener(marker, "click", function () {
       infowindow.setContent(markerType);
       infowindow.open(this.map, this);
     });
   }
 
-//   render() {
-//     return (
-//       <div className="gas-pane-body">
-//         <div className="output-left" />
-//         <div id="map" />
-//         <div className="output-right" />
-//       </div>
-//     );
-//   }
-// }
-    carMeMaybe() {
-        return (
-            <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
-        );
-    }
+  //   render() {
+  //     return (
+  //       <div className="gas-pane-body">
+  //         <div className="output-left" />
+  //         <div id="map" />
+  //         <div className="output-right" />
+  //       </div>
+  //     );
+  //   }
+  // }
+  carMeMaybe() {
+    return (
+      <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
+    );
+  }
 
-    render() {
-        let avgmpg = (parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg)) / 2;
-        return (
-            <div className="gas-pane-body">
-                <div className="output-left">
-                    <div className="output-head"> On the Road With</div>
-                    <div className="output-data-container">
-                        <div className="output-car-name">{this.props.vehicles.name}</div>
-                        <div className="output-data"> Year: {this.props.vehicles.year} </div>
-                        <div className="output-data">Make: {this.props.vehicles.make} </div>
-                        <div className="output-data">Model: {this.props.vehicles.model} </div>
-                        <div className="output-data">Average MPG: {avgmpg} </div>
-                        <div className="output-data"> </div>
-                    </div>
-                    {this.carMeMaybe()}
-                </div>
-                <div id="map"></div>
-                <div className="output-right"></div>
-            </div>
-        )
-    }
+  render() {
+    let avgmpg = (parseInt(this.props.vehicles.hwyMpg) + parseInt(this.props.vehicles.cityMpg)) / 2;
+    return (
+      <div className="gas-pane-body">
+        <div className="output-left">
+          <div className="output-head"> On the Road With</div>
+          <div className="output-data-container">
+            <div className="output-car-name">{this.props.vehicles.name}</div>
+            <div className="output-data"> Year: {this.props.vehicles.year} </div>
+            <div className="output-data">Make: {this.props.vehicles.make} </div>
+            <div className="output-data">Model: {this.props.vehicles.model} </div>
+            <div className="output-data">Average MPG: {avgmpg} </div>
+            <div className="output-data"> </div>
+          </div>
+          {this.carMeMaybe()}
+        </div>
+        <div id="map"></div>
+        <div className="output-right"></div>
+      </div>
+    )
+  }
 }
 
 
 const mapStateToProps = state => ({
   maps: state.maps,
-  maxDistance: state.maps.maxDistance
+  address: state.maps.address,
+  maxDistance: state.maps.maxDistance,
+  timeToFood: state.maps.timeToFood,
+  timeToHotel: state.maps.timeToHotel
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -511,6 +506,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(GasPaneBody);
