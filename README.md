@@ -1,7 +1,9 @@
-
-## Wayfarer
+# Wayfarer [(Live)](http://boiling-sierra-91034.herokuapp.com/)
 
 Wayfarer is an app designed to facilitate adventure across the open roads of America.
+
+![alt-text](https://github.com/genxhero/wayfarer/readme-assets/WayfarerPage.PNG "Add vehicle form - first page guest sees")
+
 
 # Background and Overview
  
@@ -13,122 +15,239 @@ Some days you  just want to hit the road in a random direction and explore the w
 
 Wayfarer seeks to answer these questions through eye-catching visual imagery and a well-organized presentation of data.
 
-## Wire Frames
-### Main Page
-![main page](https://s3-us-west-1.amazonaws.com/wayfarer-development/main_wireframe.png)
+# Technologies Used
+- MongoDB with Mongoose
+- Express
+- React
+- Redux
+- Node
+- Google Places, Routes, and Maps APIs
 
-
-# Functionality and MVP
-
-## User Auth
-
-When a new user creates an account, they will be asked to fill out the following fields which will be saved to our database:
-
-*  Username: The user's desired screen name; validated for uniqueness and presence.
-*  Password:  The user's desired password.  Users will not be permitted to enter certain overly used passwords such as "password", "abc123", "swordfish", et cetera.
-*  Email: User's current email address, to be used for password recovery and notifications
-
-In addition, the sign up page will require information about the user's primary automobile:
-
-*  Name: A reference name under which the vehicle will be restored; by default this name is "Primary".
-*  City MPG: The vehicle's primaryapproximate miles per gallon when driving on city streets.
-*  Highway MPG: The vehicle's approximate miles per gallon when driving on the open road.
-*  Tank Size: The size in American gallons of the vehicle's gasoline tank.
-
-A user can actually use the app to plan their next adventure, but their vehicle information will not be saved.
-
-## Go the Distance
-Given a percentage of a full tank of gasoline, information about the user's vehicle, and data from the Google maps API, Wayfarer will find the farthest gasoline station (or group of stations) that can be reached without filling up in every direction and then visualize a spread starting at the user's current location.
-
-
-## Lay Your Weary Head to Rest
-Given a number of desired driving hours and a final destination, Wayfarer will extrapolate an approximate distance from the user's location and find a cluster of lodging within a reasonable radius of the furthest possible highway offramp along their route.  The pathway between each checkpoint will be be displayed in a different randomly selected color.
-
-## Bonus Feature 1:  Vista Points
-
-Our database will hold a table of vista points with lat/long coordinates.
-
-The user will be able to see these vista points along their trip route.
-
-If the vista point is off the beaten path somewhere, a separate visualization of how far they can reasonably drive given their mpg will be displayed in a different color over the current spread.
-
-# Technologies and Technical Challenges
-
-
-
-## Backend: Google API, Mongo, Express, Node 
-
-The Google maps api will provide us with global coordinate data  that our frontend will use 
-
-
-
-## Frontend: React
-
-Our user interface will consist of  the following components:
-
-*  A main display window where we will output our visualization. It will be framed by the other components.
-
-*  Top: A multi-pane form component where a user can use one of features of the app.  When information is entered in the active pane, the visualization will update  
-
-*  Right: Detailed information about hotels, gas stations, points of interest in a selected checkpoint.
-
-*  Left:  A selectable list of end checkpoints (gas station, exit with lodging, et cetera).
-
-* Bottom: Approximate distance drivable, disclaimer
 
 
 ## Dependencies
+  - [React](https://www.npmjs.com/package/react)
+  - [Redux](https://www.npmjs.com/package/redux)
+  - [Express](https://www.npmjs.com/package/express)
+  - [create-react-app](https://www.npmjs.com/package/create-react-app)
+  - [BCrypt JS](https://www.npmjs.com/package/bcryptjs)
+  - [Body-Parser](https://www.npmjs.com/package/body-parser)
+  - [concurrently](https://www.npmjs.com/package/concurrently)
+  - [csv-streamify](https://www.npmjs.com/package/csv-streamify)
+  - [fueleconomygov](https://www.npmjs.com/package/fueleconomygov)
+  - [google-map-react](https://github.com/google-map-react/google-map-react)
+  - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+  - [lodash](https://www.npmjs.com/package/lodash)
+  - [mongoose](https://www.npmjs.com/package/mongoose)
+  - [passport](https://www.npmjs.com/package/passport)
+  - [passport-jwt](https://www.npmjs.com/package/passport-jwt)
+  - [react-dom](https://www.npmjs.com/package/react-dom)
+  - [react-redux](https://www.npmjs.com/package/react-redux)
+  - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+  - [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+  - [validator](https://www.npmjs.com/package/validator)
+  - [axios](https://www.npmjs.com/package/axios)
+  - [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+  - [React Places Autocomplete](https://github.com/hibiken/react-places-autocomplete)
+  - [react-scripts](https://www.npmjs.com/package/react-scripts)
 
-This project uses the following Node packages:
-*  express 
-*  mongoose
-*  passport
-*  passport-jwt
-*  jsonwebtoken
-*  body-parser
-*  bcryptjs
-*  validator
-*  nodemon
 
-## Challenges
+# Key Features
 
-The first and most basic challenge lies in finding out how we can use our frontend code to map the data we receive from the API into a format that the user will find visually appealing and easy to understand.
+## Map (provided by Google Maps API):
 
-# Things Accomplished Over the Weekend
+Intro:
+After the user inputs the gas percentage of his/her tank,  our map would give the prediction of about what location his/her car would run out of gas, which alerts users to refuel before that location. It would also find out the nearby gas stations around that place, so if there is no gas station the user could be informed to refuel ahead of time. It can let users input planned driving time before his/her meal and sleep as well, thus our users can book restaurant or a hotel to avoid waiting or rooms sold out.
 
-* Completed this proposal
+Technologies:
+Google Maps API
+HTML5 Geolocation API
+eploy.js: Google Maps API Extension
+map-icons.js: Custom Marker
+
+Core Features:
+1. Calculate locaton
+    First use google maps route -steps
+    Second use polyline for single long step
+2. Creating custom markers
+
+![alt-text](https://github.com/genxhero/wayfarer/readme-assets/MapDemo.PNG "Wayfarer map with icons")
+
+-----
+
+## Using Wayfarer as a guest vs. logging in
+While Wayfarer encourages you to jump right in by adding a vehicle and planning your trip, we also allow you to register in order to save the data for the cars you use most! The vehicle index saves your car data to our database so you can select the vehicle you intend to use for your road trip.
+
+![alt-text](https://github.com/genxhero/wayfarer/readme-assets/DemoVehicleIndex.PNG "Logged In User Vehicle Index")
+
+In order to provide a seamless experience, the login page redirects to the vehicles page after login.  After selecting a vehicle, you are linked to the core Wayfarer widget which calculates the distance to the furthest gas station you can reach, as well as the hotels and restaurants along the way based on how long you want to drive.  To prevent issues where the Wayfarer widget lacks the information needed to make these calculations, the route is protected - if there is no vehicle in state, then you will be redirected either to the add vehicle form or the vehicles index, depending on whether you are a guest or an authorized user.
+
+```const ProtectedDistance = ({ component: Component, path, isVehicle, loggedIn, exact }) => (
+  <Route path={path} exact={exact} render={(props) => (
+      isVehicle ? (
+        <Component {...props} />
+      ) : (
+      loggedIn ? (
+        <Redirect to="/vehicles" />
+      ) : (
+        <Redirect to="/addvehicle" />
+      )
+      )
+  )} />
+);
+```
+
+Additionally, making sure that the state was properly passed was a bit more challenging than expected.  When going to the Wayfarer widget from the vehicle index, the vehicles slice of state contains an array of all vehicles associated with a user - clearly a suboptimal state to be passed to the widget when the information for exactly one car is required.  Fortunately, with Redux, it's fairly easy to control state - instead of merging state like in most cases, having the vehicles reducer just return the state and rely on API calls for fetching one or all of a user's vehicles worked perfectly in combination with the correct React lifecycle methods.
 
 
-# Group Members and Work Breakdown
+The Vehicles Reducer
 
-## Aaron Goddard
-* Sunday: Work with CSS styling for User Auth (use dummy components)
-* Monday: Car models frontend and backend
-* Tuesday: Continue Monday's work
-* Wednesday: Vista points w/ Google API backend and frontend
-* Thursday: Continue Wednesday's work
-* Friday: Integration of all features
-* Saturday: Continue integration
-* Sunday: Continue integration
+```
+export default (state= {}, action) =>{
+  Object.freeze(state);
+  switch(action.type) {
+      case RECEIVE_VEHICLE:
+        return action.payload
+      case RECEIVE_VEHICLES:
+        return action.payload
+      default:
+        return state;
+  }
+};
+```
 
-## Cassandra McClure
-* Sunday: Finish User Auth - connect React
-* Monday: Google API backend for hotels and frontend
-* Tuesday: Continue Monday's work
-* Wednesday: Work on Saved Trips and protecting user data
-* Thursday: Continue Wednesday's Work
-* Friday: Integration of all features
-* Saturday: Continue integration
-* Sunday: Continue integration
+The life cycle call to fetch all the vehicles and the conditional to protect against edge cases
 
-## La Luo
-* Sunday: Work with the Google API and incorporate it with Wayfarer backend
-* Monday: Work on React components for Google Maps API and Google Geometry for gas stations
-* Tuesday: Continue Monday's work
-* Wednesday: Work on Restaurants backend w/ Google Maps API and Google Geometry
-* Thursday: Continue Wednesday's work
-* Friday: Integration of all features
-* Saturday: Continue integration
-* Sunday: Continue integration
+```componentDidMount () {
+    this.props.fetchUserVehicles();
+  }
 
+  render() {
+  let vehicles = "";
+  if (this.props.vehicles) {
+    vehicles = Object.values(this.props.vehicles).map(vehicle => <VehicleIndexItem
+      key={vehicle._id}
+      vehicle={vehicle}
+      fetchVehicle={this.props.fetchVehicle}
+      receiveVehicle={this.props.receiveVehicle}/>
+      );
+  } else {
+    vehicles = "No vehicles found"
+  }
+```
+
+The vehicle item call and API call to change the vehicles slice of state
+
+```
+  handleClick(e) {
+    this.props.fetchVehicle(this.props.vehicle._id);
+  }
+  ...
+  export const fetchVehicle = (vehicleId) => dispatch => (
+  axios
+  .get(`/api/vehicles/${vehicleId}`)
+  .then(res => dispatch(receiveVehicle(res.data)))
+  .catch(err => dispatch({type: GET_VEHICLE_ERRORS, payload: err.response.data}))
+)
+```
+
+Overall, Wayfarer relies a lot on pieces of state being the right things at the right time, sometimes even within the same component.
+
+---------
+
+## Vehicle Information
+
+### Challenges and Solutions
+
+So that a user could choose to use our app without registering  I found that the best solution was to create two separate backend routes: one that checked jwt for a current user, and one that did not.  Then we would employ logic on the frontend to determine which route would get called on from our new vehicle frontend component.
+
+The route``api/vehicles/addoffline`` was relatively simple, as it only needed to create a new vehicle and pass a json object to the frontend.  
+
+In order for a logged in user to be associated with their cars properly, we needed to get past our first hurdle: that associations within a mongo database aren't nearly as intuitive as they are in relational databases.
+
+Many hours of intensive research and experimenting gave birth to the following solution:
+
+*  Export both a model and a schema from the Vehicle model file.
+
+```javascript
+const Vehicle = mongoose.model("vehicle", VehicleSchema);
+module.exports = {
+    VehicleSchema: VehicleSchema,
+    Vehicle: Vehicle
+};
+```
+
+*  Import and the model into the routes file, where we used it to create our vehicle database entries
+```javascript
+const Vehicle = require("../../models/Vehicle").Vehicle;
+...
+ const newVehicle = new Vehicle({
+        name: req.body.name,
+        make: req.body.make,
+        model: req.body.model,
+        year: req.body.year,
+        hwyMpg: req.body.hwyMpg,
+        cityMpg: req.body.cityMpg,
+        tankSize: req.body.tankSize
+      });
+      newVehicle.maxRouteLength =
+        ((newVehicle.hwyMpg + newVehicle.cityMpg) / 2) 
+        * newVehicle.tankSize;
+```
+*  Import the schema into the User model file
+```javascript
+const VehicleSchema = require('./Vehicle').VehicleSchema;
+```
+*  Nest the schema inside the User schema by wrapping it in square brackets.
+```javascript
+ },
+  vehicles: [VehicleSchema]
+});
+```
+*  Find the current user in the database, and push the newly minted vehicle onto the user's vehicles array, then save the user.
+```javascript
+        owner.vehicles.push(newVehicle);
+        owner.save();
+```
+
+*  Finally, we save our vehicle and send a json object to our frontend.
+
+```javascript
+  newVehicle
+   .save()
+   .then(vehicle => res.json(vehicle));
+```
+
+
+The very next challenge that we faced was that the user's vehicles array was never saving and the code was going straight to the `newVehicle.save()` at the end of the ``/addonline`` route function. To fix this, we used the async/await in order to allow ``the User.save()`` function to complete prior to the execution of the remaining code:
+
+```javascript
+router.post(
+  "/addonline", 
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    . . .
+```
+After cleaning everything up, this is what we came up with:
+```javascript
+    owner.vehicles.push(newVehicle);
+    owner = await owner.save();
+      newVehicle
+      .save()
+      .then(vehicle => res.json(vehicle));
+```
+
+In overcoming this challenge we learned:
+   *  That Mongo Database models gain an id immediately upon instantiation.  During debugging we were able to determine that, indeed, each instance of Vehicle had a unique id that we could see in the console.
+   *  That Javascript's ``async/await`` pattern can be very useful when one wants to save two database models in the same function.
+
+# Future Features
+- More accurate pathfinding for Wayfarer target locations
+- More information on Wayfarer target locations
+- Saved trips for logged in users
+- Add vista points to wayfarer target locations
+
+## Current Issues
+- Map rerender after putting in information is currently bugged
+- Styling breaks when too many errors or unexpected errors occur with user inputs
 
