@@ -32,7 +32,7 @@ module.exports = function validateRegistrationInput(data) {
 // trillions of characters to crash your db, or use the password characters to execute an attack...somehow
 
   if (!Validator.isLength(data.password, {min: 8, max:32})) {
-    errors.password = "Password must be greater than 8 characters"
+    errors.password = "Password must be between 8 and 32 characters"
   }
 
   if (Validator.isEmpty(data.password)) {
@@ -42,11 +42,11 @@ module.exports = function validateRegistrationInput(data) {
 // Password2 is essentially the "Confirm your password" field
 
   if (!Validator.isLength(data.password2, { min: 8, max: 32 })) {
-    errors.password2 = "Password must be greater than 8 characters"
+    errors.password2 = "No, really, between 8 and 32"
   }
 
   if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Password field is required"
+    errors.password2 = "Please confirm your password"
   }
 
   if (!Validator.equals(data.password, data.password2)) {

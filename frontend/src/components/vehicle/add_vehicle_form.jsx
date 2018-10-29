@@ -56,57 +56,31 @@ class AddVehicleForm extends React.Component  {
   }
 
   render(){
-    return(
-      <div className="add-car-page">
+    return <div className="add-car-page">
         <div className="add-car-form-container">
           <form className="add-car-form" onSubmit={this.handleSubmit}>
             {this.renderErrors()}
-            <input
-            type="text"
-            className="add-car-field"
-            placeholder="Name your vehicle"
-            onChange={this.update("name")}
-             />
-            <input
-              type="number"
-              className="add-car-field"
-              placeholder="Vehicle year (e.g. 1997)"
-              onChange={this.update("year")}
-            />
-            <input
-              type="text"
-              className="add-car-field"
-              placeholder="Vehicle make (e.g., Oldsmobile)"
-              onChange={this.update("make")}
-            />
-            <input
-              type="text"
-              className="add-car-field"
-              placeholder="Vehicle model (e.g., Cutlass Supreme)"
-              onChange={this.update("model")}
-            />
-            <input
-              type="number"
-              className="add-car-field"
-              placeholder="Size of vehicle fuel tank in gallons"
-              onChange={this.update("tankSize")}
-            />
-
+            <input type="text" className="add-car-field" placeholder="Name your vehicle" onChange={this.update("name")} />
+            <input type="number" className="add-car-field" placeholder="Vehicle year (e.g. 1997)" onChange={this.update("year")} />
+            <input type="text" className="add-car-field" placeholder="Vehicle make (e.g., Oldsmobile)" onChange={this.update("make")} />
+            <input type="text" className="add-car-field" placeholder="Vehicle model (e.g., Cutlass Supreme)" onChange={this.update("model")} />
+            <input type="number" className="add-car-field" placeholder="Size of vehicle fuel tank in gallons" onChange={this.update("tankSize")} />
 
             <div className="car-mpg-container">
-              <input className="add-car-field" placeholder="MPG City" type="number" onChange={this.update("cityMpg")}/>
+              <input className="add-car-field" placeholder="MPG City" type="number" onChange={this.update("cityMpg")} />
               <input className="add-car-field" placeholder="MPG Highway" type="number" onChange={this.update("hwyMpg")} />
             </div>
             <span>
-              Don't know your car's mpg? <a href="https://www.fueleconomy.gov/mpg/MPG.do">Click Here!</a>
+              Don't know your car's mpg? <a href="https://www.fueleconomy.gov/mpg/MPG.do" rel="noopener noreferrer" target="_blank">
+                Click Here!
+              </a>
             </span>
-            <button type="submit"
-            className="new-car-submit" 
-            >Add Car</button>
+            <button type="submit" className="new-car-submit">
+              Add Car
+            </button>
           </form>
         </div>
-      </div>
-    );
+      </div>;
   }
 };
 
