@@ -1,6 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
 import {Link} from "react-router-dom";
-import {connect} from "react-redux";
 const google = window.google;
 const mapIcons = window.mapIcons;
 const MarkerClusterer = window.MarkerClusterer;
@@ -509,6 +509,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(GasPaneBody);
-
-
-
