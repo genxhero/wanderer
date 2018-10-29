@@ -42,11 +42,23 @@ module.exports = function validateVehicle(data) {
     // }
 
     if (Validator.isEmpty(data.year)) {
-        errors.year = "Vehicle year can not be blank";
+      errors.year = "Vehicle year can not be blank";
     }
 
     if (data.model === "Rocket 69" || data.make === "Corvega"){
-        errors.model = "Hey, this ain't Fallout. Try again.";
+      errors.model = "Hey, this ain't Fallout. Try again.";
+    }
+
+    if (Validator.isEmpty(data.hwyMpg)) {
+      errors.hwyMpg = "Highway MPG can not be blank";
+    }
+
+    if (Validator.isEmpty(data.cityMpg)) {
+      errors.cityMpg = "City MPG can not be blank";
+    }
+
+    if (Validator.isEmpty(data.tankSize)) {
+      errors.tankSize = "Tank Size can not be blank";
     }
 
 
