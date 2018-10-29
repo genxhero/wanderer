@@ -26,24 +26,6 @@ class GasPaneHead extends React.Component {
       this.toggleFunmode = this.toggleFunmode.bind(this);
     }
 
-    // calculateMaxDistance() {
-    //   let newForm = Object.assign({}, this.state.formData);
-    //   let actualPercent = parseInt(this.state.formData.percentFull, 10);
-    //   let actualMax = (this.props.maxDistance * actualPercent) * 16.09344;
-    //   newForm.percentFull = actualPercent;
-    //   newForm.maxDistance = actualMax;
-    //   this.setState({formData: newForm});
-    // }
-
-    // calculateHours() {
-    //   let newForm = Object.assign({}, this.state.formData);
-    //   let actualHotel = parseInt(this.state.formData.timeToHotel, 10) * 3600
-    //   let actualFood = parseInt(this.state.formData.timeToFood, 10) * 3600
-    //   newForm.timeToHotel = actualHotel;
-    //   newForm.timeToFood = actualFood;
-    //   this.setState({ formData: newForm });
-    // }
-
     update(field) {
       return e => {
       let newForm = Object.assign({}, this.state.formData);
@@ -70,7 +52,6 @@ class GasPaneHead extends React.Component {
       newForm.maxDistance = Math.trunc(actualMax);
       newForm.timeToHotel = actualHotel;
       newForm.timeToFood = actualFood;
-      console.log(newForm);
       this.props.receiveMapData(newForm);
     }
 
@@ -85,7 +66,6 @@ class GasPaneHead extends React.Component {
 
   shadowSubmit(){
     const vroom = new Audio();
-    console.log("the script is running");
     vroom.src = "https://s3-us-west-1.amazonaws.com/wayfarer-sounds/BMW%2BDRIVEBY.mp3";
     vroom.play();
     const shadow = document.getElementsByClassName('shadow-submit')[0];

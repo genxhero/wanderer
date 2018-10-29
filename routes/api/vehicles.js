@@ -42,7 +42,6 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
    const { errors, isValid } =  validateVehicle(req.body);
-  // const isValid = true;
 
     if (!isValid) {
       return res.status(400).json(errors);
@@ -61,7 +60,6 @@ router.post(
         * newVehicle.tankSize;
 
       if (req.user) {
-          
         newVehicle.owner = req.user.id;
         let owner = await User.findOne({
           _id: req.user._id

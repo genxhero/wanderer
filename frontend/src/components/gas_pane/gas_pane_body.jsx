@@ -100,7 +100,6 @@ class GasPaneBody extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.maxDistance !== nextProps.maxDistance) {
-      // console.log('new props');
       this.setState({
         maxDistance: nextProps.maxDistance,
         destination: nextProps.maps.address,
@@ -375,7 +374,6 @@ class GasPaneBody extends React.Component {
 
     // var markerCluster = new MarkerClusterer(this.map, this.markers,
     //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-    // console.log(markerCluster);
     // this.markers = [];
   }
 
@@ -392,9 +390,6 @@ class GasPaneBody extends React.Component {
   }
 
   callback(results, status) {
-    console.log("results", results);
-    console.log("status", status);
-
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         this.createMarker(results[i]);
@@ -453,16 +448,6 @@ class GasPaneBody extends React.Component {
     });
   }
 
-  //   render() {
-  //     return (
-  //       <div className="gas-pane-body">
-  //         <div className="output-left" />
-  //         <div id="map" />
-  //         <div className="output-right" />
-  //       </div>
-  //     );
-  //   }
-  // }
   carMeMaybe() {
     return (
       <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
