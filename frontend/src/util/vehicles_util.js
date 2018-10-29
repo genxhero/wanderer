@@ -1,7 +1,4 @@
 import axios from "axios";
-// import jwt_decode from 'jwt-decode';
-
-// const $ = window.$;
 
 export const RECEIVE_VEHICLE = 'RECEIVE_VEHICLE';
 export const RECEIVE_VEHICLES = 'RECEIVE_VEHICLES';

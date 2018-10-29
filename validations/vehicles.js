@@ -11,10 +11,11 @@ module.exports = function validateVehicle(data) {
   data.name = !isEmpty(data.name) ? data.name : "";
   data.make = !isEmpty(data.make) ? data.make : "";
   data.model = !isEmpty(data.model) ? data.model : "";
-  data.year = !isEmpty(data.year) ? data.year : NaN;
-    data.tankSize = !isEmpty(data.tankSize) ? data.tankSize : NaN;
-    data.hwyMpg = !isEmpty(data.hwyMpg) ? data.hwyMpg : NaN;
-    data.cityMpg = !isEmpty(data.cityMpg) ? data.cityMpg : NaN;
+
+  data.year = !isEmpty(data.year) ? data.year : "";
+    data.tankSize = !isEmpty(data.tankSize) ? data.tankSize : "";
+    data.hwyMpg = !isEmpty(data.hwyMpg) ? data.hwyMpg : "";
+    data.cityMpg = !isEmpty(data.cityMpg) ? data.cityMpg : "";
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name can not be blank";
@@ -41,12 +42,26 @@ module.exports = function validateVehicle(data) {
     // }
 
     if (Validator.isEmpty(data.year)) {
-        errors.year = "Vehicle year can not be blank";
+      errors.year = "Vehicle year can not be blank";
     }
 
-    if (data.model === "Rocket 69"){
-        errors.model = "Hey, this ain't Fallout."
+    if (data.model === "Rocket 69" || data.make === "Corvega"){
+      errors.model = "Hey, this ain't Fallout. Try again.";
     }
+
+    if (Validator.isEmpty(data.hwyMpg)) {
+      errors.hwyMpg = "Highway MPG can not be blank";
+    }
+
+    if (Validator.isEmpty(data.cityMpg)) {
+      errors.cityMpg = "City MPG can not be blank";
+    }
+
+    if (Validator.isEmpty(data.tankSize)) {
+      errors.tankSize = "Tank Size can not be blank";
+    }
+
+
 
   return { errors, isValid: isEmpty(errors) };
 };

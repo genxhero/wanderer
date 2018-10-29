@@ -8,9 +8,41 @@ class SessionForm extends React.Component {
       email: '',
       username: '',
       password: '',
-      password2: ''
+      password2: '',
+      letsgo: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+    this.letsGo = this.letsGo.bind(this);
+  }
+
+  componentDidMount(){
+    this.letsGo();
+  }
+
+  letsGo(){
+    const LETS_GO_WORDS = ["Vamanos!",
+      "Allons-y!",
+      "Goazen!",
+      "Idemo!",
+      "Mennään!",
+      "Andiamo!",
+      "Iku zo!!",
+      "Pùstiti!",
+      "Birak!",
+      "Yalla!",
+      "Dimittas!",
+      "Ambe!",
+      "Pakawalan!",
+      "Ha Tago!",
+      "Songshou!",
+      "Cia Mus!"
+    ];
+    this.setState
+    ({
+        letsgo: LETS_GO_WORDS[Math.floor(Math.random() * LETS_GO_WORDS.length)]
+     });
   }
 
   update(field) {
@@ -23,6 +55,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  handleDemo(e) {
+    this.setState({username: "DemoUser", password: "DemoDemo"});
   }
 
   renderErrors() {
@@ -38,13 +74,14 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    
     if (this.props.formType === 'Signup') {
       return (
       <div className="signup-page">
           <div className="signup-container">
             <form onSubmit={this.handleSubmit} className="signup-form">
               <span className="signup-choice">
-                Please {this.props.formType} or {this.props.navLink}
+                SIGN UP!
               </span>
               {this.renderErrors()}
               <div className="signup-inputs">
@@ -58,18 +95,19 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password2} onChange={this.update("password2")} className="signup-input" />
                 <div className="signup-bottom">
                   <div id="excite">Adventure Awaits!</div>
-                  <input className="signup-submit" type="submit" value="Allons-y!" />
+                  <input className="signup-submit" type="submit" value={this.state.letsgo} />
                 </div>
               </div>
             </form>
           </div>
         </div>);
     } else {
-      return <div className="signup-page">
+      return (
+      <div className="signup-page">
           <div className="signup-container">
             <form onSubmit={this.handleSubmit} className="login-form-box">
               <span className="signup-choice">
-                Please {this.props.formType} or {this.props.navLink}
+                LOG IN!
               </span>
               {this.renderErrors()}
             <h3 className="auth-label">Username</h3>
@@ -78,11 +116,13 @@ class SessionForm extends React.Component {
                 <input type="password" value={this.state.password} onChange={this.update("password")} className="signup-input" />
             <div className="signup-bottom">
               <div id="excite">Another Journey?</div>
-              <input className="signup-submit" type="submit" value="Vamonos!" />
+              <input className="signup-submit" type="submit" value={this.state.letsgo} />
             </div>
+            <input className="signup-submit" type="submit" onClick={this.handleDemo} value="Demo Login" />
             </form>
           </div>
-        </div>;
+        </div>
+      );
     }
   }
 }

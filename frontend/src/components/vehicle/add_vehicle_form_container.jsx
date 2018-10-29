@@ -1,4 +1,4 @@
-import { addVehicleOnline, addVehicleOffline } from "../util/vehicles_util.js";
+import { addVehicleOnline, addVehicleOffline } from "../../util/vehicles_util.js";
 import {connect} from "react-redux";
 import AddVehicleForm from "./add_vehicle_form";
 
