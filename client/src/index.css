@@ -422,7 +422,7 @@ input:focus {
   position: relative;
   height: 60px;
   width: 120px;
-
+  border-radius: 4px;
   text-align: center;
   top: 0;
   z-index: 300;
@@ -431,7 +431,8 @@ input:focus {
   display:flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background: #FFA500;
+  /* background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg"); */
 }
 
 .gas-pane-submit > span {
@@ -541,12 +542,14 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 
   width: 100%;
   position: relative;
-      height: 25px;
+  border-radius: 4px;
+      height: 30px;
   
   padding-top: 10px;
   z-index: 200;
   bottom: 20px;
-  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background: #BA4603;
+  /* background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg"); */
   background-position: bottom;
 }
 
@@ -896,7 +899,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 }
 
 .new-car-link:hover {
-  background:#112127;
+  background:#919191;
   transition: all .2s;
   color: #fF8c5f;
 }
