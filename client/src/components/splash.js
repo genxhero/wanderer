@@ -30,14 +30,14 @@ const SplashCreators = () => (
       <span className="splash-info">Cassandra McClure</span>
       <span>
         {" "}
-        <a href="" className="creator-link">Linkedin</a> <a href="" className="creator-link">GitHub</a>{" "}
+        <a href="https://www.linkedin.com/in/cassmcclure/" className="creator-link">Linkedin</a> <a href="https://github.com/uncertainkitten/" className="creator-link">GitHub</a>{" "}
       </span>
     </div>
     <div className="splash-creator">
       <span className="splash-info">La Luo</span>
       <span>
         {" "}
-        <a href="" className="creator-link">Linkedin</a> <a href="" className="creator-link">GitHub</a>{" "}
+        <a href="https://www.linkedin.com/in/la-luo-637b4a94/" className="creator-link">Linkedin</a> <a href="https://github.com/Rola1993" className="creator-link">GitHub</a>{" "}
       </span>
     </div>
   </div>
@@ -74,12 +74,14 @@ const SplashInstructions = () => (
     </span>
     <span className="splash-info"> Step 3: Hit the button and let us do the rest</span>
     <span className="splash-info">The open road awaits!</span>
+
   </div>
 );
 
 const SplashEasterEgg = () => (
   <div className="splash-container">
     <p className="splash-info">Wow. You sure clicked that button an awful lot of times.  Well, congratulations, you've found me. It's a secret to everybody!</p>
+
   </div>
 );
 //clickcount % length
@@ -107,7 +109,8 @@ class Splash extends React.Component {
         <div className="splash-page">
        
           {this.state.clickCount === 100 ? <SplashEasterEgg /> : this.components[this.state.clickCount % this.components.length]}
-            <div className="splash-carousel-nav" onClick={this.carousel}></div>
+          <div className="splash-carousel-nav" onClick={this.carousel}></div>
+
         </div>
       );
     }

@@ -66,8 +66,8 @@ background-image: url('https://marketplace.canva.com/MAB_Od_qEcQ/1/thumbnail_lar
 background-size: contain;
 background-repeat: no-repeat;
 padding: 20px;
-position: absolute;
-right: 38rem;
+position: relative;
+right: 60px;
 }
 
 .splash-carousel-nav:hover {
