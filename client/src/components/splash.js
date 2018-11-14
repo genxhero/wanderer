@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -7,11 +7,11 @@ const mapStateToProps = state => ({
 });
 
 const SplashWelcome = () => (
-  <div className="splash-container">
+  <div className="splash-container" id="splash-welcome">
     <h1 className="splash-title"> Welcome to Wayfarer!</h1>
-    <span className="splash-info">Find convenient gas stations</span>
-    <span className="splash-info">Know where the food is</span>
-    <span className="splash-info">Have a better idea of where to find lodging</span>
+    <span className="splash-info">A web app for facilitating adventure!</span>
+    <span className="splash-info">Make trip planning a breeze!</span>
+    <span className="splash-info">Explore new places!</span>
     <span className="splash-info">The open road awaits!</span>
  </div>   
 );
@@ -19,9 +19,33 @@ const SplashWelcome = () => (
 const SplashInstructions = () => (
   <div className="splash-container">
     <h1 className="splash-title"> How To Use</h1>
-    <span className="splash-info">1) </span>
-    <span className="splash-info"> </span>
-    <span className="splash-info">Have a better idea of where to find lodging</span>
+    <span className="splash-info">
+     Step 1: Enter information about
+      <Link className="header-session-link" to="/addvehicle">
+        your vehicle
+      </Link>
+    </span>
+    <span className="splash-info">
+      (You can
+      <Link className="header-session-link" to="/login">
+        Login
+      </Link>
+      or
+      <Link className="header-session-link" to="/signup">
+        Sign up!
+      </Link>
+      to save your vehicle
+    information for later use!)
+    </span>
+    <span className="splash-info">
+      Step 2: Tell us
+      <ul>
+        <li>Your destination</li>
+        <li>How full your gas tank is</li>
+        <li>How long you're willing to drive between food/sleep</li>
+      </ul>
+    </span>
+    <span className="splash-info"> Step 3: Hit the button and let us do the rest</span>
     <span className="splash-info">The open road awaits!</span>
   </div>
 );
@@ -39,7 +63,7 @@ class Splash extends React.Component {
     this.state = {
       clickCount: 0
     }
-    this.components = [<SplashInstructions/>, <SplashWelcome/>];
+    this.components = [<SplashWelcome />, <SplashInstructions />];
     this.carousel = this.carousel.bind(this);
   }
 
@@ -56,7 +80,7 @@ class Splash extends React.Component {
         <div className="splash-page">
        
           {this.state.clickCount === 100 ? <SplashEasterEgg /> : this.components[this.state.clickCount % this.components.length]}
-            <button className="splash-carousel-nav" onClick={this.carousel}>More</button>
+            <div className="splash-carousel-nav" onClick={this.carousel}></div>
         </div>
       );
     }
