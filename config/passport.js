@@ -8,8 +8,6 @@ const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: keys.secretOrPrivateKey
 };
-// options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-// options.secretOrKey = keys.secretOrPrivateKey;
 
 module.exports = passport => {
   passport.use(new JwtStrategy(options, (payload, done) => {
