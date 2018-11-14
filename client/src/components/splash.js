@@ -16,22 +16,49 @@ const SplashWelcome = () => (
  </div>   
 );
 
+const SplashCreators = () => (
+  <div className="splash-container" id="splash-welcome">
+    <h1 className="splash-title"> Team Wayfarer</h1>
+    <div className="splash-creator">
+      <span className="splash-info">Aaron Goddard</span>
+      <span>
+        {" "}
+        <a href="https://linkedin.com/in/genxhero/" className="creator-link">Linkedin</a> <a href="https://github.com/genxhero" className="creator-link">GitHub</a>{" "}
+      </span>
+    </div>
+    <div className="splash-creator">
+      <span className="splash-info">Cassandra McClure</span>
+      <span>
+        {" "}
+        <a href="" className="creator-link">Linkedin</a> <a href="" className="creator-link">GitHub</a>{" "}
+      </span>
+    </div>
+    <div className="splash-creator">
+      <span className="splash-info">La Luo</span>
+      <span>
+        {" "}
+        <a href="" className="creator-link">Linkedin</a> <a href="" className="creator-link">GitHub</a>{" "}
+      </span>
+    </div>
+  </div>
+);
+
 const SplashInstructions = () => (
   <div className="splash-container">
     <h1 className="splash-title"> How To Use</h1>
     <span className="splash-info">
      Step 1: Enter information about
-      <Link className="header-session-link" to="/addvehicle">
+      <Link className="splash-session-link" to="/addvehicle">
         your vehicle
       </Link>
     </span>
     <span className="splash-info">
       (You can
-      <Link className="header-session-link" to="/login">
+      <Link className="splash-session-link" to="/login">
         Login
       </Link>
       or
-      <Link className="header-session-link" to="/signup">
+      <Link className="splash-session-link" to="/signup">
         Sign up!
       </Link>
       to save your vehicle
@@ -63,7 +90,7 @@ class Splash extends React.Component {
     this.state = {
       clickCount: 0
     }
-    this.components = [<SplashWelcome />, <SplashInstructions />];
+    this.components = [<SplashWelcome />, <SplashInstructions />, <SplashCreators/>];
     this.carousel = this.carousel.bind(this);
   }
 
