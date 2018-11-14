@@ -972,9 +972,9 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 .select-your-vehicle:hover {
   /* box-shadow: 0px 0px 10px 6px green; */
   /* box-shadow: 0px 0px 10px 4px gray; */
-  background:#112127;
+  background:#6a7e86;
   transition: all .2s;
-  color: #fF8c5f;
+  color: #ef4b27;
 }
 
 .cool-mode {
