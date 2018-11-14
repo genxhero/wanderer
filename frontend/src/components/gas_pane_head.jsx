@@ -1,6 +1,7 @@
 import React from 'react';
 import PlacesAutocomplete, {
   geocodeByAddress,
+  geocodeByPlaceId,
   getLatLng
 } from "react-places-autocomplete";
 class GasPaneHead extends React.Component {
@@ -99,13 +100,16 @@ class GasPaneHead extends React.Component {
         <div className="gas-pane-form-container">
           <form className="gas-pane-form" onSubmit={this.handleSubmit}>
             <div className="gas-pane-input">
-            <LocationSearchInput className="gas-pane-input-field" handleAddress={this.handleAddress} />
+              <LocationSearchInput className="gas-pane-input-field" handleAddress={this.handleAddress}/>
               <div className="percent-container">
-                <span className={
+                <span
+                  className={
                     this.state.funmode === true
                       ? "percent-label-fun"
                       : "percent-label"
-                  }>How full is you tank?
+                  }
+                >
+                  How full is you tank?
                 </span>
 
                 <span className="percent-sign">%</span>
@@ -147,6 +151,7 @@ class LocationSearchInput extends React.Component {
   };
 
   handleSelect = address => {
+    this.handleChange(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.props.handleAddress(latLng))
@@ -160,16 +165,15 @@ class LocationSearchInput extends React.Component {
         onChange={this.handleChange}
         onSelect={this.handleSelect}
       >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        {({ getInputProps, suggestions, getSuggestionItemProps}) => (
           <div>
             <input
               {...getInputProps({
                 placeholder: "Where to?",
-                className: "gas-pane-input-field"
+                className: "gas-pane-input-field",
               })}
             />
             <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
                   ? "suggestion-item--active"
