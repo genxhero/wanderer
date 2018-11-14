@@ -60,7 +60,7 @@ google.maps.Polyline.prototype.GetPointsAtDistance = function(metres) {
 class GasPaneBody extends React.Component {
   constructor(props) {
     super(props);
-    if(Object.values(this.props.maps).length===0) {
+    if(Object.values(this.props.maps).length <= 0) {
         this.state = {
             curLocation: {},
             destination: { lat: 34.0522, lng: -118.2437 },
@@ -71,10 +71,10 @@ class GasPaneBody extends React.Component {
     } else {
         this.state = {
             curLocation: {},
-            destination: this.props.maps.address,
+            destination: {lat: parseFloat(this.props.address.lat), lng: parseFloat(this.props.address.lng)},
             maxDistance: this.props.maxDistance,
-            distanceToHotel: 54672,
-            distanceToFood: 18900
+            distanceToHotel: 0,
+            distanceToFood: 0
         };
     }
 
@@ -99,16 +99,19 @@ class GasPaneBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      if (this.props.maxDistance !== nextProps.maxDistance) {
-        // console.log('new props');
-        this.setState({
-            maxDistance: nextProps.maxDistance,
-            destination: nextProps.maps.address,
-            distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*65*1609,
-            distanceToFood: (parseInt(nextProps.timeToFood)/3600)*65*1609
-        });
-        this.initMap();
-      };
+    if (this.props.address !== nextProps.address){
+      this.setState({
+          maxDistance: nextProps.maxDistance,
+          destination: { lat: parseFloat(nextProps.address.lat), lng: parseFloat(nextProps.address.lng) },
+          distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*65*1609,
+          distanceToFood: (parseInt(nextProps.timeToFood)/3600)*65*1609
+    });
+  }
+    this.initMap();
+  }
+
+  componentDidUpdate(prevProps){
+    this.initMap();
   }
 
   getLocation() {
