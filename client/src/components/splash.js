@@ -14,7 +14,15 @@ class Splash extends React.Component {
       );
     } else {
       return (
-        <Redirect to="/addvehicle" />
+        <div className="splash-page">
+           <div className="splash-container">
+           <h1 className="splash-title"> Welcome to Wayfarer!</h1>
+             <span className="splash-info">Find convenient gas stations</span>
+             <span className="splash-info">Know where the food is</span>
+             <span className="splash-info">Have a better idea of where to find lodging</span>
+             <span className="splash-info">The open road awaits!</span>
+           </div>
+        </div>
       );
     }
   }

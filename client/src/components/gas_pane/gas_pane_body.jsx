@@ -450,7 +450,7 @@ class GasPaneBody extends React.Component {
 
   carMeMaybe() {
     return (
-      <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
+      <div className="output-foot"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
     );
   }
 

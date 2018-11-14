@@ -1,3 +1,41 @@
+.splash-page {
+  width: 100%;
+  height: 50rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-image: url('https://wallpapermemory.com/uploads/547/road-background-hd-2560x1440-490937.jpg');
+  background-position: center;
+}
+.splash-container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  background: orange;
+  margin-top: 40px;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 2px 2px;
+}
+
+.splash-title {
+text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: 200;
+
+}
+
+
+.splash-info {
+  color: white;
+  font-weight: 200;
+  font-size: 24px;
+  padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
+
+}
+
 .header-name {
   color: white;
   padding: 5px;
@@ -622,6 +660,20 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   font-family: 'Luckiest Guy', cursive;
 }
 
+.output-foot {
+ font-size:24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* margin: 10px; */
+  border-radius: 4px;
+  background: transparent;
+  color: #F5A540;
+  font-family: 'Luckiest Guy', cursive;
+}
+
 .output-car-name{
   font-size: 24pt;
   color: #D44A2E;
@@ -650,11 +702,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   background: #F5A540;
 }
 
-.output-foot {
-  width: 100%;
-  height: 100px;
-  display: block;
-}
+
 
 .gaspane-return-link{
    font-size:24px;
@@ -663,8 +711,8 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   margin: 10px;
   padding: 20px;
   border-radius: 4px;
-  background: #D44A2E;
-  color: #F5A540;
+  background:  #F5A540;
+  color:#D44A2E;
   font-family: 'Luckiest Guy', cursive;
   transition: all .2s;
 }
