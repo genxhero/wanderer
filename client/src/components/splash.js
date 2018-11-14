@@ -24,7 +24,12 @@ const SplashInstructions = () => (
     <span className="splash-info">Have a better idea of where to find lodging</span>
     <span className="splash-info">The open road awaits!</span>
   </div>
+);
 
+const SplashEasterEgg = () => (
+  <div className="splash-container">
+    <p className="splash-info">Wow. You sure clicked that button an awful lot of times.  Well, congratulations, you've found me. It's a secret to everybody!</p>
+  </div>
 );
 //clickcount % length
 class Splash extends React.Component {
@@ -49,7 +54,8 @@ class Splash extends React.Component {
     } else {
       return (
         <div className="splash-page">
-            {this.components[this.state.clickCount % this.components.length]}
+       
+          {this.state.clickCount === 100 ? <SplashEasterEgg /> : this.components[this.state.clickCount % this.components.length]}
             <button className="splash-carousel-nav" onClick={this.carousel}>More</button>
         </div>
       );
