@@ -984,3 +984,11 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   border: 1 px solid black;
   position: absolute;
 }
+
+.cool-mode:focus{
+  outline: none;
+}
+
+.cool-mode:active {
+  outline: none;
+}
