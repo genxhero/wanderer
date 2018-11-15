@@ -99,13 +99,21 @@ class GasPaneBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      if (this.props.maxDistance !== nextProps.maxDistance) {
+    //   if (nextProps.address === 'undefined' ) {
+    //       return;
+    //   }
+      if (this.props.maps.address !== nextProps.maps.address) {
         // console.log('new props');
+        let lat = nextProps.maps.address.lat;
+        let lng = nextProps.maps.address.lng;
+        let newDestination = new google.maps.LatLng(lat, lng);
+        console.log('newDestination',newDestination);
         this.setState({ 
             maxDistance: nextProps.maxDistance,
-            destination: { lat: 34.0522, lng: -118.2437 },
-            distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*65*1609,
-            distanceToFood: (parseInt(nextProps.timeToFood)/3600)*65*1609
+            // destination: { lat: 34.0522, lng: -118.2437 },
+            destination: newDestination,
+            distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*55*1609,
+            distanceToFood: (parseInt(nextProps.timeToFood)/3600)*55*1609
         });
         this.initMap();
       };
