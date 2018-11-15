@@ -13,28 +13,31 @@ const VehicleSchema = new schema ({
       required: true
     },
     model: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     year: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true
     },
     hwyMpg: {
-         type: Number
+      type: Number,
+      required:true
     },
     cityMpg: {
-        type: Number
+      type: Number,
+      required: true
     },
     tankSize: {
-        type: Number
+      type: Number,
+      required: true
     },
     maxRouteLength: {
-        type: Number
+      type: Number
     },
     owner:  {
-        type: schema.Types.ObjectId,
-        ref: 'User' }
+      type: schema.Types.ObjectId,
+      ref: 'User' }
 });
 
 const Vehicle = mongoose.model("vehicle", VehicleSchema);
