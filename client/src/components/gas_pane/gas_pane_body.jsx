@@ -107,7 +107,6 @@ class GasPaneBody extends React.Component {
         distanceToFood: (parseInt(nextProps.timeToFood) / 3600) * 65 * 1609
       });
     }
-    this.initMap();
   }
 
   componentDidUpdate(prevProps) {
