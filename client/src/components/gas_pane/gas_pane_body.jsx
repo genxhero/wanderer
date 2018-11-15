@@ -60,22 +60,22 @@ google.maps.Polyline.prototype.GetPointsAtDistance = function (metres) {
 class GasPaneBody extends React.Component {
   constructor(props) {
     super(props);
-    if (Object.values(this.props.maps).length === 0) {
-      this.state = {
-        curLocation: {},
-        destination: { lat: 34.0522, lng: -118.2437 },
-        maxDistance: 264672,
-        distanceToHotel: 104672,
-        distanceToFood: 18900
-      };
+    if(Object.values(this.props.maps).length <= 0) {
+        this.state = {
+            curLocation: {},
+            destination: { lat: 34.0522, lng: -118.2437 },
+            maxDistance: 264672,
+            distanceToHotel: 104672,
+            distanceToFood: 18900
+        };
     } else {
-      this.state = {
-        curLocation: {},
-        destination: this.props.maps.address,
-        maxDistance: this.props.maxDistance,
-        distanceToHotel: 54672,
-        distanceToFood: 18900
-      };
+        this.state = {
+            curLocation: {},
+            destination: {lat: parseFloat(this.props.address.lat), lng: parseFloat(this.props.address.lng)},
+            maxDistance: this.props.maxDistance,
+            distanceToHotel: 0,
+            distanceToFood: 0
+        };
     }
 
     this.initMap = this.initMap.bind(this);
@@ -99,15 +99,19 @@ class GasPaneBody extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.maxDistance !== nextProps.maxDistance) {
+    if (this.props.address !== nextProps.address){
       this.setState({
-        maxDistance: nextProps.maxDistance,
-        destination: nextProps.maps.address,
-        distanceToHotel: (parseInt(nextProps.timeToHotel) / 3600) * 65 * 1609,
-        distanceToFood: (parseInt(nextProps.timeToFood) / 3600) * 65 * 1609
-      });
-      this.initMap();
-    };
+          maxDistance: nextProps.maxDistance,
+          destination: { lat: parseFloat(nextProps.address.lat), lng: parseFloat(nextProps.address.lng) },
+          distanceToHotel: (parseInt(nextProps.timeToHotel)/3600)*65*1609,
+          distanceToFood: (parseInt(nextProps.timeToFood)/3600)*65*1609
+    });
+  }
+    this.initMap();
+  }
+
+  componentDidUpdate(prevProps){
+    this.initMap();
   }
 
   getLocation() {
