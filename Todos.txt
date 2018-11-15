@@ -1,0 +1,12 @@
+Fix the location bug - Cassandra and La - 2 hours
+
+Splash page - Aaron - 2 hours
+Make a more boring Do It button, normalize fonts, hide fun button - Aaron - 1 hour
+
+Allow user to set their own origin address - La - 1 hour (If needed, I can add the button for passing to the gas pane body, but we need interpetation code)
+Give infoboxes for restaurants/hotels/gas stations around markers - La - 2 hours? (Basically, pick the point and grab a 5 mile radius)
+
+Make Address Autocomplete Work - Cassandra - 1 hour
+
+Style and app review - All of us - 30 minutes (Check for bugs/errors, try to break the app, check for odd styling)
+
