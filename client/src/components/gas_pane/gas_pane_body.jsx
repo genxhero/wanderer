@@ -390,7 +390,12 @@ class GasPaneBody extends React.Component {
   }
 
   callback(results, status) {
+  
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      // if (results.length <= 0){
+      //    this.createMarker()
+      //     return;
+      // }
       for (var i = 0; i < results.length; i++) {
         this.createMarker(results[i]);
       }
