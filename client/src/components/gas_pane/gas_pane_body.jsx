@@ -393,7 +393,12 @@ class GasPaneBody extends React.Component {
   }
 
   callback(results, status) {
+  
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      // if (results.length <= 0){
+      //    this.createNullMarker(tresu)
+      //     return;
+      // }
       for (var i = 0; i < results.length; i++) {
         this.createMarker(results[i]);
       }
@@ -453,7 +458,7 @@ class GasPaneBody extends React.Component {
 
   carMeMaybe() {
     return (
-      <div className="output-head"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
+      <div className="output-foot"><Link className="gaspane-return-link" to={this.props.currentUser.id ? "/vehicles" : "/addvehicle"}>Back to the Garage</Link></div>
     );
   }
 

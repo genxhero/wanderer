@@ -1,3 +1,100 @@
+.splash-page {
+  width: 100%;
+  height: 45rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-image: url('https://wallpapermemory.com/uploads/547/road-background-hd-2560x1440-490937.jpg');
+  background-position: center;
+   -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.splash-container {
+  border-radius: 4px;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 600px;
+  padding: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.splash-session-link{
+  background: rgba(212,74,46, .5);
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 500;
+  text-align: center;
+   transition: all .2s;
+ 
+}
+
+.splash-session-link:hover {
+  background: #f76c4f;
+   transition: all .2s;
+    box-shadow: 0px 0px 10px 6px yellow;
+    box-shadow: 0px 0px 10px 4px red;
+}
+
+#splash-welcome{
+  align-items: center;
+}
+
+ .creator-link {
+  color: white;
+  text-decoration: none;
+}
+
+ .creator-link:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.splash-carousel-nav {
+background-image: url('https://marketplace.canva.com/MAB_Od_qEcQ/1/thumbnail_large/canva-arrow-icon-direction-button-pointer-sign-MAB_Od_qEcQ.png');
+background-size: contain;
+background-repeat: no-repeat;
+padding: 20px;
+position: relative;
+right: 60px;
+}
+
+.splash-carousel-nav:hover {
+  opacity: 0.75;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.splash-title {
+text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: 200;
+  color: white;
+
+}
+
+
+.splash-info {
+  color: white;
+  font-weight: 200;
+  font-size: 24px;
+  padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
+  line-height: 36px;
+
+}
+
 .header-name {
   color: white;
   padding: 5px;
@@ -161,18 +258,15 @@ Auth css file  */
 }
 
 
-.signup-choice {
-  color: black;
-  font-size: 12pt;
-  justify-self: center;
-  align-self: center;
-  margin-top: 25px;
-}
 
 .auth-label {
   color: black;
   margin-bottom: 5px;
-  font-size: 14pt;
+  font-size: 26px;
+  font-weight: 200;
+    color: #D44A2E;
+   font-family:  'Luckiest Guy', cursive;
+
 }
 
 .signup-inputs {
@@ -241,23 +335,23 @@ input:focus {
   text-align: center;
   font-size: 22pt;
   color: #D44A2E;
-  font-weight: bold;
+  font-weight: 200;
+  font-family:  'Luckiest Guy', cursive;
   /* text-shadow: 1px 1px black; */
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 }
 
+
+
+
 .signup-choice {
-   flex-wrap: wrap;
-  width: 50%;
-  align-self: center;
+  font-size: 40px;
+    color: #D44A2E;
+   font-family:  'Luckiest Guy', cursive;
+   font-weight: 200;
   justify-self: center;
-  margin-right: 20px;
-  text-align: center;
-  font-size: 22pt;
-  color: #D44A2E;
-  font-weight: bold;
-  /* text-shadow: 1px 1px black; */
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-self: center;
+  margin-top: 25px;
 }
 
 .login-form-box {
@@ -425,7 +519,7 @@ input:focus {
   position: relative;
   height: 60px;
   width: 120px;
-
+  border-radius: 4px;
   text-align: center;
   top: 0;
   z-index: 300;
@@ -434,7 +528,8 @@ input:focus {
   display:flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background: #FFA500;
+  /* background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg"); */
 }
 
 .gas-pane-submit > span {
@@ -544,12 +639,14 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 
   width: 100%;
   position: relative;
-      height: 25px;
+  border-radius: 4px;
+      height: 30px;
   
   padding-top: 10px;
   z-index: 200;
   bottom: 20px;
-  background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg");
+  background: #BA4603;
+  /* background-image: url("https://img00.deviantart.net/35a3/i/2007/198/0/d/metal_texture_1_by_wojtar_stock.jpg"); */
   background-position: bottom;
 }
 
@@ -622,6 +719,20 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   font-family: 'Luckiest Guy', cursive;
 }
 
+.output-foot {
+ font-size:24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* margin: 10px; */
+  border-radius: 4px;
+  background: transparent;
+  color: #F5A540;
+  font-family: 'Luckiest Guy', cursive;
+}
+
 .output-car-name{
   font-size: 24pt;
   color: #D44A2E;
@@ -650,11 +761,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   background: #F5A540;
 }
 
-.output-foot {
-  width: 100%;
-  height: 100px;
-  display: block;
-}
+
 
 .gaspane-return-link{
    font-size:24px;
@@ -663,8 +770,8 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   margin: 10px;
   padding: 20px;
   border-radius: 4px;
-  background: #D44A2E;
-  color: #F5A540;
+  background:  #F5A540;
+  color:#D44A2E;
   font-family: 'Luckiest Guy', cursive;
   transition: all .2s;
 }
@@ -899,7 +1006,7 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 }
 
 .new-car-link:hover {
-  background:#112127;
+  background:#919191;
   transition: all .2s;
   color: #fF8c5f;
 }
@@ -972,9 +1079,9 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
 .select-your-vehicle:hover {
   /* box-shadow: 0px 0px 10px 6px green; */
   /* box-shadow: 0px 0px 10px 4px gray; */
-  background:#112127;
+  background:#6a7e86;
   transition: all .2s;
-  color: #fF8c5f;
+  color: #ef4b27;
 }
 
 .cool-mode {
@@ -983,4 +1090,12 @@ box-shadow:7px 0px 2px -1px rgba(0,0,0,0.75);
   padding: 10px;
   border: 1 px solid black;
   position: absolute;
+}
+
+.cool-mode:focus{
+  outline: none;
+}
+
+.cool-mode:active {
+  outline: none;
 }
