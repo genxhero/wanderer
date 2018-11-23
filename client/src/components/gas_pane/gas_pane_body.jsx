@@ -441,7 +441,7 @@ class GasPaneBody extends React.Component {
     let text = "";
     if (place.types.includes("gas_station")) {
       markerType = "gas_station";
-      text = "Gas Statation Address: " + place.vicinity;
+      text = "Gas Station Address: " + place.vicinity;
     } else if (place.types.includes("restaurant")) {
       markerType = "food";
       text = "Restaurant Address: " + place.vicinity;
