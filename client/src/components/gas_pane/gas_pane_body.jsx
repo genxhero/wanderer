@@ -381,9 +381,6 @@ class GasPaneBody extends React.Component {
         passedDistance += myRoute.steps[i].distance.value;
     }
 
-    // console.log('hotelLocation', hotelLocation);
-    // console.log("foodLocation", foodLocation);
-
     var service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch(
       {
@@ -436,7 +433,6 @@ class GasPaneBody extends React.Component {
   }
 
   createMarker(place) {
-    console.log('place', place);
     let markerType = "";
     let text = "";
     if (place.types.includes("gas_station")) {
