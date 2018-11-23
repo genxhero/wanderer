@@ -65,16 +65,16 @@ class GasPaneBody extends React.Component {
         curLocation: {},
         destination: { lat: 34.0522, lng: -118.2437 },
         maxDistance: 264672,
-        distanceToHotel: 104672,
-        distanceToFood: 18900
+        durationToHotel: 4200,
+        durationToFood: 1500
       };
     } else {
       this.state = {
         curLocation: {},
         destination: { lat: parseFloat(this.props.address.lat), lng: parseFloat(this.props.address.lng) },
         maxDistance: this.props.maxDistance,
-        distanceToHotel: 0,
-        distanceToFood: 0
+        durationToHotel: 0,
+        durationToFood: 0
       };
     }
 
@@ -103,8 +103,8 @@ class GasPaneBody extends React.Component {
       this.setState({
         maxDistance: nextProps.maxDistance,
         destination: { lat: parseFloat(nextProps.address.lat), lng: parseFloat(nextProps.address.lng) },
-        distanceToHotel: (parseInt(nextProps.timeToHotel) / 3600) * 65 * 1609,
-        distanceToFood: (parseInt(nextProps.timeToFood) / 3600) * 65 * 1609
+        durationToHotel: parseInt(nextProps.timeToHotel),
+        durationToFood: parseInt(nextProps.timeToFood)
       });
     }
   }
@@ -274,7 +274,19 @@ class GasPaneBody extends React.Component {
   }
 
   findLocation(typeLocation, findType, passedDistance, maxDistance, steps, i, info) {
-    if (findType == false && passedDistance + steps[i].distance.value >= maxDistance) {
+    if (findType == false) {
+      var labelText = '';
+      switch (info) {
+        case 'Refuel!':
+          labelText = 'G';
+          break;
+        case 'Have a Rest!':
+          labelText = 'H';
+          break;
+        case 'Have a Meal!':
+          labelText = "F";
+          break;
+      }
       if (steps[i].distance.value > 10000) {
         var poly = new google.maps.Polyline({
           map: this.map,
@@ -288,9 +300,13 @@ class GasPaneBody extends React.Component {
 
         for (var k = 0; k < points.length; k++) {
           if (passedDistance + 5000 * k > maxDistance) {
-            var pmarker = new google.maps.Marker();
-            pmarker.setMap(this.map);
-            pmarker.setPosition(points[k]);
+
+            var pmarker = new google.maps.Marker({
+              position: points[k],
+              label: labelText,
+              map: this.map
+            });
+
             this.attachInstructionText(pmarker, info, this.map);
             typeLocation = points[k];
             findType = true;
@@ -298,10 +314,12 @@ class GasPaneBody extends React.Component {
           }
         }
       } else {
-        var marker = new google.maps.Marker();
+        var marker = new google.maps.Marker({
+          position: steps[i].start_location,
+          label: labelText,
+          map: this.map
+        });
         typeLocation = steps[i].start_location;
-        marker.setMap(this.map);
-        marker.setPosition(steps[i].start_location);
         this.attachInstructionText(marker, info, this.map);
         findType = true;
       }
@@ -315,44 +333,56 @@ class GasPaneBody extends React.Component {
     // when calculating new routes.
     var myRoute = directionResult.routes[0].legs[0];
     var passedDistance = 0;
+    var passedDuration = 0;
     let gasLocation = {};
     let hotelLocation = {};
     let foodLocation = {};
     var findGas = false;
     var findHotel = false;
     var findFood = false;
-    for (var i = 0; i < myRoute.steps.length - 1; i++) {
+    for (var i = 0; i < myRoute.steps.length; i++) {
       var marker = markerArray[i] || new google.maps.Marker();
-      [findGas, gasLocation] = this.findLocation(
-        gasLocation,
-        findGas,
-        passedDistance,
-        this.state.maxDistance,
-        myRoute.steps,
-        i,
-        'Refuel!');
 
-      [findHotel, hotelLocation] = this.findLocation(
-        hotelLocation,
-        findHotel,
-        passedDistance,
-        this.state.distanceToHotel,
-        myRoute.steps,
-        i,
-        'Have a Rest!');
+      if (passedDistance + myRoute.steps[i].distance.value >= this.state.maxDistance) {
+        [findGas, gasLocation] = this.findLocation(
+          gasLocation,
+          findGas,
+          passedDistance,
+          this.state.maxDistance,
+          myRoute.steps,
+          i,
+          'Refuel!');
+      }
 
-      [findFood, foodLocation] = this.findLocation(
-        foodLocation,
-        findFood,
-        passedDistance,
-        this.state.distanceToFood,
-        myRoute.steps,
-        i,
-        'Have a Meal!');
+      if (passedDuration + myRoute.steps[i].duration.value >= this.state.durationToHotel) {
+        var distanceToHotel = passedDistance + (this.state.durationToHotel - passedDuration) / 3600 * 60 * 1609;
+        [findHotel, hotelLocation] = this.findLocation(
+          hotelLocation,
+          findHotel,
+          passedDistance,
+          distanceToHotel,
+          myRoute.steps,
+          i,
+          'Have a Rest!');
+      }
 
-      passedDistance += myRoute.steps[i].distance.value;
+      if (passedDuration + myRoute.steps[i].duration.value >= this.state.durationToFood) {
+        var distanceToFood = passedDistance + (this.state.durationToFood - passedDuration) / 3600 * 60 * 1609;
+        [findFood, foodLocation] = this.findLocation(
+          foodLocation,
+          findFood,
+          passedDistance,
+          distanceToFood,
+          myRoute.steps,
+          i,
+          'Have a Meal!');
+      }
+        passedDuration += myRoute.steps[i].duration.value;
+        passedDistance += myRoute.steps[i].distance.value;
     }
 
+    // console.log('hotelLocation', hotelLocation);
+    // console.log("foodLocation", foodLocation);
 
     var service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch(
@@ -406,13 +436,18 @@ class GasPaneBody extends React.Component {
   }
 
   createMarker(place) {
+    console.log('place', place);
     let markerType = "";
+    let text = "";
     if (place.types.includes("gas_station")) {
       markerType = "gas_station";
+      text = "Gas Statation Address: " + place.vicinity;
     } else if (place.types.includes("restaurant")) {
       markerType = "food";
+      text = "Restaurant Address: " + place.vicinity;
     } else if (place.types.includes("lodging")) {
       markerType = "hotel";
+      text = "Hotel Address: " + place.vicinity;
     } else {
       return;
     }
@@ -451,7 +486,7 @@ class GasPaneBody extends React.Component {
     // });
     let infowindow = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, "click", function () {
-      infowindow.setContent(markerType);
+      infowindow.setContent(text);
       infowindow.open(this.map, this);
     });
   }
