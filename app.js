@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
-app.get('/', (req, res) => res.send("Welcome to Wayfarer's temp page"));
+app.get('/', (req, res) => res.send("Welcome to Wanderer's temp page"));
 app.use("/api/users", users);
 app.use("/api/vehicles", vehicles)
 

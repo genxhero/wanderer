@@ -19,7 +19,7 @@ class Greeting extends React.Component {
     const sessionLinks = () => (
       <div className="header-container">
         <Link to="/" className="header-link">
-          <div>Wayfarer</div>
+          <div>Wanderer</div>
         </Link>
         <nav className="login-signup">
           <Link className="header-session-link" to="/login">Login</Link>
@@ -32,7 +32,7 @@ class Greeting extends React.Component {
     const personalGreeting = () => (
       <div className="header-container">
         <Link to="/" className="header-link">
-          <div>Wayfarer</div>
+          <div>Wanderer</div>
         </Link>
         <hgroup className="header-group">
           <div className="header-name">Hi, {this.props.currentUser.username}!</div>

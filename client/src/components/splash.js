@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 const SplashWelcome = () => (
   <div className="splash-container" id="splash-welcome">
-    <h1 className="splash-title"> Welcome to Wayfarer!</h1>
+    <h1 className="splash-title"> Welcome to Wanderer!</h1>
     <span className="splash-info">A web app for facilitating adventure!</span>
     <span className="splash-info">Make trip planning a breeze!</span>
     <span className="splash-info">Explore new places!</span>
@@ -18,7 +18,7 @@ const SplashWelcome = () => (
 
 const SplashCreators = () => (
   <div className="splash-container" id="splash-welcome">
-    <h1 className="splash-title"> Team Wayfarer</h1>
+    <h1 className="splash-title"> Team Wanderer</h1>
     <div className="splash-creator">
       <span className="splash-info">Aaron Goddard</span>
       <span>

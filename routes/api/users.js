@@ -9,6 +9,8 @@ require("../../config/passport")(passport);
 const validateRegistrationInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 const Vehicle = require('../../models/Vehicle').Vehicle;
+
+
 //Get current user
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
