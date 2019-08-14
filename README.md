@@ -1,8 +1,8 @@
-# Wayfarer [(Live)](https://boiling-sierra-91034.herokuapp.com/)
+# Wanderer [(Live)](https://boiling-sierra-91034.herokuapp.com/)
 
-Wayfarer is an app designed to facilitate adventure across the open roads of America.
+Wanderer is an app designed to facilitate adventure across the open roads of America.
 
-![alt-text](https://github.com/genxhero/wayfarer/blob/master/readme-assets/WayfarerPage.PNG "Add vehicle form - first page guest sees")
+![alt-text](https://github.com/genxhero/wanderer/blob/master/readme-assets/WayfarerPage.PNG "Add vehicle form - first page guest sees")
 
 
 # Background and Overview
@@ -13,7 +13,7 @@ Some days you  just want to hit the road in a random direction and explore the w
 *  "I've only got half a tank of gas and I want to go now. What's the last place I could safely fill up at?"
 
 
-Wayfarer seeks to answer these questions through eye-catching visual imagery and a well-organized presentation of data.
+Wanderer seeks to answer these questions through eye-catching visual imagery and a well-organized presentation of data.
 
 # Technologies Used
 - MongoDB with Mongoose
